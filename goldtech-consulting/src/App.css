@@ -1,0 +1,124 @@
+.App {
+  font-family: 'Nunito', sans-serif;
+  background-color: #282c34;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  position: relative;
+}
+
+
+.App::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)); */
+  background: url('../public/beanstalk-dark.webp');
+  /* background: url('../public/beanstalk-dark.webp'), radial-gradient(circle at center, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)); */
+  /* background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0)); */
+  z-index: 0;  /* Places the circle behind the intro-section */
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  min-height: 20vh;
+  width: 95%;
+  font-size: calc(10px + 2vmin);
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+      transform: rotate(0deg);
+  }
+
+  to {
+      transform: rotate(360deg);
+  }
+}
+
+.intro-section {
+  padding: 4rem;
+  background-color: rgba(26, 26, 26, 0.7); /* black background with 70% opacity */
+  border-radius: 20px;   /* Makes corners rounded */
+  margin: 2rem;  /* Adds margin around the intro section */
+  z-index: 1;  /* Ensures it appears above any background shapes */
+  box-shadow: 0px 10px 30px rgba(68, 68, 68, 0.5);  /* Adds box-shadow */
+  width: 80%;
+}
+.about-component {
+  margin-top: 2rem; 
+  margin: 0 auto;
+  
+  z-index: 1;  /* Ensures it appears above any background shapes */
+}
+/* Services section */
+#services {
+  background-color: #333;
+  color: white;
+  padding: 4rem;
+  width: 80%;
+  margin: auto;
+}
+
+/* Contact section */
+#contact {
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 4rem;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+  width: 80%;
+  margin: auto;
+}
+
+.title-text {
+  font-size: 8rem;
+  line-height: 1;
+  font-weight: 900;
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+.title-text #gold{
+  color: #ffde59;
+}
+
+.slogan-text {
+  font-size: 2rem;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px #000000;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.nav-links {
+  font-size: 2rem;
+  color: #ffde59;
+  margin-top: 2rem;  /* equivalent to Tailwind's mt-10 */
+  letter-spacing: 0.25rem; /* additional spacing between letters */
+}
+.nav-links a {
+  text-decoration: underline;
+}
+.nav-links span {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}

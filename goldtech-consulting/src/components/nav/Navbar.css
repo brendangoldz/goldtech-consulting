@@ -1,0 +1,34 @@
+.navbar {
+    width: 50%;  /* ensures full width */
+    background-color: #282c34;
+    color: #ffde59;
+    padding: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+  }
+  .navbar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .brand {
+    margin-left: 4rem;
+    font-size: 36px;
+    font-weight: bold;
+    text-decoration: none; /* Removing underline */
+    color: white; /* Inherits the text color from parent */
+  }
+
+  .navbar ul li {
+    display: inline;
+    margin-right: 4rem; /* Adds more padding on the right */
+
+  }
+  .navbar ul li a {
+    color: #ffde59;
+    text-decoration: none;
+    font-size: 28px; /* Makes the text bigger */
+  }

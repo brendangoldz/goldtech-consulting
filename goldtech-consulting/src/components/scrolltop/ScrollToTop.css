@@ -1,0 +1,12 @@
+/* Scroll to Top Button */
+.scrollToTop {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ffde59;
+    color: #2c2c2c;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
