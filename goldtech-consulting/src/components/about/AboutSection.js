@@ -1,9 +1,13 @@
 import './AboutSection.css';
+import CustomNavbar from '../nav/Navbar';  // Assuming you have Navbar.js in a folder named components
+
 function AboutSection() {
     return (
       <div id="about" className="h-screen flex flex-col justify-center items-center">
+        {/* <CustomNavbar /> */}
         <div className="about-section flex flex-col justify-center items-center">
         <h2>About Me</h2>
+
         <p>
           Hi, I'm Brendan—a seasoned Software Engineer with a Bachelor's degree in Computer Science from Monmouth University. Currently, I'm with Lockheed Martin, where I specialize in developing cutting-edge technological solutions.
         </p>

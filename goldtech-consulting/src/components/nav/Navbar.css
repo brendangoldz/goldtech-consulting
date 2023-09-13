@@ -1,40 +1,57 @@
+/* For the whole Navbar */
 .navbar {
-    width: 50%;  /* ensures full width */
-    height: 12vh;;
-    background-color: #282c349d;
-    color: #ffde59;
-    padding: 0.75rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
-    border-radius: 20px;
-    margin: 0 auto;
-  }
-  .navbar ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .brand {
-    margin-left: 1rem;
-    font-size: 36px;
-    font-weight: bold;
-    text-decoration: none; /* Removing underline */
-    color: white; /* Inherits the text color from parent */
+  width: 100%;  /* set to full width for mobile */
+  height: auto; /* adjust height to auto for flexibility */
+  background-color: #282c349d;
+  color: #ffde59;
+  padding: 0.5rem 1rem; /* adjust padding for mobile */
+  display: flex;
+  flex-direction: column; /* stack items vertically for mobile */
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  margin: 1rem auto;
+}
+
+/* Brand styling */
+.navbar .navbar-brand {
+  margin-bottom: 1rem; /* adds some spacing between brand and nav items on mobile */
+  font-size: 24px; /* adjust font-size for mobile */
+  font-weight: bold;
+  color: white;
+}
+
+.navbar .navbar-brand span {
+  color: #ffde59;
+}
+
+/* Nav links styling */
+.navbar .nav-link {
+  color: #ffde59;
+  text-decoration: none;
+  font-size: 20px; /* adjust font-size for mobile */
+  margin: 0.5rem 1.5rem; /* adjust margins for mobile */
+}
+
+/* Larger screens (e.g., tablets and above) */
+@media screen and (min-width: 768px) {
+  .navbar {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      height: 12vh;
+      width: 50%;
+      padding: 0.75rem;
   }
 
-  .brand #gold {
-    color: #ffde59;
+  .navbar .navbar-brand {
+      margin-left: 1rem;
+      font-size: 36px;
+      margin-bottom: 0; /* removes the bottom margin */
   }
 
-  .navbar ul li {
-    display: inline;
-    margin-right: 4rem; /* Adds more padding on the right */
-
+  .navbar .nav-link {
+      font-size: 28px;
   }
-  .navbar ul li button {
-    color: #ffde59;
-    text-decoration: none;
-    font-size: 28px; /* Makes the text bigger */
-  }
+}

@@ -1,20 +1,19 @@
 import React from 'react';
-import './Navbar.css'; // Assuming you moved the navbar-related styles into a separate CSS file.
-const scrollTo = (id) => {
-  document.getElementById(id).scrollIntoView({ behavior: "smooth" });
-};
-const Navbar = () => {
-  return (
-    <div className="navbar">
-      <h1 className="brand"><span id="gold">Gold</span>Tech Consulting</h1>
-      <ul>
-        <li><button onClick={() => scrollTo("home")}>Home</button></li>
-        <li><button onClick={() => scrollTo("about")}>About</button></li>
-        <li><button onClick={() => scrollTo("services")}>Services</button></li>
-        <li><button onClick={() => scrollTo("contact")}>Contact</button></li>
-      </ul>
-    </div>
-  );
+import { Navbar, Nav } from 'react-bootstrap';
+
+function Navigation() {
+    return (
+        <Navbar expand="lg" variant="dark" className="navbar">
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
+                <Nav className="ml-auto">
+                    <Nav.Link href="#about">About</Nav.Link>
+                    <Nav.Link href="#services">Services</Nav.Link>
+                    <Nav.Link href="#contact">Contact</Nav.Link>
+                </Nav>
+            </Navbar.Collapse>
+        </Navbar>
+    );
 };
 
-export default Navbar;
+export default Navigation;

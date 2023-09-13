@@ -7,7 +7,6 @@
     border-radius: 20px;
     /* Ensures it appears above any background shapes */
     z-index: 1;
-    height: 70vh;
 }
 
 .about-section {
