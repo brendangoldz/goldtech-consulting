@@ -20,7 +20,7 @@ function App() {
           <div className="intro-section text-center inline-flex flex-col justify-center items-center p-1">
           <h1 className="title-text"><span id="gold">Gold</span>Tech Consulting</h1>
           <p className="slogan-text mb-8">
-            Your go-to for software solutions, from personal projects to enterprise applications.
+          From Cloud Solutions to QA: Your All-in-One Software Consultancy 
           </p>
           <div className="nav-links">
             <div className="space-x-8 mt-10">

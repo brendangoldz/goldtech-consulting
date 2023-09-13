@@ -9,4 +9,5 @@
     padding: 10px;
     border: none;
     cursor: pointer;
+    z-index: 1;
   }

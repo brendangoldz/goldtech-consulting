@@ -6,19 +6,19 @@ function AboutSection() {
       <div id="about" className="h-screen flex flex-col justify-center items-center">
         {/* <CustomNavbar /> */}
         <div className="about-section flex flex-col justify-center items-center">
-        <h2>About Me</h2>
+        <h2>About Us</h2>
 
         <p>
-          Hi, I'm Brendan—a seasoned Software Engineer with a Bachelor's degree in Computer Science from Monmouth University. Currently, I'm with Lockheed Martin, where I specialize in developing cutting-edge technological solutions.
+          Welcome to GoldTech Consulting LLC, where we believe in the transformative power of technology. In today's fast-paced digital era, businesses need a trusted partner to navigate the complexities of the tech landscape, and that's where we come in.
         </p>
         <p>
-          My toolkit includes an array of languages and frameworks, making me versatile in both front-end and back-end development. I thrive on tackling complex problems, delivering optimized and scalable software solutions.
+          Our team boasts expertise in a myriad of programming languages and specializes in crafting bespoke software solutions tailored to unique business needs. From robust backend systems to dynamic frontend interfaces, from the revolutionizing Internet of Things (IoT) solutions to effective project management and comprehensive software testing, we've got you covered. What truly sets GoldTech Consulting LLC apart is our unwavering commitment to our clients. We don't just offer services; we build partnerships. Our customer-centric approach, combined with our deep technical expertise, positions us as not just service providers, but as collaborators in your success journey.
         </p>
         <p>
-          Looking ahead, I'm focused on transitioning into a leadership role. I aspire to not only deepen my technical expertise but also manage high-impact projects and teams. My long-term vision includes owning patents and running my own tech company.
+          In a world where technology is constantly evolving, you need a partner who can keep pace. At GoldTech Consulting, we're not just ahead of the curve; we're defining it. Let's embark on a transformative tech journey together.
         </p>
           <a href="#projects" className="cta-button">
-          See My Projects
+          See Our Projects
         </a>
         </div>
       </div>
@@ -26,4 +26,3 @@ function AboutSection() {
   }
   
   export default AboutSection;
-  
