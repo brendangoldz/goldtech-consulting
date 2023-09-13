@@ -9,7 +9,6 @@
   position: relative;
 }
 
-
 .App::before {
   content: '';
   position: absolute;
@@ -55,27 +54,39 @@
   }
 }
 
+
 .intro-section {
-  padding: 4rem;
-  background-color: rgba(26, 26, 26, 0.7); /* black background with 70% opacity */
-  border-radius: 20px;   /* Makes corners rounded */
-  margin: 2rem;  /* Adds margin around the intro section */
-  z-index: 1;  /* Ensures it appears above any background shapes */
-  box-shadow: 0px 10px 30px rgba(68, 68, 68, 0.5);  /* Adds box-shadow */
-  /* width: 90vh; */
+  padding: 1rem;  /* adjusted padding for mobile */
+  background-color: rgba(26, 26, 26, 0.7);
+  border-radius: 20px;
+  margin: 1rem;  /* adjusted margin for mobile */
+  z-index: 1;
+  box-shadow: 0px 10px 30px rgba(68, 68, 68, 0.5);
 }
 
 .component {
-  border-radius: 20px;   /* Makes corners rounded */
-  z-index: 1;  /* Ensures it appears above any background shapes */
+  border-radius: 20px;
+  z-index: 1;
   width: 100vw;
-  
   height: 80vh;
-  /* width: 90vh; */
+}
+
+.snap-container {
+  /* Set up the container to scroll vertically */
+  overflow-y: scroll;
+  height: 90vh;  /* Assuming you want viewport height sections */
+
+  /* Set up snap scrolling */
+  scroll-snap-type: y mandatory;
+}
+
+.snap-child {
+  height: 90vh;
+  scroll-snap-align: start;
 }
 
 .title-text {
-  font-size: 8rem;
+  font-size: 4rem;
   line-height: 1;
   font-weight: 900;
   color: white;
@@ -87,23 +98,69 @@
 }
 
 .slogan-text {
-  font-size: 2rem;
+  font-size: 1.5rem; /* adjusted font-size for mobile */
   color: #ffffff;
   text-shadow: 1px 1px 2px #000000;
-  width: 50%;
+  width: 90%;  /* adjusted width for mobile */
   margin: 0 auto;
 }
 
 .nav-links {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #ffde59;
   margin-top: 2rem;  /* equivalent to Tailwind's mt-10 */
   letter-spacing: 0.25rem; /* additional spacing between letters */
 }
+
+
 .nav-links a {
   text-decoration: underline;
 }
 .nav-links span {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
+}
+
+/* For even larger screens (e.g., desktops) */
+@media screen and (min-width: 1024px) {
+  .intro-section {
+    padding: 4rem;
+    margin: 2rem;
+  }
+
+  .title-text {
+    font-size: 8rem;
+    padding: 1.5rem;
+  }
+
+  .slogan-text {
+    font-size: 2rem;
+    width: 50%;
+  }
+
+  .nav-links {
+    font-size: 2rem;
+  }
+}
+
+/* For larger screens (e.g., tablets, small laptops) */
+@media screen and (min-width: 768px) {
+  .intro-section {
+    padding: 3rem;
+    margin: 2rem;
+  }
+
+  .title-text {
+    font-size: 6rem;
+    padding: 0.5rem;
+  }
+
+  .slogan-text {
+    font-size: 1.8rem;
+    width: 60%;
+  }
+
+  .nav-links {
+    font-size: 1.8rem;
+  }
 }
