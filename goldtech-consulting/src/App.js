@@ -13,7 +13,7 @@ const scrollTo = (id) => {
 };
 function App() {
   return (
-    <div className="App" id="home">
+    <div className="App" id="home"  data-spy="scroll" data-target=".nav-links" data-offset="50">
       <div class="snap-container">
       <section class="snap-child">
         <div className="h-screen flex flex-col justify-center items-center">
@@ -29,7 +29,7 @@ function App() {
             <button onClick={() => scrollTo("services")}>Services</button>
             <span>|</span>
             <button onClick={() => scrollTo("contact")}>Contact</button>
-            </div>
+            </div> 
           </div>
           </div>
         </div>
@@ -37,32 +37,28 @@ function App() {
         <section class="snap-child">
         <div className="text-center h-screen flex flex-col justify-center items-center">
           <div className="component text-center inline-flex flex-col justify-center items-center">
-              <AboutSection />
-              <CustomNavbar />
+              <AboutSection scrollTo={scrollTo} />
           </div>
         </div>
         </section>   
         <section class="snap-child">
         <div className="text-center h-screen flex flex-col justify-center items-center">
           <div className="component text-center inline-flex flex-col justify-center items-center">
-          
-            <ServicesSection />
-            <CustomNavbar />
-            
+            <ServicesSection scrollTo={scrollTo} />
+
           </div>
         </div>
         </section>
         <section class="snap-child">
         <div className="h-screen flex flex-col justify-center items-center">
         <div className="component text-center inline-flex flex-col justify-center items-center">
-            <ContactSection />
-            <CustomNavbar />
+            <ContactSection scrollTo={scrollTo} />
           </div>
         </div>
         </section>
+        <ScrollToTop />
       </div>
       
-      <ScrollToTop />
     </div>
   );
 }

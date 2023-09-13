@@ -20,7 +20,8 @@
   background: url('../public/beanstalk-dark.webp');
   /* background: url('../public/beanstalk-dark.webp'), radial-gradient(circle at center, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)); */
   /* background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0)); */
-  z-index: 0;  /* Places the circle behind the intro-section */
+  z-index: 0;
+  /* Places the circle behind the intro-section */
 }
 
 .App-logo {
@@ -30,7 +31,7 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-      animation: App-logo-spin infinite 20s linear;
+    animation: App-logo-spin infinite 20s linear;
   }
 }
 
@@ -46,22 +47,24 @@
 
 @keyframes App-logo-spin {
   from {
-      transform: rotate(0deg);
+    transform: rotate(0deg);
   }
 
   to {
-      transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
 
 .intro-section {
-  padding: 1rem;  /* adjusted padding for mobile */
+  padding: 1rem;
+  /* adjusted padding for mobile */
   background-color: rgba(26, 26, 26, 0.7);
   border-radius: 20px;
-  margin: 1rem;  /* adjusted margin for mobile */
+  margin: 1rem;
+  /* adjusted margin for mobile */
   z-index: 1;
-  box-shadow: 0px 10px 30px rgba(68, 68, 68, 0.5);
+  box-shadow: 0px 10px 10px rgba(32, 32, 32, 0.5);
 }
 
 .component {
@@ -74,7 +77,8 @@
 .snap-container {
   /* Set up the container to scroll vertically */
   overflow-y: scroll;
-  height: 90vh;  /* Assuming you want viewport height sections */
+  height: 90vh;
+  /* Assuming you want viewport height sections */
 
   /* Set up snap scrolling */
   scroll-snap-type: y mandatory;
@@ -91,31 +95,59 @@
   font-weight: 900;
   color: white;
   text-shadow: 2px 2px 4px #000000;
+  padding: 0.4em auto;
 }
 
-.title-text #gold{
+.title-text #gold {
   color: #ffde59;
 }
 
 .slogan-text {
-  font-size: 1.5rem; /* adjusted font-size for mobile */
+  font-size: 1.5rem;
+  /* adjusted font-size for mobile */
   color: #ffffff;
   text-shadow: 1px 1px 2px #000000;
-  width: 90%;  /* adjusted width for mobile */
+  width: 90%;
+  /* adjusted width for mobile */
   margin: 0 auto;
 }
 
 .nav-links {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: #ffde59;
-  margin-top: 2rem;  /* equivalent to Tailwind's mt-10 */
-  letter-spacing: 0.25rem; /* additional spacing between letters */
+  margin-top: 2rem;
+  letter-spacing: 0.25rem;
 }
 
-
-.nav-links a {
-  text-decoration: underline;
+.nav-links button {
+  background-color: transparent; 
+  border: none; 
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border-radius: 5px;
+  padding: 5px 10px; 
+  transition: color 0.3s;
+  
+  /* Setting the gradient from #ffde59 to darkgray */
+  background: linear-gradient(90deg, #ffde59 50%, darkgray 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-size: 200% 100%;
+  background-position: 100%;
+  transition: background-position 0.3s;
 }
+
+.nav-links button:hover {
+  background-position: 0% 100%;
+}
+
+.nav-links .btn-link.active {
+  /* Your styles for active state here */
+  color: #ffde59;
+}
+
 .nav-links span {
   margin-left: 1.5rem;
   margin-right: 1.5rem;

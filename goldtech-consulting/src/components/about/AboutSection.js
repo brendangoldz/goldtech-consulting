@@ -1,26 +1,28 @@
 import './AboutSection.css';
-import CustomNavbar from '../nav/Navbar';  // Assuming you have Navbar.js in a folder named components
+import Navigation from '../nav/Navbar';  // Assuming you have Navbar.js in a folder named components
 
-function AboutSection() {
+function AboutSection({ scrollTo }) {
     return (
-      <div id="about" className="h-screen flex flex-col justify-center items-center">
-        {/* <CustomNavbar /> */}
-        <div className="about-section flex flex-col justify-center items-center">
+      <div className="about-container h-screen flex flex-col justify-center items-center">
+        <Navigation scrollTo={scrollTo}/>
+        <section id="about">
+          <div className="about-section">
         <h2>About Us</h2>
 
         <p>
-          Welcome to GoldTech Consulting LLC, where we believe in the transformative power of technology. In today's fast-paced digital era, businesses need a trusted partner to navigate the complexities of the tech landscape, and that's where we come in.
+          At GoldTech Consulting LLC, we harness the power of technology to drive business transformation. In this digital age, we stand as your trusted ally, guiding you through tech's complexities.
         </p>
         <p>
-          Our team boasts expertise in a myriad of programming languages and specializes in crafting bespoke software solutions tailored to unique business needs. From robust backend systems to dynamic frontend interfaces, from the revolutionizing Internet of Things (IoT) solutions to effective project management and comprehensive software testing, we've got you covered. What truly sets GoldTech Consulting LLC apart is our unwavering commitment to our clients. We don't just offer services; we build partnerships. Our customer-centric approach, combined with our deep technical expertise, positions us as not just service providers, but as collaborators in your success journey.
+          Our expertise spans programming, bespoke software solutions, IoT innovations, and effective project management. We're not just service providers; we're your partners in success, committed to crafting solutions that set you apart.
         </p>
         <p>
-          In a world where technology is constantly evolving, you need a partner who can keep pace. At GoldTech Consulting, we're not just ahead of the curve; we're defining it. Let's embark on a transformative tech journey together.
+          In an ever-evolving tech landscape, GoldTech Consulting leads the curve, ready to embark on a transformative journey with you.
         </p>
           <a href="#projects" className="cta-button">
           See Our Projects
         </a>
         </div>
+        </section>
       </div>
     );
   }
