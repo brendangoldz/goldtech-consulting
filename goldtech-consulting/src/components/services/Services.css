@@ -1,0 +1,40 @@
+/* About section */
+#services {
+    background-color: #3f3f3f;
+    color: white;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+    /* Makes corners rounded */
+    border-radius: 20px;
+    /* Ensures it appears above any background shapes */
+    z-index: 1;
+    height: 78vh;
+    width: 100%;
+}
+
+.services-section {
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+
+.services-section h2 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #ffde59;
+}
+
+.services-section p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+/* For icons, if you decide to include them */
+.services-icon {
+    margin-right: 10px;
+}

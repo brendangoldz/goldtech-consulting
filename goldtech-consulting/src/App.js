@@ -11,9 +11,9 @@ const scrollTo = (id) => {
 };
 function App() {
   return (
-    <div className="App">
+    <div className="App" id="home">
       <div className="h-screen flex flex-col justify-center items-center">
-        <div className="intro-section text-center inline-flex flex-col justify-center items-center bg-gradient-to-r from-black to-gray-900 p-1">
+        <div className="intro-section text-center inline-flex flex-col justify-center items-center p-1">
         <h1 className="title-text"><span id="gold">Gold</span>Tech Consulting</h1>
         <p className="slogan-text mb-8">
           Your go-to for software solutions, from personal projects to enterprise applications.
@@ -30,16 +30,22 @@ function App() {
         </div>
       </div>
       <div className="text-center h-screen flex flex-col justify-center items-center">
-        <div className="about-component text-center inline-flex flex-col justify-center items-center bg-gradient-to-r from-black to-gray-900 p-1">
+        <div className="component text-center inline-flex flex-col justify-center items-center">
           <AboutSection />
           <Navbar />
         </div>
       </div>
       <div className="text-center h-screen flex flex-col justify-center items-center">
-        <ServicesSection />
+        <div className="component text-center inline-flex flex-col justify-center items-center">
+          <ServicesSection />
+          <Navbar />
+        </div>
       </div>
       <div className="h-screen flex flex-col justify-center items-center">
-        <ContactSection />
+      <div className="component text-center inline-flex flex-col justify-center items-center">
+          <ContactSection />
+          <Navbar />
+        </div>
       </div>
       <ScrollToTop />
     </div>

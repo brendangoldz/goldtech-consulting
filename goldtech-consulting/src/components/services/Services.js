@@ -1,13 +1,22 @@
-function Services() {
+import './Services.css'
+function ServicesSection() {
     return (
-      <div className="bg-gray-900 text-center py-16 text-white">
-        <h1 className="text-4xl mb-4">Welcome to [Your Company Name]</h1>
-        <p className="text-lg">
-          Your go-to for software solutions, from personal projects to enterprise applications.
+      <div id="services" className="h-screen flex flex-col justify-center items-center">
+        <div className="services-section flex flex-col justify-center items-center">
+        <h2>Services</h2>
+        <p>
+          Service 1
         </p>
+        <p>
+          Service 2
+        </p>
+        <p>
+          Service 3
+        </p>
+        </div>
       </div>
     );
   }
   
-  export default Services;
+  export default ServicesSection;
   

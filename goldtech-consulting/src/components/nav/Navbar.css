@@ -1,6 +1,7 @@
 .navbar {
     width: 50%;  /* ensures full width */
-    background-color: #282c34;
+    height: 12vh;;
+    background-color: #282c349d;
     color: #ffde59;
     padding: 0.75rem;
     display: flex;
@@ -8,6 +9,7 @@
     align-items: center;
     box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
     border-radius: 20px;
+    margin: 0 auto;
   }
   .navbar ul {
     list-style: none;
@@ -15,11 +17,15 @@
   }
   
   .brand {
-    margin-left: 4rem;
+    margin-left: 1rem;
     font-size: 36px;
     font-weight: bold;
     text-decoration: none; /* Removing underline */
     color: white; /* Inherits the text color from parent */
+  }
+
+  .brand #gold {
+    color: #ffde59;
   }
 
   .navbar ul li {
@@ -27,7 +33,7 @@
     margin-right: 4rem; /* Adds more padding on the right */
 
   }
-  .navbar ul li a {
+  .navbar ul li button {
     color: #ffde59;
     text-decoration: none;
     font-size: 28px; /* Makes the text bigger */

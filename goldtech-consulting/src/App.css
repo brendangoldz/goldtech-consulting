@@ -62,31 +62,16 @@
   margin: 2rem;  /* Adds margin around the intro section */
   z-index: 1;  /* Ensures it appears above any background shapes */
   box-shadow: 0px 10px 30px rgba(68, 68, 68, 0.5);  /* Adds box-shadow */
-  width: 80%;
-}
-.about-component {
-  margin-top: 2rem; 
-  margin: 0 auto;
-  
-  z-index: 1;  /* Ensures it appears above any background shapes */
-}
-/* Services section */
-#services {
-  background-color: #333;
-  color: white;
-  padding: 4rem;
-  width: 80%;
-  margin: auto;
+  /* width: 90vh; */
 }
 
-/* Contact section */
-#contact {
-  background-color: #f0f0f0;
-  color: #333;
-  padding: 4rem;
-  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
-  width: 80%;
-  margin: auto;
+.component {
+  border-radius: 20px;   /* Makes corners rounded */
+  z-index: 1;  /* Ensures it appears above any background shapes */
+  width: 100vw;
+  
+  height: 80vh;
+  /* width: 90vh; */
 }
 
 .title-text {
