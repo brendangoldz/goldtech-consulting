@@ -8,8 +8,9 @@
     z-index: 1;
     margin-top: 0;
     height: auto;
-    width: 100%;
-    padding: 2rem 1rem;
+    width: 75%;
+    justify-content: flex-start;
+    padding-top: 4rem;
     /* added some padding for smaller screens */
 }
 

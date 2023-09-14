@@ -8,7 +8,7 @@
     z-index: 1;
     margin-top: 0;
     height: auto;
-    width: 100%;
+    width: 75%;
     padding: 2rem 1rem;
     /* added some padding for smaller screens */
 }
@@ -21,6 +21,9 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    max-height: 66vh;
+    
+    overflow-y: auto;
 }
 
 .about-section h2 {
@@ -39,7 +42,6 @@
     margin-bottom: 1rem;
     line-height: 1.5;
 }
-
 /* Larger screens (e.g., tablets) */
 @media screen and (min-width: 768px) {
     .about-container {
@@ -86,4 +88,10 @@
     background-color: #ffc300;
     color: #222222;
     text-decoration: none;
+}
+
+@media screen and (max-width: 767px) {
+    .about-section {
+        padding-top: 7rem;
+    }
 }
