@@ -1,58 +1,70 @@
 /* About section */
-#services {
+
+.service-container {
     background-color: #3f3f3f;
     color: white;
     box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
     z-index: 1;
-    height: auto; /* making this auto for mobile for flexibility */
-    width: 100%;
-    padding: 2rem 1rem; /* added some padding for smaller screens */
+    margin-top: 0;
+    max-height: 80vh;  
+    width: 75%;
+    padding: 2rem 1rem;
+    overflow-y: auto;
+    /* added some padding for smaller screens */
 }
 
 .services-section {
-    padding: 2rem;  /* adjust padding for mobile */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
+    max-height: 70vh;
 }
 
 .services-section h2 {
-    font-size: 2rem;  /* adjust font-size for mobile */
-    font-weight: bold;
-    margin-bottom: 1rem;
     color: #ffde59;
 }
 
-.services-section p {
-    font-size: 1rem; /* adjust font-size for mobile */
-    margin-bottom: 1rem;
-    line-height: 1.5;
+
+.individual-service {
+    width: 100%; /* Makes sure each service takes up the full width on mobile */
+    padding: 1rem;
+    text-align: center; /* Centers the text for each service */
 }
 
-.services-icon {
-    margin-right: 10px;
+.individual-service h3 {
+    color: #c5c5c5;
+    font-size: 1.2rem;
 }
 
 /* Larger screens (e.g., tablets) */
 @media screen and (min-width: 768px) {
-    #services {
-        height: 78vh;
-        padding: 3rem 2rem; /* increase padding a bit */
+    .services-section {
+        flex-direction: row; /* Changes the direction for larger screens */
+        gap: 2rem; /* Adds some space between each service */
     }
 
-    .services-section {
-        padding: 4rem;
+    .individual-service {
+        width: 30%; /* Ensures each service takes up roughly a third of the width */
+        padding: 1rem;
+    }
+
+    #services {
+        padding: 3rem 2rem;
     }
 
     .services-section h2 {
         font-size: 2.5rem;
     }
 
-    .services-section p {
+    .individual-service p {
         font-size: 1.1rem;
+    }
+
+    .individual-service h3 {
+        font-size: 1.5rem;
     }
 }
 
@@ -62,7 +74,22 @@
         font-size: 3rem;
     }
 
-    .services-section p {
+    .individual-service p {
         font-size: 1.2rem;
     }
+
+    .individual-service h3 {
+        font-size: 1.7rem;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .services-section {
+        padding-top: 5rem;
+    }
+
+    .services-section h2 {
+        font-size: 1.75rem;
+    }
+    
 }

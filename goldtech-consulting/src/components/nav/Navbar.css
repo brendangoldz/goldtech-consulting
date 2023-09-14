@@ -1,57 +1,48 @@
-/* For the whole Navbar */
-.navbar {
-  width: 100%;  /* set to full width for mobile */
-  height: auto; /* adjust height to auto for flexibility */
-  background-color: #282c349d;
-  color: #ffde59;
-  padding: 0.5rem 1rem; /* adjust padding for mobile */
-  display: flex;
-  flex-direction: column; /* stack items vertically for mobile */
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
-  border-radius: 20px;
-  margin: 1rem auto;
-}
-
-/* Brand styling */
-.navbar .navbar-brand {
-  margin-bottom: 1rem; /* adds some spacing between brand and nav items on mobile */
-  font-size: 24px; /* adjust font-size for mobile */
-  font-weight: bold;
-  color: white;
-}
-
-.navbar .navbar-brand span {
-  color: #ffde59;
-}
-
-/* Nav links styling */
-.navbar .nav-link {
-  color: #ffde59;
+.navbar .nav-button {
+  background: transparent;
+  border: none;
+  color: darkgray;
+  cursor: pointer;
+  position: relative;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem; /* keeping the same font size as before */
   text-decoration: none;
-  font-size: 20px; /* adjust font-size for mobile */
-  margin: 0.5rem 1.5rem; /* adjust margins for mobile */
+  overflow: hidden;
+  transition: color 0.3s;
 }
 
-/* Larger screens (e.g., tablets and above) */
-@media screen and (min-width: 768px) {
-  .navbar {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      height: 12vh;
-      width: 50%;
-      padding: 0.75rem;
-  }
+.navbar .nav-button::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: black;
+  bottom: 0;
+  left: 0;
+  transition: width 0.3s;
+}
 
-  .navbar .navbar-brand {
-      margin-left: 1rem;
-      font-size: 36px;
-      margin-bottom: 0; /* removes the bottom margin */
-  }
+.navbar .nav-button:focus,
+.navbar .nav-button:active {
+  background: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+  color: darkgray !important;
+}
 
-  .navbar .nav-link {
-      font-size: 28px;
-  }
+.navbar .nav-button:hover {
+  color: #ffde59 !important;
+  background: transparent !important;
+}
+
+.navbar .nav-button:hover::after,
+.navbar .nav-button:focus::after {
+  width: 100%;
+}
+
+.contact-container .navbar .nav-button {
+  color: #333; /* Darker color for better visibility on light background */
+}
+.about-container .navbar .nav-button {
+  color: #333; /* Darker color for better visibility on light background */
 }

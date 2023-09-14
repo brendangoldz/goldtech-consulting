@@ -1,39 +1,71 @@
-/* About section */
-#contact {
-    background-color: #f0f0f0;
+.contact-container {
+    background-color: #c7c7c7;
     color: #333;
     box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
-    /* Makes corners rounded */
     border-radius: 20px;
-    /* Ensures it appears above any background shapes */
     z-index: 1;
-    height: 78vh;
-    width: 100%;
+    margin-top: 0;
+    height: auto;
+    width: 75%;
+    justify-content: flex-start;
+    padding-top: 4rem;
+    /* added some padding for smaller screens */
 }
 
 .contact-section {
-    padding: 4rem;
+    padding: 2rem;
+    /* adjust padding for mobile */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
     width: 100%;
-  }
+}
 
 .contact-section h2 {
-    font-size: 3rem;
+    font-size: 2rem;
+    /* adjust font-size for mobile */
     font-weight: bold;
     margin-bottom: 1rem;
+    color: #ffc300;
+    -webkit-text-stroke: 0.5px grey;
+    letter-spacing: 0.1em;
 }
 
 .contact-section p {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    /* adjust font-size for mobile */
     margin-bottom: 1rem;
     line-height: 1.5;
 }
 
-/* For icons, if you decide to include them */
-.contact-icon {
-    margin-right: 10px;
+/* Larger screens (e.g., tablets) */
+@media screen and (min-width: 768px) {
+    .contact-container {
+        padding: 3rem 2rem;
+        /* increase padding a bit */
+    }
+
+    .contact-section {
+        padding: 4rem;
+    }
+
+    .contact-section h2 {
+        font-size: 2.5rem;
+    }
+
+    .contact-section p {
+        font-size: 1.1rem;
+    }
+}
+
+/* Desktops */
+@media screen and (min-width: 1024px) {
+    .contact-section h2 {
+        font-size: 3rem;
+    }
+
+    .contact-section p {
+        font-size: 1.2rem;
+    }
 }
