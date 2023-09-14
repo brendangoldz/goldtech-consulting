@@ -5,8 +5,9 @@ function ServicesSection({ scrollTo }) {
     return (
       <div className="service-container h-screen flex flex-col justify-center items-center">
         <Navigation scrollTo={scrollTo} />
+        
+        <h2>Our Services</h2>
         <section id="services">
-        <h2>Our Stellar Services</h2>
           <div className="services-section">
             
             
