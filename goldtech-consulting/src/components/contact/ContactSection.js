@@ -2,15 +2,47 @@ import React from 'react';
 import './ContactSection.css'
 import Navigation from '../nav/Navbar'; 
 import { Form, Button } from 'react-bootstrap';
+import axios from 'axios';
 
 function ContactSection({ scrollTo }) {
+  const handleSubmit = async (event) => {
+      event.preventDefault();
+
+      const email = event.target.formBasicEmail.value;
+      const subject = event.target.formBasicSubject.value;
+      const message = event.target.formBasicMessage.value;
+
+      try {
+          const response = await axios.post(
+              'https://3myxbr87g6.execute-api.us-east-2.amazonaws.com/contact/',
+              {
+                  "email": email,
+                  "subject": subject,
+                  "message": message
+              },
+              {
+                  headers: {
+                    'x-api-key': 'I3z5vv3C7K4IWQxrWbPeC334cGo9fjQo4KEjUE2D',
+                    "Content-Type": "application/json"
+                  }
+              }
+          );
+
+          if (response.data.message) {
+              console.log(response.data.message); // or display it on the page
+          }
+      } catch (error) {
+          console.error('Failed to send message:', error.response); // handle error appropriately in UI
+      }
+    };
+
     return (
       <div className="contact-container h-screen flex flex-col justify-center items-center">
         <Navigation scrollTo={scrollTo}/>
         <section id="contact">
           <div className="contact-section">
             <h2>Contact Form</h2>
-            <Form>
+            <Form  onSubmit={handleSubmit}>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" placeholder="Enter email" />

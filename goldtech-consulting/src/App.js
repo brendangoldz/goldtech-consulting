@@ -12,8 +12,8 @@ const scrollTo = (id) => {
 function App() {
   return (
     <div className="App" id="home">
-      <div class="snap-container" data-spy="scroll" data-target=".nav-button" data-offset="50">
-      <section class="snap-child">
+      <div className="snap-container" data-spy="scroll" data-target=".nav-button" data-offset="50">
+      <section className="snap-child">
         <div className="h-screen flex flex-col justify-center items-center">
           <div className="intro-section text-center inline-flex flex-col justify-center items-center p-1">
           <h1 className="title-text"><span id="gold">Gold</span>Tech Consulting</h1>
@@ -35,14 +35,14 @@ function App() {
           </div>
         </div>
         </section>
-        <section class="snap-child">
+        <section className="snap-child">
         <div className="text-center h-screen flex flex-col justify-center items-center">
           <div className="component text-center inline-flex flex-col justify-center items-center">
               <AboutSection scrollTo={scrollTo} />
           </div>
         </div>
         </section>   
-        <section class="snap-child">
+        <section className="snap-child">
         <div className="text-center h-screen flex flex-col justify-center items-center">
           <div className="component text-center inline-flex flex-col justify-center items-center">
             <ServicesSection scrollTo={scrollTo} />
@@ -50,7 +50,7 @@ function App() {
           </div>
         </div>
         </section>
-        <section class="snap-child">
+        <section className="snap-child">
         <div className="h-screen flex flex-col justify-center items-center">
         <div className="component text-center inline-flex flex-col justify-center items-center">
             <ContactSection scrollTo={scrollTo} />

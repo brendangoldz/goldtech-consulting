@@ -9,9 +9,12 @@
     margin-top: 0;
     max-height: 80vh;  
     width: 75%;
-    padding: 2rem 1rem;
     overflow-y: auto;
     /* added some padding for smaller screens */
+}
+
+#services h2 {
+    color: #ffde59;
 }
 
 .services-section {
@@ -21,12 +24,8 @@
     align-items: center;
     width: 100%;
     max-height: 70vh;
+    padding: 2rem 1rem;
 }
-
-.services-section h2 {
-    color: #ffde59;
-}
-
 
 .individual-service {
     width: 100%; /* Makes sure each service takes up the full width on mobile */
@@ -37,6 +36,22 @@
 .individual-service h3 {
     color: #c5c5c5;
     font-size: 1.2rem;
+}
+
+@media screen and (max-width: 767px) {
+    #services {
+        padding-top: 1rem;
+    }
+
+    .individual-service p {
+        font-size: 0.8rem;
+    }
+
+
+    #services h2 {
+        font-size: 1.75rem;
+    }
+    
 }
 
 /* Larger screens (e.g., tablets) */
@@ -55,12 +70,12 @@
         padding: 3rem 2rem;
     }
 
-    .services-section h2 {
+    #services h2 {
         font-size: 2.5rem;
     }
 
     .individual-service p {
-        font-size: 1.1rem;
+        font-size: 0.9rem;
     }
 
     .individual-service h3 {
@@ -70,12 +85,12 @@
 
 /* Desktops */
 @media screen and (min-width: 1024px) {
-    .services-section h2 {
+    #services h2 {
         font-size: 3rem;
     }
 
     .individual-service p {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     .individual-service h3 {
@@ -83,13 +98,3 @@
     }
 }
 
-@media screen and (max-width: 767px) {
-    .services-section {
-        padding-top: 5rem;
-    }
-
-    .services-section h2 {
-        font-size: 1.75rem;
-    }
-    
-}
