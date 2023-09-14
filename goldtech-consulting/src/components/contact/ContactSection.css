@@ -12,6 +12,20 @@
     /* added some padding for smaller screens */
 }
 
+.contact-container h2 {
+    font-size: 2rem;
+    /* adjust font-size for mobile */
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #ffc300;
+    -webkit-text-stroke: 0.5px grey;
+    letter-spacing: 0.1em;
+}
+
+#contact {
+    overflow-y: auto;
+}
+
 .contact-section {
     padding: 2rem;
     /* adjust padding for mobile */
@@ -22,15 +36,7 @@
     width: 100%;
 }
 
-.contact-section h2 {
-    font-size: 2rem;
-    /* adjust font-size for mobile */
-    font-weight: bold;
-    margin-bottom: 1rem;
-    color: #ffc300;
-    -webkit-text-stroke: 0.5px grey;
-    letter-spacing: 0.1em;
-}
+
 
 .contact-section p {
     font-size: 1rem;

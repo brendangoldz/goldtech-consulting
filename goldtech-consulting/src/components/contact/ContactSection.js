@@ -39,9 +39,9 @@ function ContactSection({ scrollTo }) {
     return (
       <div className="contact-container h-screen flex flex-col justify-center items-center">
         <Navigation scrollTo={scrollTo}/>
+        <h2>Contact Form</h2>
         <section id="contact">
           <div className="contact-section">
-            <h2>Contact Form</h2>
             <Form  onSubmit={handleSubmit}>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>

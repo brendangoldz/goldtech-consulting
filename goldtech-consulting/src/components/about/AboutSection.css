@@ -8,6 +8,7 @@
     z-index: 1;
     margin-top: 0;
     height: auto;
+    max-height: 80vh;
     width: 75%;
     padding: 2rem 1rem;
     /* added some padding for smaller screens */
