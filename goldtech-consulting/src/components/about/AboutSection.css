@@ -8,9 +8,21 @@
     z-index: 1;
     margin-top: 0;
     height: auto;
+    max-height: 80vh;
     width: 75%;
     padding: 2rem 1rem;
     /* added some padding for smaller screens */
+}
+
+
+.about-container h2 {
+    font-size: 2rem;
+    /* adjust font-size for mobile */
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #ffc300;
+    -webkit-text-stroke: 0.5px grey;
+    letter-spacing: 0.1em;
 }
 
 .about-section {
@@ -26,15 +38,6 @@
     overflow-y: auto;
 }
 
-.about-section h2 {
-    font-size: 2rem;
-    /* adjust font-size for mobile */
-    font-weight: bold;
-    margin-bottom: 1rem;
-    color: #ffc300;
-    -webkit-text-stroke: 0.5px grey;
-    letter-spacing: 0.1em;
-}
 
 .about-section p {
     font-size: 1rem;
@@ -92,6 +95,6 @@
 
 @media screen and (max-width: 767px) {
     .about-section {
-        padding-top: 7rem;
+        padding-top: 5rem;
     }
 }

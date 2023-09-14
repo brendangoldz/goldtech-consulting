@@ -5,10 +5,9 @@ function AboutSection({ scrollTo }) {
     return (
       <div className="about-container h-screen flex flex-col justify-center items-center">
         <Navigation scrollTo={scrollTo}/>
+        <h2>About Us</h2>
         <section id="about">
           <div className="about-section">
-            <h2>About Us</h2>
-
             <p>
               At GoldTech Consulting LLC, we harness the power of technology to drive business transformation. In this digital age, we stand as your trusted ally, guiding you through tech's complexities.
             </p>
