@@ -14,15 +14,16 @@ function ContactSection({ scrollTo }) {
 
       try {
           const response = await axios.post(
-              'https://3myxbr87g6.execute-api.us-east-2.amazonaws.com/default',
+              'https://3myxbr87g6.execute-api.us-east-2.amazonaws.com/contact/',
               {
-                  email: email,
-                  subject: subject,
-                  message: message
+                  "email": email,
+                  "subject": subject,
+                  "message": message
               },
               {
                   headers: {
-                      'x-api-key': 'I3z5vv3C7K4IWQxrWbPeC334cGo9fjQo4KEjUE2D'
+                    'x-api-key': 'I3z5vv3C7K4IWQxrWbPeC334cGo9fjQo4KEjUE2D',
+                    "Content-Type": "application/json"
                   }
               }
           );
@@ -31,9 +32,10 @@ function ContactSection({ scrollTo }) {
               console.log(response.data.message); // or display it on the page
           }
       } catch (error) {
-          console.error('Failed to send message:', error); // handle error appropriately in UI
+          console.error('Failed to send message:', error.response); // handle error appropriately in UI
       }
     };
+
     return (
       <div className="contact-container h-screen flex flex-col justify-center items-center">
         <Navigation scrollTo={scrollTo}/>
