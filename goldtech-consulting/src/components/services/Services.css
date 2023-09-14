@@ -23,11 +23,20 @@
     max-height: 70vh;
 }
 
+.services-section h2 {
+    color: #ffde59;
+}
+
 
 .individual-service {
     width: 100%; /* Makes sure each service takes up the full width on mobile */
     padding: 1rem;
     text-align: center; /* Centers the text for each service */
+}
+
+.individual-service h3 {
+    color: #c5c5c5;
+    font-size: 1.2rem;
 }
 
 /* Larger screens (e.g., tablets) */
@@ -50,8 +59,12 @@
         font-size: 2.5rem;
     }
 
-    .services-section p {
+    .individual-service p {
         font-size: 1.1rem;
+    }
+
+    .individual-service h3 {
+        font-size: 1.5rem;
     }
 }
 
@@ -61,13 +74,22 @@
         font-size: 3rem;
     }
 
-    .services-section p {
+    .individual-service p {
         font-size: 1.2rem;
+    }
+
+    .individual-service h3 {
+        font-size: 1.7rem;
     }
 }
 
 @media screen and (max-width: 767px) {
     .services-section {
-        padding-top: 15rem;
+        padding-top: 5rem;
     }
+
+    .services-section h2 {
+        font-size: 1.75rem;
+    }
+    
 }

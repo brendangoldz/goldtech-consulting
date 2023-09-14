@@ -4,7 +4,7 @@ import ServicesSection from './components/services/Services';
 import ContactSection from './components/contact/ContactSection';
 import Footer from './components/footer/Footer';
 import './App.css';
-import './index.css';
+import './index.css'; 
 
 const scrollTo = (id) => {
   document.getElementById(id).scrollIntoView({ behavior: "smooth" });

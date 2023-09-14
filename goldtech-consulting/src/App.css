@@ -56,7 +56,6 @@
   }
 }
 
-
 .intro-section {
   padding: 1rem;
   /* adjusted padding for mobile */
@@ -75,7 +74,6 @@
   width: 100vw;
   height: auto;
   max-height: 97vh;
-  overflow-y: auto;
 }
 
 .snap-container {

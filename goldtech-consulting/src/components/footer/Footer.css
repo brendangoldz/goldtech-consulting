@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     padding: 1rem 0;
-    background-color: #3f3f3f; /* Using the background color from your .App class */
+    background-color: #3f3f3fab; /* Using the background color from your .App class */
     width: 100vw;
     height: 7.5vh;
     position: relative; /* This can help in ensuring the footer stays at the bottom, especially on shorter content pages */
