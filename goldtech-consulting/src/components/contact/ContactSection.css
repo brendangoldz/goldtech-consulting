@@ -36,7 +36,28 @@
     width: 100%;
 }
 
-
+.submit-success {
+    background-color: green;
+    border-color: green;
+    animation: checkmark-pop 0.5s ease-in-out;
+  }
+  
+  .checkmark {
+    color: white;
+    font-size: 1.5rem; /* Adjust size as needed */
+  }
+  
+  @keyframes checkmark-pop {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
 
 .contact-section p {
     font-size: 1rem;
