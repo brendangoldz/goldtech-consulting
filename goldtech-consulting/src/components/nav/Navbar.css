@@ -39,10 +39,3 @@
 .navbar .nav-button:focus::after {
   width: 100%;
 }
-
-.contact-container .navbar .nav-button {
-  color: #333; /* Darker color for better visibility on light background */
-}
-.about-container .navbar .nav-button {
-  color: #333; /* Darker color for better visibility on light background */
-}

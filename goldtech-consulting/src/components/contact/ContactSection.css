@@ -1,6 +1,7 @@
+/* Contact Section Container */
 .contact-container {
-    background-color: #c7c7c7;
-    color: #333;
+    background-color: #3f3f3f;
+    color: #c5c5c5;
     box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
     z-index: 1;
@@ -8,13 +9,11 @@
     height: auto;
     width: 75%;
     justify-content: flex-start;
-    padding-top: 4rem;
-    /* added some padding for smaller screens */
+    padding-top: 4rem; /* Added some padding for smaller screens */
 }
 
 .contact-container h2 {
-    font-size: 2rem;
-    /* adjust font-size for mobile */
+    font-size: 2rem; /* Adjust font-size for mobile */
     font-weight: bold;
     margin-bottom: 1rem;
     color: #ffc300;
@@ -27,8 +26,7 @@
 }
 
 .contact-section {
-    padding: 2rem;
-    /* adjust padding for mobile */
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -36,32 +34,67 @@
     width: 100%;
 }
 
+/* Spacing for each form group */
+.contact-section .form-group {
+    margin: 0.5rem; /* Adjust as needed */
+}
+
+.form-control {
+    border-top: 2px solid #ffc300;
+}
+/* Spacing for labels */
+.contact-section .form-label {
+    margin: 0.25rem; /* Adjust as needed */
+    display: flex;
+}
+
+/* Spacing for the submit button */
+.contact-section .btn {
+    margin-top: 1rem; /* Adds space above the submit button */
+}
+
+/* Submit Success Button */
 .submit-success {
     background-color: green;
     border-color: green;
     animation: checkmark-pop 0.5s ease-in-out;
-  }
-  
-  .checkmark {
+}
+
+/* Submit Failure Button */
+.submit-failure {
+    background-color: rgb(128, 0, 0);
+    border-color: rgb(128, 0, 0);
+    animation: checkmark-pop 0.5s ease-in-out;
+}
+
+.icon {
     color: white;
     font-size: 1.5rem; /* Adjust size as needed */
-  }
-  
-  @keyframes checkmark-pop {
+}
+
+
+@keyframes checkmark-pop {
     0% {
-      transform: scale(0);
+        transform: scale(0);
     }
     50% {
-      transform: scale(1.2);
+        transform: scale(1.2);
     }
     100% {
-      transform: scale(1);
+        transform: scale(1);
     }
-  }
+}
 
+/* Validation Feedback */
+.invalid-feedback {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+/* Form Element Styles */
 .contact-section p {
-    font-size: 1rem;
-    /* adjust font-size for mobile */
+    font-size: 1rem; /* Adjust font-size for mobile */
     margin-bottom: 1rem;
     line-height: 1.5;
 }
@@ -69,12 +102,7 @@
 /* Larger screens (e.g., tablets) */
 @media screen and (min-width: 768px) {
     .contact-container {
-        padding: 3rem 2rem;
-        /* increase padding a bit */
-    }
-
-    .contact-section {
-        padding: 4rem;
+        padding: 3rem 2rem; /* Increase padding a bit */
     }
 
     .contact-section h2 {
