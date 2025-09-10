@@ -147,7 +147,7 @@ const HeroSection = ({ scrollTo }) => {
             variants={fadeInUp}
           >
             <span className="w-2 h-2 bg-gold rounded-full mr-2 animate-pulse" />
-            Trusted by 50+ businesses worldwide
+            Delivered Solutions for 50+ businesses worldwide
           </motion.div>
 
           <motion.h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-navy mb-6" variants={fadeInUp}>
@@ -162,7 +162,7 @@ const HeroSection = ({ scrollTo }) => {
             className="text-xl sm:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed"
             variants={fadeInUp}
           >
-            Modern websites that convert—clean code, accessible UI, measurable outcomes.
+            Your trusted partner for modern software, integrations, and QA automation.
           </motion.p>
 
           <motion.div className="flex flex-col sm:flex-row gap-4 justify-center" variants={fadeInUp}>
@@ -265,13 +265,13 @@ const services = [
   },
   {
     icon: <FaShieldAlt className="text-3xl text-gold" />,
-    title: 'System Integration & Optimization',
-    desc: 'Seamless interoperability and streamlined operations across your stack.'
+    title: 'IoT Implementation, Integration, & Optimization',
+    desc: 'Seamless Internet of Things implementations and streamlined operations across your stack.'
   },
   {
     icon: <FaMobileAlt className="text-3xl text-gold" />,
-    title: 'QA & Automation',
-    desc: 'Reliable test automation, performance monitoring, and release readiness.'
+    title: 'Project Management & Automation',
+    desc: 'Engineering focused project management and automation, performance monitoring, and release readiness.'
   }
 ];
 
@@ -305,14 +305,10 @@ const ServicesSection = () => (
 
 /* -------------------- Projects -------------------- */
 const projects = [
-  {
-    title: 'Manufacturing Workflow Portal',
-    summary: 'Reduced manual processing by 40% with a React + Node + Postgres stack and role-based dashboards.'
-  },
-  {
-    title: 'IoT Fleet Monitoring',
-    summary: 'Streamed device telemetry to AWS, enabling real-time alerting and weekly cost savings reports.'
-  }
+    {
+        title: '100+ Websites Delivered for Entrepreneurs & Businesses',
+        summary: 'Designed and developed modern Wix websites with custom branding, optimized layouts, and scalable templates. Streamlined delivery process reduced turnaround time and enabled consistent, premium-quality results across industries.'
+    }
 ];
 
 const ProjectsSection = () => (
