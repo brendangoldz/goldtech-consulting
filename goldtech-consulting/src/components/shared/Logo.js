@@ -9,7 +9,7 @@ const Logo = ({ className = "", size = "default" }) => {
   };
 
   // Use the new GoldTech logo
-  const logoSrc = "/goldtech-logo.png";
+  const logoSrc = "/goldtech-logo-edited-hires-navy.png";
 
   return (
     <motion.div 
