@@ -1,0 +1,25 @@
+# Cursor rules for GoldTech Consulting website
+
+## General
+- Favor modern JavaScript and React best practices.
+- Use functional components and React hooks.
+- Keep components small, modular, and self-documenting.
+- Use Tailwind CSS utility classes for styling; avoid inline styles unless dynamic.
+- Handle asynchronous code with `async/await` and proper error handling.
+- Validate props with PropTypes when TypeScript is not used.
+
+## Testing
+- Add or update tests using Jest and React Testing Library for all new functionality.
+- Run `npm test -- --watchAll=false` before committing.
+
+## Formatting
+- Format code with Prettier (2-space indentation, no trailing whitespace).
+- Ensure imports are ordered and unused code is removed.
+
+## Git
+- Use clear, imperative commit messages and keep commits focused.
+- Do not commit generated files or build artifacts.
+
+## Build
+- When modifying Tailwind styles, run `npm run build:tailwind` to regenerate CSS.
+- Ensure `npm run build` completes without errors before deployment.
