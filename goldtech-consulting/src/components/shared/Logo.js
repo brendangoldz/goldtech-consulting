@@ -3,13 +3,13 @@ import { motion } from 'framer-motion';
 
 const Logo = ({ className = "", size = "default" }) => {
   const sizeClasses = {
-    small: "h-10",
-    default: "h-14", 
+    small: "h-8",
+    default: "h-16", 
     large: "h-18"
   };
 
-  // Use the transparent logo for all sizes
-  const logoSrc = "/GoldTech_Logo_transparent.png";
+  // Use the new GoldTech logo
+  const logoSrc = "/goldtech-logo.png";
 
   return (
     <motion.div 
@@ -20,7 +20,8 @@ const Logo = ({ className = "", size = "default" }) => {
       <img 
         src={logoSrc}
         alt="GoldTech Consulting Logo"
-        className={`${sizeClasses[size]} w-auto object-contain`}
+        className={`${sizeClasses[size]} w-auto object-cover`}
+        style={{ objectPosition: 'center 30%' }}
       />
     </motion.div>
   );
