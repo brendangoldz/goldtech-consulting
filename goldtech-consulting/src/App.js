@@ -90,7 +90,7 @@ const Navigation = ({ activeSection, scrollTo }) => {
               <motion.button
                 key={item.id}
                 onClick={() => scrollTo(item.id)}
-                className={`relative font-medium transition-colors duration-200 ${
+                className={`relative font-bold transition-colors duration-200 ${
                   activeSection === item.id ? 'text-gold' : 'text-navy hover:text-gold'
                 }`}
                 whileHover={{ y: -2 }}
@@ -237,13 +237,17 @@ const AboutSection = () => (
         </motion.div>
 
         <motion.div
-          className="bg-lightGray/70 rounded-2xl p-6 h-[320px] flex items-center justify-center border border-gray-200"
+          className="bg-lightGray/70 rounded-2xl p-6 h-18 flex items-center justify-center border border-gray-200 overflow-hidden"
           variants={fadeInUp}
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <span className="text-gray-400">[ Illustration / team image / dashboard mockup ]</span>
+          <img 
+            src="/at_desk_smirk.JPG" 
+            alt="Brendan at his desk working on software development" 
+            className="w-full h-full object-cover rounded-xl"
+          />
         </motion.div>
       </div>
     </div>
@@ -330,8 +334,8 @@ const ProjectsSection = () => (
           >
             <h4 className="font-semibold text-xl text-navy mb-2">{p.title}</h4>
             <p className="text-gray-700 mb-4">{p.summary}</p>
-            <button className="text-gold font-medium inline-flex items-center hover:underline">
-              Read Case Study <FaArrowRight className="ml-2" />
+            <button className="text-navy font-medium inline-flex items-center hover:underline">
+              Coming Soon <FaArrowRight className="ml-2 text-gold" />
             </button>
           </motion.article>
         ))}
