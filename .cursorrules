@@ -35,6 +35,17 @@
 - **Naming**: camelCase for variables/functions, PascalCase for components
 - **Comments**: JSDoc for all public functions, inline comments for complex logic
 
+## 🏷️ Naming Conventions
+- **Files**: PascalCase for components (Button.js), camelCase for utilities (dateUtils.js)
+- **Components**: PascalCase (UserProfile, ContactForm, NavigationMenu)
+- **Variables/Functions**: camelCase (userEmail, fetchUserData, handleSubmit)
+- **Constants**: SCREAMING_SNAKE_CASE (API_BASE_URL, MAX_RETRY_ATTEMPTS)
+- **CSS Classes**: kebab-case (user-profile, contact-form, navigation-menu)
+- **Branches**: lowercase with hyphens (feature/contact-form, bugfix/mobile-nav)
+- **Commits**: lowercase type, sentence case description (feat: add contact form)
+- **Directories**: lowercase with hyphens (contact-form, user-profile)
+- **Environment Variables**: SCREAMING_SNAKE_CASE (REACT_APP_API_ENDPOINT)
+
 ## 🏛️ Architecture Patterns
 - **Folder Structure**: Feature-based organization (`src/components/[feature]/`)
 - **One Component Per File**: No exceptions
@@ -77,11 +88,25 @@
 - **Build**: Validate `npm run build` and `npm run build:tailwind` before commit
 
 ## 🔄 Git & Deployment Workflow
-- **Commits**: Conventional commits (feat:, fix:, docs:, etc.)
-- **Branching**: Feature branches, PR reviews required
+- **Commits**: Conventional commits (feat:, fix:, docs:, etc.) - see `docs/commit-messages.md`
+- **Branch Naming**: `feature/`, `bugfix/`, `hotfix/`, `docs/`, `chore/` prefixes
+- **Branching**: Feature branches, PR reviews required, squash before merge
+- **Commit Messages**: Imperative mood, max 72 chars header, reference issues
 - **AWS Deployment**: Amplify auto-deploy from main branch
 - **Lambda**: Deploy via AWS CLI or CDK, version control
 - **Monitoring**: CloudWatch logs, error tracking
+
+## 📋 Git Best Practices
+- **Atomic Commits**: One logical change per commit
+- **Frequent Commits**: Commit small, working changes frequently
+- **Descriptive Messages**: Explain what and why, not how
+- **Issue References**: Always reference related issues (Closes #123, Fixes #456)
+- **Branch Protection**: Never commit directly to main branch
+- **Pull Request Reviews**: All changes require peer review
+- **Squash Merges**: Clean up commit history before merging
+- **Conventional Format**: Follow conventional commit specification
+- **No Sensitive Data**: Never commit credentials, API keys, or secrets
+- **Pre-commit Hooks**: Use tools like Husky for automated checks
 
 ## 🚫 Strictly Forbidden
 - Console.log in production code (use proper logging)
@@ -102,3 +127,6 @@
 6. Components have proper tests
 7. Accessibility requirements met
 8. AWS security best practices followed
+9. Commit message follows conventional format
+10. Branch name follows naming convention
+11. Related issues referenced in commit
