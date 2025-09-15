@@ -5,15 +5,15 @@ import Logo from '../shared/Logo';
 const Footer = () => (
   <footer className="bg-navy text-gray-300 py-12">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
+      <div className="grid md:grid-cols-3 gap-6 lg:gap-12">
         {/* Company Info */}
         <div className="md:text-left">
-          <div className="mb-4 flex justify-left md:justify-start">
+          <div className="mb-4 flex justify-center md:justify-start">
             <Logo size="default" className="filter brightness-0 invert" />
           </div>
-          <p className="text-sm leading-relaxed max-w-sm mx-auto md:mx-0">
+          {/* <p className="text-sm leading-relaxed max-w-sm mx-auto md:mx-0">
             Your trusted partner for modern software, integrations, and QA automation.
-          </p>
+          </p> */}
         </div>
         
         {/* Quick Links */}
@@ -30,7 +30,7 @@ const Footer = () => (
         {/* Social Links */}
         <div className="text-center md:text-left">
           <h5 className="text-white font-semibold mb-4">Connect</h5>
-          <div className="flex justify-center md:justify-start space-x-4">
+          <div className="flex justify-center md:justify-end space-x-4">
             <a href="https://www.linkedin.com/in/brendangoldsmith/" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg border border-gray-600 hover:border-gold hover:bg-gold/10 transition-all duration-300">
               <FaLinkedin className="text-gray-300 hover:text-gold transition-colors" />
             </a>

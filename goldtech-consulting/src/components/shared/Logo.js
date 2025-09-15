@@ -5,13 +5,6 @@ import PropTypes from 'prop-types';
 /**
  * Logo - Reusable logo component with accessibility features
  * 
- * Features:
- * - Multiple size variants
- * - Hover animations
- * - Proper alt text for accessibility
- * - Responsive design
- * - Focus management
- * 
  * @component
  * @param {Object} props - Component props
  * @param {string} props.className - Additional CSS classes
@@ -26,8 +19,6 @@ const Logo = ({ className = '', size = 'default', onClick, href }) => {
     default: 'h-16',
     large: 'h-18'
   };
-
-  const logoSrc = '/goldtech-logo-edited-hires-navy.png';
 
   const logoElement = (
     <motion.div
@@ -47,18 +38,14 @@ const Logo = ({ className = '', size = 'default', onClick, href }) => {
       aria-label={onClick || href ? 'GoldTech Consulting - Go to homepage' : undefined}
     >
       <img
-        src={logoSrc}
-        alt="GoldTech Consulting - Professional web development and consulting services"
-        className={`${sizeClasses[size]} w-auto object-cover`}
-        style={{ objectPosition: 'center 30%' }}
+        src="/goldtech_logo.svg"
+        alt="GoldTech Consulting"
+        className={`w-auto`}
         loading="eager"
-        width={size === 'small' ? 32 : size === 'large' ? 72 : 64}
-        height={size === 'small' ? 32 : size === 'large' ? 72 : 64}
       />
     </motion.div>
   );
 
-  // Wrap in link if href is provided
   if (href) {
     return (
       <a

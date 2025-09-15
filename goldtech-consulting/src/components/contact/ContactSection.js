@@ -334,7 +334,7 @@ const ContactSection = () => {
             <h3 id="contact-info-heading" className="font-semibold text-navy mb-4">
               Contact Info
             </h3>
-            <ul className="space-y-3 text-gray-700" role="list">
+            <ul className="space-y-3 text-gray-700">
               <li className="flex items-center">
                 <FaEnvelope className="text-gold mr-3 flex-shrink-0" aria-hidden="true" />
                 <a 
