@@ -17,11 +17,12 @@ const projects = [
 ];
 
 const ProjectsSection = () => (
-  <section id="projects" className="py-20 bg-white">
+  <section id="projects" className="py-20 bg-white" aria-labelledby="projects-title">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeader
         eyebrow="Proof"
         title="Case Studies"
+        titleId="projects-title"
         subtitle="A peek at how we turn requirements into reliable, production-grade systems."
       />
       <div className="grid md:grid-cols-2 gap-8">
@@ -34,9 +35,9 @@ const ProjectsSection = () => (
             whileInView="animate"
             viewport={{ once: true, amount: 0.2 }}
           >
-            <h4 className="font-semibold text-xl text-navy mb-2">{p.title}</h4>
+            <h3 className="font-semibold text-xl text-navy mb-2">{p.title}</h3>
             <p className="text-gray-700 mb-4">{p.summary}</p>
-            <button className="text-navy font-medium inline-flex items-center hover:underline">
+            <button className="text-navy font-medium inline-flex items-center hover:underline" aria-label="View case study details - Coming Soon">
               Coming Soon <FaArrowRight className="ml-2 text-gold" />
             </button>
           </motion.article>

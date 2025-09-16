@@ -28,7 +28,8 @@ const SectionHeader = ({
   subtitle, 
   center = true, 
   className = '',
-  level = 'h2'
+  level = 'h2',
+  titleId
 }) => {
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
@@ -63,7 +64,7 @@ const SectionHeader = ({
       )}
       
       <motion.div variants={fadeInUp}>
-        <HeadingTag className="text-4xl sm:text-5xl font-bold text-navy">
+        <HeadingTag id={titleId} className="text-4xl sm:text-5xl font-bold text-navy">
           {title}
         </HeadingTag>
       </motion.div>
@@ -86,7 +87,8 @@ SectionHeader.propTypes = {
   subtitle: PropTypes.string,
   center: PropTypes.bool,
   className: PropTypes.string,
-  level: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'])
+  level: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']),
+  titleId: PropTypes.string
 };
 
 export default SectionHeader;

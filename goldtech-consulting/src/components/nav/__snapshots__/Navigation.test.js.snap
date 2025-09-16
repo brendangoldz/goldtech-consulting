@@ -5,7 +5,6 @@ exports[`Navigation matches snapshot 1`] = `
   aria-label="Main navigation"
   class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent"
   role="navigation"
-  style="transform: translateY(-100px);"
 >
   <div
     class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 p-4"
@@ -14,6 +13,7 @@ exports[`Navigation matches snapshot 1`] = `
       class="flex justify-between items-center h-16"
     >
       <div
+        aria-label="GoldTech Consulting logo"
         class="flex items-center "
         role="img"
       >
@@ -100,7 +100,6 @@ exports[`Navigation matches snapshot with mobile menu open 1`] = `
   aria-label="Main navigation"
   class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent"
   role="navigation"
-  style="transform: translateY(-100px);"
 >
   <div
     class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 p-4"
@@ -109,6 +108,7 @@ exports[`Navigation matches snapshot with mobile menu open 1`] = `
       class="flex justify-between items-center h-16"
     >
       <div
+        aria-label="GoldTech Consulting logo"
         class="flex items-center "
         role="img"
       >
@@ -191,7 +191,6 @@ exports[`Navigation matches snapshot with mobile menu open 1`] = `
       class="md:hidden bg-white border-t border-gray-200 shadow-lg"
       id="mobile-menu"
       role="menu"
-      style="opacity: 0; transform: translateY(-20px);"
     >
       <div
         class="px-4 py-2 space-y-1"

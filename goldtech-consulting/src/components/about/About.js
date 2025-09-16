@@ -14,11 +14,12 @@ const staggerContainer = {
 };
 
 const AboutSection = () => (
-  <section id="about" className="py-20 bg-white">
+  <section id="about" className="py-20 bg-white" aria-labelledby="about-title">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeader
         eyebrow="Who we are"
         title="About GoldTech"
+        titleId="about-title"
         subtitle="We harness the power of technology to drive business transformation—pairing engineering rigor with product sensibility."
       />
       <div className="grid md:grid-cols-2 gap-12 items-center">

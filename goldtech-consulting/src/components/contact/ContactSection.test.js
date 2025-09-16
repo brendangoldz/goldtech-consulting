@@ -6,9 +6,44 @@ import ContactSection from './ContactSection';
 
 expect.extend(toHaveNoViolations);
 
-describe('ContactSection', () => {
-  const user = userEvent.setup();
+// Mock the SectionHeader component to avoid Framer Motion issues
+jest.mock('../shared/SectionHeader', () => {
+  return function MockSectionHeader({ title, subtitle }) {
+    return (
+      <div data-testid="section-header">
+        <h2>{title}</h2>
+        {subtitle && <p>{subtitle}</p>}
+      </div>
+    );
+  };
+});
 
+// Mock Framer Motion components used in ContactSection
+jest.mock('framer-motion', () => ({
+  motion: {
+    section: 'section',
+    div: 'div',
+    form: 'form',
+    fieldset: 'fieldset',
+    input: 'input',
+    textarea: 'textarea',
+    button: 'button',
+    a: 'a',
+    aside: 'aside',
+  },
+}));
+
+// Mock react-icons
+jest.mock('react-icons/fa', () => ({
+  FaEnvelope: () => <span data-testid="fa-envelope">📧</span>,
+  FaMapMarkerAlt: () => <span data-testid="fa-map-marker">📍</span>,
+  FaLinkedin: () => <span data-testid="fa-linkedin">💼</span>,
+  FaGithub: () => <span data-testid="fa-github">🐙</span>,
+  FaCheckCircle: () => <span data-testid="fa-check-circle">✅</span>,
+  FaExclamationCircle: () => <span data-testid="fa-exclamation-circle">⚠️</span>,
+}));
+
+describe('ContactSection', () => {
   beforeEach(() => {
     // Mock console.error to avoid noise in tests
     jest.spyOn(console, 'error').mockImplementation(() => {});
@@ -38,7 +73,7 @@ describe('ContactSection', () => {
     render(<ContactSection />);
     
     const submitButton = screen.getByRole('button', { name: /send message/i });
-    await user.click(submitButton);
+    await userEvent.click(submitButton);
     
     await waitFor(() => {
       expect(screen.getByText(/name is required/i)).toBeInTheDocument();
@@ -52,10 +87,10 @@ describe('ContactSection', () => {
     render(<ContactSection />);
     
     const emailInput = screen.getByLabelText(/email/i);
-    await user.type(emailInput, 'invalid-email');
+    await userEvent.type(emailInput, 'invalid-email');
     
     const submitButton = screen.getByRole('button', { name: /send message/i });
-    await user.click(submitButton);
+    await userEvent.click(submitButton);
     
     await waitFor(() => {
       expect(screen.getByText(/please enter a valid email address/i)).toBeInTheDocument();
@@ -69,12 +104,12 @@ describe('ContactSection', () => {
     const subjectInput = screen.getByLabelText(/subject/i);
     const messageInput = screen.getByLabelText(/message/i);
     
-    await user.type(nameInput, 'A');
-    await user.type(subjectInput, 'Test');
-    await user.type(messageInput, 'Short');
+    await userEvent.type(nameInput, 'A');
+    await userEvent.type(subjectInput, 'Test');
+    await userEvent.type(messageInput, 'Short');
     
     const submitButton = screen.getByRole('button', { name: /send message/i });
-    await user.click(submitButton);
+    await userEvent.click(submitButton);
     
     await waitFor(() => {
       expect(screen.getByText(/name must be at least 2 characters/i)).toBeInTheDocument();
@@ -87,14 +122,14 @@ describe('ContactSection', () => {
     render(<ContactSection />);
     
     const submitButton = screen.getByRole('button', { name: /send message/i });
-    await user.click(submitButton);
+    await userEvent.click(submitButton);
     
     await waitFor(() => {
       expect(screen.getByText(/name is required/i)).toBeInTheDocument();
     });
     
     const nameInput = screen.getByLabelText(/name/i);
-    await user.type(nameInput, 'John');
+    await userEvent.type(nameInput, 'John');
     
     await waitFor(() => {
       expect(screen.queryByText(/name is required/i)).not.toBeInTheDocument();
@@ -111,13 +146,13 @@ describe('ContactSection', () => {
       message: 'This is a test message with sufficient length.'
     };
     
-    await user.type(screen.getByLabelText(/name/i), formData.name);
-    await user.type(screen.getByLabelText(/email/i), formData.email);
-    await user.type(screen.getByLabelText(/subject/i), formData.subject);
-    await user.type(screen.getByLabelText(/message/i), formData.message);
+    await userEvent.type(screen.getByLabelText(/name/i), formData.name);
+    await userEvent.type(screen.getByLabelText(/email/i), formData.email);
+    await userEvent.type(screen.getByLabelText(/subject/i), formData.subject);
+    await userEvent.type(screen.getByLabelText(/message/i), formData.message);
     
     const submitButton = screen.getByRole('button', { name: /send message/i });
-    await user.click(submitButton);
+    await userEvent.click(submitButton);
     
     // Check loading state
     expect(screen.getByText(/sending/i)).toBeInTheDocument();
@@ -192,16 +227,16 @@ describe('ContactSection', () => {
     nameInput.focus();
     expect(nameInput).toHaveFocus();
     
-    await user.tab();
+    await userEvent.tab();
     expect(emailInput).toHaveFocus();
     
-    await user.tab();
+    await userEvent.tab();
     expect(subjectInput).toHaveFocus();
     
-    await user.tab();
+    await userEvent.tab();
     expect(messageInput).toHaveFocus();
     
-    await user.tab();
+    await userEvent.tab();
     expect(submitButton).toHaveFocus();
   });
 
