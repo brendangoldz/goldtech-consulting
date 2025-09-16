@@ -26,12 +26,86 @@
     -->
     <title>GoldTech Consulting - Modern Software Development</title>
     <!-- Fonts -->
-    <!-- Gotham Font (requires commercial license from Hoefler & Co.) -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap">
+    <!-- Gotham Font Family -->
+    <style>
+      @font-face {
+        font-family: 'Gotham';
+        src: url('%PUBLIC_URL%/fonts/gotham_light.otf') format('opentype');
+        font-weight: 300;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Gotham';
+        src: url('%PUBLIC_URL%/fonts/gotham_lightitalic.otf') format('opentype');
+        font-weight: 300;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Gotham';
+        src: url('%PUBLIC_URL%/fonts/gotham_book.otf') format('opentype');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Gotham';
+        src: url('%PUBLIC_URL%/fonts/gotham_bookitalic.otf') format('opentype');
+        font-weight: 400;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Gotham';
+        src: url('%PUBLIC_URL%/fonts/gotham_medium.otf') format('opentype');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Gotham';
+        src: url('%PUBLIC_URL%/fonts/gotham_mediumitalic.otf') format('opentype');
+        font-weight: 500;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Gotham';
+        src: url('%PUBLIC_URL%/fonts/gotham_bold.otf') format('opentype');
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Gotham';
+        src: url('%PUBLIC_URL%/fonts/gotham_bolditalic.otf') format('opentype');
+        font-weight: 700;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Gotham';
+        src: url('%PUBLIC_URL%/fonts/gotham_black.otf') format('opentype');
+        font-weight: 900;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Gotham';
+        src: url('%PUBLIC_URL%/fonts/gotham_blackitalic.otf') format('opentype');
+        font-weight: 900;
+        font-style: italic;
+        font-display: swap;
+      }
+    </style>
+    <!-- Montserrat as fallback (removed Google Fonts to prioritize local Gotham) -->
     <!-- All styling and JavaScript is handled by the React build process -->
+    
+    <!-- Bootstrap CSS (currently not used but kept for compatibility) -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- JS (includes Popper.js) -->
+    
+    <!-- jQuery and Bootstrap JS (currently not used but kept for compatibility) -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
