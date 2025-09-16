@@ -3,6 +3,10 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
+      fontFamily: {
+        'sans': ['Montserrat', 'Gotham', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
+        'gotham': ['Gotham', 'Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+      },
       colors: {
         gold: '#ffc300',
         goldLight: '#ffde59',
@@ -10,8 +14,8 @@ module.exports = {
         lightGray: '#f8f9fa',
       },
       boxShadow: {
-        'gold': '0 4px 14px 0 rgba(255, 195, 0, 0.3)',
-        'gold-lg': '0 10px 25px 0 rgba(255, 195, 0, 0.4)',
+        'gold': '0 4px 14px 0 rgba(255, 195, 0)',
+        'gold-lg': '0 10px 25px 0 rgba(255, 195, 0)',
       },
     },
   },

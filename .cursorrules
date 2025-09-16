@@ -1,25 +1,132 @@
-# Cursor rules for GoldTech Consulting website
+# Cursor Rules for GoldTech Consulting
 
-## General
-- Favor modern JavaScript and React best practices.
-- Use functional components and React hooks.
-- Keep components small, modular, and self-documenting.
-- Use Tailwind CSS utility classes for styling; avoid inline styles unless dynamic.
-- Handle asynchronous code with `async/await` and proper error handling.
-- Validate props with PropTypes when TypeScript is not used.
+## 📚 Documentation
+- **MANDATORY**: Read all docs before making changes
+- `goldtech-consulting/docs/architecture.md` - AWS infrastructure & deployment
+- `goldtech-consulting/docs/style-guide.md` - Code standards & conventions
+- `goldtech-consulting/docs/testing.md` - Testing strategies & AWS considerations
+- `goldtech-consulting/docs/accessibility.md` - WCAG compliance & a11y standards
+- `goldtech-consulting/docs/commit-messages.md` - Conventional commits & Git workflow
 
-## Testing
-- Add or update tests using Jest and React Testing Library for all new functionality.
-- Run `npm test -- --watchAll=false` before committing.
+## 🏗️ Project Structure
+- **Root**: All website code is within `goldtech-consulting/` directory
+- **AWS Infrastructure**: Lambda functions in root directory (e.g., `ContactForm.mjs`)
+- **Frontend**: React app in `goldtech-consulting/src/`
+- **Deployment**: AWS Amplify + Route 53 + Lambda
 
-## Formatting
-- Format code with Prettier (2-space indentation, no trailing whitespace).
-- Ensure imports are ordered and unused code is removed.
+## ⚛️ React & JavaScript Standards
+- **MANDATORY**: Modern JavaScript (ES2020+) with functional React components
+- **NO**: Class components, unless absolutely necessary for legacy integration
+- **REQUIRED**: TypeScript for all new components (gradual migration)
+- **HOOKS**: Use custom hooks for complex logic, Context for global state
+- **PERFORMANCE**: `React.lazy`, `useMemo`, `React.memo` for optimization
 
-## Git
-- Use clear, imperative commit messages and keep commits focused.
-- Do not commit generated files or build artifacts.
+## 🎨 Styling & UI
+- **PRIMARY**: Tailwind CSS utility classes only
+- **FORBIDDEN**: Inline styles (except dynamic values)
+- **REQUIRED**: Responsive design (mobile-first approach)
+- **COMPONENTS**: Small, single-purpose, self-documenting
+- **DESIGN SYSTEM**: Extract shared UI into `src/components/shared/`
 
-## Build
-- When modifying Tailwind styles, run `npm run build:tailwind` to regenerate CSS.
-- Ensure `npm run build` completes without errors before deployment.
+## 📝 Code Style (ENFORCED)
+- **Prettier**: 2-space indentation, semicolons required, single quotes
+- **Imports**: Alphabetically sorted, unused imports removed
+- **Exports**: Named exports preferred, default exports only for React pages
+- **Naming**: camelCase for variables/functions, PascalCase for components
+- **Comments**: JSDoc for all public functions, inline comments for complex logic
+
+## 🏷️ Naming Conventions
+- **Files**: PascalCase for components (Button.js), camelCase for utilities (dateUtils.js)
+- **Components**: PascalCase (UserProfile, ContactForm, NavigationMenu)
+- **Variables/Functions**: camelCase (userEmail, fetchUserData, handleSubmit)
+- **Constants**: SCREAMING_SNAKE_CASE (API_BASE_URL, MAX_RETRY_ATTEMPTS)
+- **CSS Classes**: kebab-case (user-profile, contact-form, navigation-menu)
+- **Branches**: lowercase with hyphens (feature/contact-form, bugfix/mobile-nav)
+- **Commits**: lowercase type, sentence case description (feat: add contact form)
+- **Directories**: lowercase with hyphens (contact-form, user-profile)
+- **Environment Variables**: SCREAMING_SNAKE_CASE (REACT_APP_API_ENDPOINT)
+
+## 🏛️ Architecture Patterns
+- **Folder Structure**: Feature-based organization (`src/components/[feature]/`)
+- **One Component Per File**: No exceptions
+- **State Management**: Context API or custom hooks (no Redux unless justified)
+- **API Integration**: Axios for HTTP requests, proper error handling
+- **AWS Integration**: Use AWS SDK v3, proper error handling and logging
+
+## 🧪 Testing Requirements (MANDATORY)
+- **Framework**: Jest + React Testing Library
+- **Coverage**: Minimum 80% for new code, 100% for critical paths
+- **Required Tests**: Snapshot + behavior test for every component
+- **AWS Testing**: Mock AWS services, test Lambda functions locally
+- **Pre-commit**: `npm test -- --watchAll=false` must pass
+
+## 🚀 Performance Standards
+- **Bundle Size**: Monitor with `npm run build`, keep under 500KB gzipped
+- **Lazy Loading**: All routes and large components
+- **Memoization**: Heavy computations and frequently re-rendered components
+- **Images**: WebP format, proper sizing, lazy loading
+- **AWS**: Optimize Lambda cold starts, use appropriate memory allocation
+
+## ♿ Accessibility (WCAG 2.1 AA)
+- **MANDATORY**: Semantic HTML, proper heading hierarchy
+- **REQUIRED**: WAI-ARIA attributes for complex interactions
+- **Keyboard**: All interactive elements must be keyboard accessible
+- **Focus**: Visible focus indicators, logical tab order
+- **Testing**: Use axe-core, screen reader testing
+
+## 🔒 Security & AWS
+- **Secrets**: Never commit AWS credentials, use environment variables
+- **Input Validation**: Sanitize all user input, validate on both client and server
+- **AWS Security**: IAM least privilege, VPC when appropriate
+- **HTTPS**: Enforce HTTPS, proper CORS configuration
+- **Lambda**: Input validation, proper error handling, logging
+
+## 📦 Dependencies & Package Management
+- **Updates**: Regular security updates, test before upgrading major versions
+- **Lock Files**: Commit `package-lock.json`, ignore `node_modules/`
+- **AWS SDK**: Use latest stable version, tree-shake unused services
+- **Build**: Validate `npm run build` and `npm run build:tailwind` before commit
+
+## 🔄 Git & Deployment Workflow
+- **Commits**: Conventional commits (feat:, fix:, docs:, etc.) - see `docs/commit-messages.md`
+- **Branch Naming**: `feature/`, `bugfix/`, `hotfix/`, `docs/`, `chore/` prefixes
+- **Branching**: Feature branches, PR reviews required, squash before merge
+- **Commit Messages**: Imperative mood, max 72 chars header, reference issues
+- **AWS Deployment**: Amplify auto-deploy from main branch
+- **Lambda**: Deploy via AWS CLI or CDK, version control
+- **Monitoring**: CloudWatch logs, error tracking
+
+## 📋 Git Best Practices
+- **Atomic Commits**: One logical change per commit
+- **Frequent Commits**: Commit small, working changes frequently
+- **Descriptive Messages**: Explain what and why, not how
+- **Issue References**: Always reference related issues (Closes #123, Fixes #456)
+- **Branch Protection**: Never commit directly to main branch
+- **Pull Request Reviews**: All changes require peer review
+- **Squash Merges**: Clean up commit history before merging
+- **Conventional Format**: Follow conventional commit specification
+- **No Sensitive Data**: Never commit credentials, API keys, or secrets
+- **Pre-commit Hooks**: Use tools like Husky for automated checks
+
+## 🚫 Strictly Forbidden
+- Console.log in production code (use proper logging)
+- Any hardcoded credentials or sensitive data
+- Inline styles (except dynamic values)
+- Default exports for non-page components
+- Class components (unless legacy integration)
+- Unused imports or variables
+- Missing error handling in async operations
+- Components without tests
+
+## ✅ Pre-commit Checklist
+1. All tests pass (`npm test -- --watchAll=false`)
+2. Build succeeds (`npm run build`)
+3. Tailwind build succeeds (`npm run build:tailwind`)
+4. No console.log statements
+5. All imports sorted and unused removed
+6. Components have proper tests
+7. Accessibility requirements met
+8. AWS security best practices followed
+9. Commit message follows conventional format
+10. Branch name follows naming convention
+11. Related issues referenced in commit
