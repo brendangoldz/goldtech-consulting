@@ -351,7 +351,7 @@ const ContactSection = () => {
             
             <div className="mt-6">
               <h4 className="font-medium text-navy mb-3">Connect with us</h4>
-              <div className="flex space-x-4" role="list">
+              <div className="flex space-x-4">
                 <a 
                   href="https://www.linkedin.com/in/brendangoldsmith/" 
                   target="_blank" 

@@ -1,3 +1,56 @@
+// Mock Framer Motion before any other imports
+jest.mock('framer-motion', () => {
+  const React = require('react');
+  
+  const createMotionComponent = (Component) => {
+    return React.forwardRef((props, ref) => {
+      const { 
+        initial, 
+        animate, 
+        exit, 
+        transition, 
+        variants, 
+        whileHover, 
+        whileInView, 
+        viewport, 
+        layoutId,
+        ...restProps 
+      } = props;
+      
+      return React.createElement(Component, { ...restProps, ref });
+    });
+  };
+
+  return {
+    motion: {
+      div: createMotionComponent('div'),
+      nav: createMotionComponent('nav'),
+      button: createMotionComponent('button'),
+      section: createMotionComponent('section'),
+      h1: createMotionComponent('h1'),
+      h2: createMotionComponent('h2'),
+      h3: createMotionComponent('h3'),
+      p: createMotionComponent('p'),
+      span: createMotionComponent('span'),
+      img: createMotionComponent('img'),
+      a: createMotionComponent('a'),
+      header: createMotionComponent('header'),
+      form: createMotionComponent('form'),
+      fieldset: createMotionComponent('fieldset'),
+      input: createMotionComponent('input'),
+      textarea: createMotionComponent('textarea'),
+    },
+    AnimatePresence: ({ children }) => children,
+    useAnimation: () => ({
+      start: jest.fn(),
+      stop: jest.fn(),
+      set: jest.fn(),
+    }),
+    useInView: () => false,
+    useReducedMotion: () => false,
+  };
+});
+
 // jest-dom adds custom jest matchers for asserting on DOM nodes.
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)
@@ -38,6 +91,7 @@ Object.defineProperty(window, 'matchMedia', {
     dispatchEvent: jest.fn(),
   })),
 });
+
 
 // Mock scrollTo for smooth scrolling
 Object.defineProperty(window, 'scrollTo', {

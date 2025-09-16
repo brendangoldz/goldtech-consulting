@@ -1,0 +1,178 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AboutSection matches snapshot 1`] = `
+<section
+  aria-labelledby="about-title"
+  class="py-20 bg-white"
+  id="about"
+>
+  <div
+    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+  >
+    <div
+      data-testid="section-header"
+    >
+      <div
+        data-testid="eyebrow"
+      >
+        Who we are
+      </div>
+      <h2
+        data-testid="title"
+      >
+        About GoldTech
+      </h2>
+      <p
+        data-testid="subtitle"
+      >
+        We harness the power of technology to drive business transformation—pairing engineering rigor with product sensibility.
+      </p>
+    </div>
+    <div
+      class="grid md:grid-cols-2 gap-12 items-center"
+    >
+      <div
+        initial="initial"
+        variants="[object Object]"
+        viewport="[object Object]"
+        whileinview="animate"
+      >
+        <p
+          class="text-gray-700 leading-relaxed"
+          variants="[object Object]"
+        >
+          From cloud solutions and QA automation to bespoke web apps and integrations, our team delivers outcomes, not just artifacts. We keep accessibility, performance, and maintainability front and center—so you scale with confidence.
+        </p>
+        <ul
+          class="mt-6 space-y-3"
+          variants="[object Object]"
+        >
+          <li
+            class="flex items-start text-gray-700"
+          >
+            <svg
+              class="text-gold mt-1 mr-3"
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"
+              />
+            </svg>
+             
+            Cloud-first architecture & DevOps
+          </li>
+          <li
+            class="flex items-start text-gray-700"
+          >
+            <svg
+              class="text-gold mt-1 mr-3"
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"
+              />
+            </svg>
+             
+            Accessible, responsive UI/UX
+          </li>
+          <li
+            class="flex items-start text-gray-700"
+          >
+            <svg
+              class="text-gold mt-1 mr-3"
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"
+              />
+            </svg>
+             
+            Integration with your existing stack
+          </li>
+          <li
+            class="flex items-start text-gray-700"
+          >
+            <svg
+              class="text-gold mt-1 mr-3"
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"
+              />
+            </svg>
+             
+            Measurable impact and clear reporting
+          </li>
+        </ul>
+        <div
+          class="mt-8 flex flex-wrap gap-3"
+          variants="[object Object]"
+        >
+          <span
+            class="px-3 py-1 rounded-full bg-lightGray text-navy text-sm"
+          >
+            React
+          </span>
+          <span
+            class="px-3 py-1 rounded-full bg-lightGray text-navy text-sm"
+          >
+            Node
+          </span>
+          <span
+            class="px-3 py-1 rounded-full bg-lightGray text-navy text-sm"
+          >
+            AWS
+          </span>
+          <span
+            class="px-3 py-1 rounded-full bg-lightGray text-navy text-sm"
+          >
+            PostgreSQL
+          </span>
+          <span
+            class="px-3 py-1 rounded-full bg-lightGray text-navy text-sm"
+          >
+            CICD
+          </span>
+        </div>
+      </div>
+      <div
+        class="bg-lightGray/70 rounded-2xl p-6 h-18 flex items-center justify-center border border-gray-200 overflow-hidden"
+        initial="initial"
+        variants="[object Object]"
+        viewport="[object Object]"
+        whileinview="animate"
+      >
+        <img
+          alt="Brendan at his desk working on software development"
+          class="w-full h-full object-cover rounded-xl"
+          src="/at_desk_smirk.JPG"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+`;

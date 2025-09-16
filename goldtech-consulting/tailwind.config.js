@@ -4,8 +4,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['Montserrat', 'Gotham', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
-        'gotham': ['Gotham', 'Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        'sans': ['Gotham', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
+        'gotham': ['Gotham', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       colors: {
         gold: '#ffc300',

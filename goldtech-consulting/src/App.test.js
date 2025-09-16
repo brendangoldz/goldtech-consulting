@@ -27,6 +27,19 @@ jest.mock('./components/hero/HeroSection', () => {
   };
 });
 
+// Mock Framer Motion hooks to prevent errors
+jest.mock('framer-motion', () => ({
+  motion: {
+    div: 'div',
+    section: 'section',
+    h1: 'h1',
+    p: 'p',
+    button: 'button',
+  },
+  useScroll: () => ({ scrollY: { get: () => 0 } }),
+  useTransform: () => 0,
+}));
+
 jest.mock('./components/about/About', () => {
   return function MockAboutSection() {
     return <section data-testid="about-section">About Section</section>;
@@ -122,11 +135,10 @@ describe('App', () => {
   });
 
   it('calls scrollTo function when navigation is triggered', async () => {
-    const user = userEvent.setup();
     render(<App />);
     
     const contactButton = screen.getByText('Contact');
-    await user.click(contactButton);
+    await userEvent.click(contactButton);
     
     expect(document.getElementById).toHaveBeenCalledWith('contact');
   });
@@ -149,7 +161,6 @@ describe('App', () => {
   });
 
   it('handles focus management properly', async () => {
-    const user = userEvent.setup();
     render(<App />);
     
     const skipLink = screen.getByText(/skip to main content/i);

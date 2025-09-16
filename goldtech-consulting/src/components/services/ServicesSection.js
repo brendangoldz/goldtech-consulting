@@ -35,11 +35,12 @@ const services = [
 ];
 
 const ServicesSection = () => (
-  <section id="services" className="py-20 bg-lightGray">
+  <section id="services" className="py-20 bg-lightGray" aria-labelledby="services-title">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeader
         eyebrow="What we do"
         title="Our Services"
+        titleId="services-title"
         subtitle="Modular offerings that can be engaged individually or combined into an end-to-end delivery model."
       />
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -52,8 +53,8 @@ const ServicesSection = () => (
             whileInView="animate"
             viewport={{ once: true, amount: 0.2 }}
           >
-            <div className="mb-4">{s.icon}</div>
-            <h4 className="font-semibold text-lg text-navy mb-2">{s.title}</h4>
+            <div className="mb-4" role="img" aria-hidden="true">{s.icon}</div>
+            <h3 className="font-semibold text-lg text-navy mb-2">{s.title}</h3>
             <p className="text-gray-600 text-sm leading-relaxed">{s.desc}</p>
           </motion.div>
         ))}
