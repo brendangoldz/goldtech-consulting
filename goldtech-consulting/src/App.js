@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import PropTypes from 'prop-types';
 
 import Navigation from './components/nav/Navigation';
 import HeroSection from './components/hero/HeroSection';

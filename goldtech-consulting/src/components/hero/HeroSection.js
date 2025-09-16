@@ -136,12 +136,12 @@ const HeroSection = ({ scrollTo }) => {
           >
             <motion.button
               onClick={handlePrimaryCTA}
-              className="group relative bg-gradient-to-r from-gold to-goldLight text-white px-8 py-4 rounded-xl font-semibold shadow-gold hover:shadow-gold-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gold/40 focus:ring-offset-2"
+              className="group relative bg-gradient-to-r from-gold to-goldLight text-white px-8 py-4 rounded-xl font-semibold shadow-gold hover:shadow-gold-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gold/40 focus:ring-offset-2 flex items-center justify-center"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               aria-describedby="primary-cta-description"
             >
-              <span className="flex items-center text-navy">
+              <span className="flex items-center justify-center text-navy">
                 Start Your Project
                 <FaArrowRight 
                   className="ml-2 group-hover:translate-x-1 transition-transform duration-300" 

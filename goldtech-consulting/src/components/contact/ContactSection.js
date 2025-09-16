@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import {
   FaEnvelope, FaMapMarkerAlt, FaLinkedin, FaGithub, FaCheckCircle, FaExclamationCircle
 } from 'react-icons/fa';
-import PropTypes from 'prop-types';
 
 import SectionHeader from '../shared/SectionHeader';
 
@@ -55,7 +54,7 @@ const ContactSection = () => {
    * @param {Object} data - Form data to validate
    * @returns {Object} Validation errors
    */
-  const validateForm = (data) => {
+  const validateForm = useCallback((data) => {
     const newErrors = {};
 
     if (!data.name.trim()) {
@@ -83,7 +82,7 @@ const ContactSection = () => {
     }
 
     return newErrors;
-  };
+  }, []);
 
   /**
    * Handle input change
@@ -138,7 +137,7 @@ const ContactSection = () => {
     } finally {
       setIsSubmitting(false);
     }
-  }, [formData]);
+  }, [formData, validateForm]);
 
   return (
     <section 

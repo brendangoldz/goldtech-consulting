@@ -14,11 +14,6 @@ import PropTypes from 'prop-types';
  * @returns {JSX.Element} Rendered logo
  */
 const Logo = ({ className = '', size = 'default', onClick, href }) => {
-  const sizeClasses = {
-    small: 'h-8',
-    default: 'h-16',
-    large: 'h-18'
-  };
 
   const logoElement = (
     <motion.div

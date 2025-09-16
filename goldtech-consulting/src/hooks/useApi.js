@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import axios from 'axios';
 
 /**
@@ -328,7 +328,7 @@ export const useApiData = (url, options = {}) => {
   }, [cacheKey]);
 
   // Fetch data immediately if requested
-  React.useEffect(() => {
+  useEffect(() => {
     if (immediate && url) {
       fetchData();
     }

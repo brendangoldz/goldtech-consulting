@@ -30,7 +30,7 @@ const Footer = () => (
         {/* Social Links */}
         <div className="text-center md:text-left">
           <h5 className="text-white font-semibold mb-4">Connect</h5>
-          <div className="flex justify-center md:justify-end space-x-4">
+          <div className="flex justify-center md:justify-center space-x-4">
             <a href="https://www.linkedin.com/in/brendangoldsmith/" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg border border-gray-600 hover:border-gold hover:bg-gold/10 transition-all duration-300">
               <FaLinkedin className="text-gray-300 hover:text-gold transition-colors" />
             </a>
