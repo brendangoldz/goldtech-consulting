@@ -33,7 +33,7 @@ const Logo = ({ className = '', size = 'default', onClick, href }) => {
       aria-label={onClick || href ? 'GoldTech Consulting - Go to homepage' : undefined}
     >
       <img
-        src="/goldtech_logo.svg"
+        src="/goldtech-logo.svg"
         alt="GoldTech Consulting"
         className={`w-auto`}
         loading="eager"

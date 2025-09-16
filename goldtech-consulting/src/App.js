@@ -9,7 +9,6 @@ import ContactSection from './components/contact/ContactSection';
 import Footer from './components/footer/Footer';
 
 import './index.css';
-import './App.css';
 
 /**
  * App - Main application component

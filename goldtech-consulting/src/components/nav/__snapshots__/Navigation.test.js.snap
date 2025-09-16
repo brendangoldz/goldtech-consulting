@@ -1,0 +1,234 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navigation matches snapshot 1`] = `
+<nav
+  aria-label="Main navigation"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent"
+  role="navigation"
+  style="transform: translateY(-100px);"
+>
+  <div
+    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 p-4"
+  >
+    <div
+      class="flex justify-between items-center h-16"
+    >
+      <div
+        class="flex items-center "
+        role="img"
+      >
+        <img
+          alt="GoldTech Consulting"
+          class="w-auto"
+          loading="eager"
+          src="/goldtech-logo.svg"
+        />
+      </div>
+      <div
+        class="hidden md:flex space-x-8"
+        role="menubar"
+      >
+        <button
+          aria-current="page"
+          aria-label="Navigate to Home section"
+          class="relative font-bold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold/40 focus:ring-offset-2 rounded px-2 py-1 text-gold"
+          role="menuitem"
+        >
+          Home
+          <div
+            aria-hidden="true"
+            class="absolute -bottom-1 left-0 right-0 h-0.5 bg-gold"
+          />
+        </button>
+        <button
+          aria-label="Navigate to About section"
+          class="relative font-bold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold/40 focus:ring-offset-2 rounded px-2 py-1 text-navy hover:text-gold"
+          role="menuitem"
+        >
+          About
+        </button>
+        <button
+          aria-label="Navigate to Services section"
+          class="relative font-bold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold/40 focus:ring-offset-2 rounded px-2 py-1 text-navy hover:text-gold"
+          role="menuitem"
+        >
+          Services
+        </button>
+        <button
+          aria-label="Navigate to Projects section"
+          class="relative font-bold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold/40 focus:ring-offset-2 rounded px-2 py-1 text-navy hover:text-gold"
+          role="menuitem"
+        >
+          Projects
+        </button>
+        <button
+          aria-label="Navigate to Contact section"
+          class="relative font-bold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold/40 focus:ring-offset-2 rounded px-2 py-1 text-navy hover:text-gold"
+          role="menuitem"
+        >
+          Contact
+        </button>
+      </div>
+      <button
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        aria-label="Toggle mobile menu"
+        class="md:hidden p-2 rounded-lg text-navy hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gold/40"
+      >
+        <svg
+          aria-hidden="true"
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M4 6h16M4 12h16M4 18h16"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+`;
+
+exports[`Navigation matches snapshot with mobile menu open 1`] = `
+<nav
+  aria-label="Main navigation"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent"
+  role="navigation"
+  style="transform: translateY(-100px);"
+>
+  <div
+    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 p-4"
+  >
+    <div
+      class="flex justify-between items-center h-16"
+    >
+      <div
+        class="flex items-center "
+        role="img"
+      >
+        <img
+          alt="GoldTech Consulting"
+          class="w-auto"
+          loading="eager"
+          src="/goldtech-logo.svg"
+        />
+      </div>
+      <div
+        class="hidden md:flex space-x-8"
+        role="menubar"
+      >
+        <button
+          aria-current="page"
+          aria-label="Navigate to Home section"
+          class="relative font-bold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold/40 focus:ring-offset-2 rounded px-2 py-1 text-gold"
+          role="menuitem"
+        >
+          Home
+          <div
+            aria-hidden="true"
+            class="absolute -bottom-1 left-0 right-0 h-0.5 bg-gold"
+          />
+        </button>
+        <button
+          aria-label="Navigate to About section"
+          class="relative font-bold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold/40 focus:ring-offset-2 rounded px-2 py-1 text-navy hover:text-gold"
+          role="menuitem"
+        >
+          About
+        </button>
+        <button
+          aria-label="Navigate to Services section"
+          class="relative font-bold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold/40 focus:ring-offset-2 rounded px-2 py-1 text-navy hover:text-gold"
+          role="menuitem"
+        >
+          Services
+        </button>
+        <button
+          aria-label="Navigate to Projects section"
+          class="relative font-bold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold/40 focus:ring-offset-2 rounded px-2 py-1 text-navy hover:text-gold"
+          role="menuitem"
+        >
+          Projects
+        </button>
+        <button
+          aria-label="Navigate to Contact section"
+          class="relative font-bold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold/40 focus:ring-offset-2 rounded px-2 py-1 text-navy hover:text-gold"
+          role="menuitem"
+        >
+          Contact
+        </button>
+      </div>
+      <button
+        aria-controls="mobile-menu"
+        aria-expanded="true"
+        aria-label="Toggle mobile menu"
+        class="md:hidden p-2 rounded-lg text-navy hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gold/40"
+      >
+        <svg
+          aria-hidden="true"
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M6 18L18 6M6 6l12 12"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+        </svg>
+      </button>
+    </div>
+    <div
+      aria-label="Mobile navigation menu"
+      class="md:hidden bg-white border-t border-gray-200 shadow-lg"
+      id="mobile-menu"
+      role="menu"
+      style="opacity: 0; transform: translateY(-20px);"
+    >
+      <div
+        class="px-4 py-2 space-y-1"
+      >
+        <button
+          aria-current="page"
+          class="block w-full text-left px-3 py-2 rounded-lg font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold/40 bg-gold/10 text-gold"
+          role="menuitem"
+        >
+          Home
+        </button>
+        <button
+          class="block w-full text-left px-3 py-2 rounded-lg font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold/40 text-navy hover:bg-gray-100"
+          role="menuitem"
+        >
+          About
+        </button>
+        <button
+          class="block w-full text-left px-3 py-2 rounded-lg font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold/40 text-navy hover:bg-gray-100"
+          role="menuitem"
+        >
+          Services
+        </button>
+        <button
+          class="block w-full text-left px-3 py-2 rounded-lg font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold/40 text-navy hover:bg-gray-100"
+          role="menuitem"
+        >
+          Projects
+        </button>
+        <button
+          class="block w-full text-left px-3 py-2 rounded-lg font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold/40 text-navy hover:bg-gray-100"
+          role="menuitem"
+        >
+          Contact
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+`;
