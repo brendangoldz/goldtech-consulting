@@ -9,7 +9,7 @@ const Footer = () => (
         {/* Company Info */}
         <div className="md:text-left">
           <div className="mb-4 flex justify-center md:justify-start">
-            <Logo size="default" className="filter brightness-0 invert" />
+            <Logo size="extra-large" className="filter brightness-0 invert" />
           </div>
           {/* <p className="text-sm leading-relaxed max-w-sm mx-auto md:mx-0">
             Your trusted partner for modern software, integrations, and QA automation.
