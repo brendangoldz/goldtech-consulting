@@ -8,6 +8,7 @@ import ServicesSection from '../services/ServicesSection';
 import ProjectsSection from '../projects/ProjectsSection';
 import ContactSection from '../contact/ContactSection';
 import Footer from '../footer/Footer';
+import Seo from '../shared/Seo';
 
 /**
  * ConsultingApp - Main application component for Goldtech Consulting
@@ -83,6 +84,60 @@ const ConsultingApp = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <Seo
+        title="GoldTech Consulting - Modern Software Development & QA Automation"
+        description="Build faster, ship cleaner, look premium. Custom software development, cloud solutions, integrations, and QA automation services. Trusted by 50+ businesses worldwide."
+        path="/consulting"
+        type="website"
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'ProfessionalService',
+          name: 'GoldTech Consulting',
+          url: 'https://goldtechconsulting.com/consulting',
+          logo: 'https://goldtechconsulting.com/goldtech-logo.svg',
+          description: 'Modern software development, integrations, and QA automation services. Build faster, ship cleaner, look premium.',
+          serviceType: ['Software Development', 'Cloud Solutions', 'QA Automation', 'IoT Integration', 'Tech Consultation'],
+          areaServed: 'Worldwide',
+          hasOfferCatalog: {
+            '@type': 'OfferCatalog',
+            name: 'Consulting Services',
+            itemListElement: [
+              {
+                '@type': 'Offer',
+                itemOffered: {
+                  '@type': 'Service',
+                  name: 'Custom Software Development',
+                  description: 'Tailor-made, scalable, and robust solutions for startups and enterprises.'
+                }
+              },
+              {
+                '@type': 'Offer',
+                itemOffered: {
+                  '@type': 'Service',
+                  name: 'Tech Consultation & Strategy',
+                  description: 'Technology-driven strategies that give your business a competitive edge.'
+                }
+              },
+              {
+                '@type': 'Offer',
+                itemOffered: {
+                  '@type': 'Service',
+                  name: 'IoT Implementation, Integration, & Optimization',
+                  description: 'Seamless Internet of Things implementations and streamlined operations across your stack.'
+                }
+              },
+              {
+                '@type': 'Offer',
+                itemOffered: {
+                  '@type': 'Service',
+                  name: 'Project Management & Automation',
+                  description: 'Engineering focused project management and automation, performance monitoring, and release readiness.'
+                }
+              }
+            ]
+          }
+        }}
+      />
       {/* Skip navigation links for accessibility */}
       <a 
         href="#main-content" 
@@ -103,7 +158,7 @@ const ConsultingApp = () => {
         <AboutSection variant="consulting" />
         <ServicesSection variant="consulting" />
         <ProjectsSection variant="consulting" />
-        <ContactSection />
+        <ContactSection variant="consulting" />
       </main>
       
       <Footer variant="consulting" />

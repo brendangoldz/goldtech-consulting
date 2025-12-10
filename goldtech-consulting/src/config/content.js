@@ -17,7 +17,7 @@ export const contentConfig = {
         line3: 'Look',
         highlight3: 'Premium'
       },
-      subtitle: 'Your trusted partner for modern software, integrations, and QA automation.',
+      subtitle: 'Your trusted partner for modern software solutions in both commercial and residential markets.',
       primaryCTA: 'Start Your Project',
       secondaryCTA: 'View Our Services'
     },
@@ -32,7 +32,9 @@ export const contentConfig = {
         'Integration with your existing stack',
         'Measurable impact and clear reporting'
       ],
-      techStack: ['React', 'Node', 'AWS', 'PostgreSQL', 'CICD']
+      techStack: ['React', 'Node', 'AWS', 'PostgreSQL', 'CICD'],
+      image: '/at_desk_smirk.JPG',
+      imageAlt: 'Brendan at his desk working on software development'
     },
     services: {
       eyebrow: 'What we do',
@@ -75,6 +77,15 @@ export const contentConfig = {
     footer: {
       description: 'Your trusted partner for modern software, integrations, and QA automation.',
       copyright: 'GoldTech Consulting LLC'
+    },
+    contact: {
+      email: 'brendan@goldtech-consulting.com',
+      location: 'Mount Laurel, NJ',
+      socialLinks: {
+        linkedin: 'https://www.linkedin.com/in/brendangoldsmith/',
+        github: 'https://github.com/brendangoldz',
+        upwork: 'https://www.upwork.com/freelancers/~014de678477c7c319c?mp_source=share'
+      }
     }
   },
   marketing: {
@@ -103,7 +114,9 @@ export const contentConfig = {
         'Multi-channel campaign management',
         'ROI tracking and performance optimization'
       ],
-      techStack: ['SEO', 'PPC', 'Social Media', 'Analytics', 'Content']
+      techStack: ['SEO', 'Design', 'Social Media', 'Analytics', 'Content'],
+      image: '/at_desk_smirk.JPG',
+      imageAlt: 'Brendan at his desk working on marketing strategy and campaigns'
     },
     services: {
       eyebrow: 'What we do',
@@ -146,6 +159,15 @@ export const contentConfig = {
     footer: {
       description: 'Strategic marketing solutions that drive growth, engagement, and measurable results for your business.',
       copyright: 'GoldTech Marketing LLC'
+    },
+    contact: {
+      email: 'heather@goldtech-consulting.com',
+      location: 'Mount Laurel, NJ',
+      socialLinks: {
+        linkedin: 'https://www.linkedin.com/in/brendangoldsmith/',
+        github: 'https://github.com/brendangoldz',
+        upwork: 'https://www.upwork.com/freelancers/~014de678477c7c319c?mp_source=share'
+      }
     }
   }
 };

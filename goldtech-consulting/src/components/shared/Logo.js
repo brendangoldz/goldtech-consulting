@@ -49,9 +49,9 @@ const Logo = ({ className = '', size = 'default', variant = 'consulting', onClic
       case 'small':
         return { className: 'w-auto', style: { height: '3em' } };
       case 'large':
-        return { className: 'w-auto', style: { height: '8em' } };
+        return { className: 'w-auto', style: { height: '6em' } };
       case 'extra-large':
-        return { className: 'w-auto', style: { height: '10em' } };
+        return { className: 'w-auto', style: { height: '15em' } };
       case 'default':
       default:
         return { className: 'w-auto', style: { height: '5em' } };

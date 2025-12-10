@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../shared/Logo';
+import { getContent } from '../../config/content';
 
 /**
  * LandingPage - Minimal split-screen landing page for choosing between Consulting and Marketing
@@ -21,6 +22,10 @@ const LandingPage = () => {
   const navigate = useNavigate();
   const [isConsultingHovered, setIsConsultingHovered] = useState(false);
   const [isMarketingHovered, setIsMarketingHovered] = useState(false);
+  
+  // Get content for each section
+  const consultingContent = getContent('consulting');
+  const marketingContent = getContent('marketing');
 
   /**
    * Handle navigation to Consulting section
@@ -51,10 +56,8 @@ const LandingPage = () => {
 
   return (
     <div className="h-screen w-full bg-white overflow-hidden flex flex-col">
-      {/* Logo at top center */}
-      {/* <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-10">
-        <Logo />
-      </div> */}
+      {/* Screen reader only heading for SEO */}
+      <h1 className="sr-only">GoldTech - Choose Your Path: Software Development or Marketing Solutions</h1>
 
       {/* Split screen container */}
       <div className="flex flex-row h-full w-full">
@@ -71,13 +74,18 @@ const LandingPage = () => {
           onMouseLeave={() => setIsConsultingHovered(false)}
           role="button"
           tabIndex={0}
-          aria-label="Navigate to Goldtech Consulting"
+          aria-label="Navigate to Goldtech Consulting - Software Development Services"
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-navy transition-colors duration-500 ease-in-out">    
+          <div className="flex flex-col items-center justify-center space-y-6">
             <div className={`transition-all duration-500 ease-in-out ${isConsultingHovered ? 'invert brightness-0' : ''}`}>
               <Logo size="extra-large" variant="consulting"/>
             </div>
-          </h2>
+            <p className={`text-md sm:text-xl md:text-2xl font-medium max-w-md text-center px-4 transition-all duration-500 ease-in-out ${
+              isConsultingHovered ? 'text-navy' : 'text-gray-600'
+            }`}>
+              {consultingContent.hero.subtitle}
+            </p>
+          </div>
         </div>
 
         {/* Thick black divider bar */}
@@ -96,13 +104,18 @@ const LandingPage = () => {
           onMouseLeave={() => setIsMarketingHovered(false)}
           role="button"
           tabIndex={0}
-          aria-label="Navigate to Goldtech Marketing"
+          aria-label="Navigate to Goldtech Marketing - Strategic Marketing Solutions"
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-navy transition-colors duration-500 ease-in-out">
+          <div className="flex flex-col items-center justify-center space-y-6">
             <div className={`transition-all duration-500 ease-in-out ${isMarketingHovered ? 'invert brightness-0' : ''}`}>
               <Logo size="extra-large" variant="marketing"/>
             </div>
-          </h2>
+            <p className={`text-lg sm:text-xl md:text-2xl font-medium max-w-md text-center px-4 transition-all duration-500 ease-in-out ${
+              isMarketingHovered ? 'text-navy' : 'text-gray-600'
+            }`}>
+              {marketingContent.hero.subtitle}
+            </p>
+          </div>
         </div>
       </div>
     </div>

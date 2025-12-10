@@ -8,6 +8,7 @@ import ServicesSection from '../services/ServicesSection';
 import ProjectsSection from '../projects/ProjectsSection';
 import ContactSection from '../contact/ContactSection';
 import Footer from '../footer/Footer';
+import Seo from '../shared/Seo';
 
 /**
  * MarketingApp - Main application component for Goldtech Marketing
@@ -85,6 +86,60 @@ const MarketingApp = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <Seo
+        title="GoldTech Marketing - Strategic Marketing Solutions & Growth"
+        description="Grow smarter, engage deeper, convert better. Strategic marketing solutions including digital strategy, social media management, content creation, SEO, and brand development. 100+ campaigns delivered."
+        path="/marketing"
+        type="website"
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'MarketingAgency',
+          name: 'GoldTech Marketing',
+          url: 'https://goldtechconsulting.com/marketing',
+          logo: 'https://goldtechconsulting.com/goldtech-marketing-logo.svg',
+          description: 'Strategic marketing solutions that drive growth, engagement, and measurable results for your business.',
+          serviceType: ['Digital Marketing Strategy', 'Social Media Management', 'Content Creation', 'SEO', 'Brand Development'],
+          areaServed: 'Worldwide',
+          hasOfferCatalog: {
+            '@type': 'OfferCatalog',
+            name: 'Marketing Services',
+            itemListElement: [
+              {
+                '@type': 'Offer',
+                itemOffered: {
+                  '@type': 'Service',
+                  name: 'Digital Marketing Strategy',
+                  description: 'Comprehensive marketing strategies tailored to your business goals and target audience.'
+                }
+              },
+              {
+                '@type': 'Offer',
+                itemOffered: {
+                  '@type': 'Service',
+                  name: 'Social Media Management',
+                  description: 'Engaging content creation and community management across all major platforms.'
+                }
+              },
+              {
+                '@type': 'Offer',
+                itemOffered: {
+                  '@type': 'Service',
+                  name: 'Content Creation & SEO',
+                  description: 'High-quality content that ranks, engages, and converts your audience.'
+                }
+              },
+              {
+                '@type': 'Offer',
+                itemOffered: {
+                  '@type': 'Service',
+                  name: 'Brand Development & Design',
+                  description: 'Complete brand identity development from concept to execution across all touchpoints.'
+                }
+              }
+            ]
+          }
+        }}
+      />
       {/* Skip navigation links for accessibility */}
       <a 
         href="#main-content" 
@@ -105,7 +160,7 @@ const MarketingApp = () => {
         <AboutSection variant="marketing" />
         <ServicesSection variant="marketing" />
         <ProjectsSection variant="marketing" />
-        <ContactSection />
+        <ContactSection variant="marketing" />
       </main>
       
       <Footer variant="marketing" />

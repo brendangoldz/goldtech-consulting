@@ -63,8 +63,8 @@ const AboutSection = ({ variant = 'consulting' }) => {
           viewport={{ once: true, amount: 0.2 }}
         >
           <img 
-            src="/at_desk_smirk.JPG" 
-            alt="Brendan at his desk working on software development" 
+            src={content.image} 
+            alt={content.imageAlt} 
             className="w-full h-full object-cover rounded-xl"
           />
         </motion.div>
