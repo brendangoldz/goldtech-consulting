@@ -101,14 +101,14 @@ const MarketingApp = () => {
       />
       
       <main id="main-content" role="main">
-        <HeroSection scrollTo={scrollTo} />
-        <AboutSection />
-        <ServicesSection />
-        <ProjectsSection />
+        <HeroSection scrollTo={scrollTo} variant="marketing" />
+        <AboutSection variant="marketing" />
+        <ServicesSection variant="marketing" />
+        <ProjectsSection variant="marketing" />
         <ContactSection />
       </main>
       
-      <Footer />
+      <Footer variant="marketing" />
     </div>
   );
 };

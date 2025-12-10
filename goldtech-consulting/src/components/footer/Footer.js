@@ -1,19 +1,39 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import Logo from '../shared/Logo';
+import { getContent } from '../../config/content';
 
-const Footer = () => (
+/**
+ * Footer - Site footer with company info, links, and social media
+ * 
+ * Features:
+ * - Variant-based content (consulting/marketing)
+ * - Logo with variant support
+ * - Quick navigation links
+ * - Social media links
+ * - Accessibility support
+ * 
+ * @component
+ * @param {Object} props - Component props
+ * @param {string} props.variant - Content variant: 'consulting' or 'marketing'
+ * @returns {JSX.Element} Rendered footer
+ */
+const Footer = ({ variant = 'consulting' }) => {
+  const content = getContent(variant).footer;
+  
+  return (
   <footer className="bg-navy text-gray-300 py-12">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid md:grid-cols-3 gap-6 lg:gap-12">
         {/* Company Info */}
         <div className="md:text-left">
           <div className="mb-4 flex justify-center md:justify-start">
-            <Logo size="extra-large" className="filter brightness-0 invert" />
+            <Logo size="extra-large" variant={variant} className="filter brightness-0 invert" />
           </div>
-          {/* <p className="text-sm leading-relaxed max-w-sm mx-auto md:mx-0">
-            Your trusted partner for modern software, integrations, and QA automation.
-          </p> */}
+          <p className="text-sm leading-relaxed max-w-sm mx-auto md:mx-0">
+            {content.description}
+          </p>
         </div>
         
         {/* Quick Links */}
@@ -48,10 +68,15 @@ const Footer = () => (
       
       {/* Copyright */}
       <div className="text-center text-gray-500 text-sm mt-8 pt-8 border-t border-gray-700">
-        © {new Date().getFullYear()} GoldTech Consulting LLC
+        © {new Date().getFullYear()} {content.copyright}
       </div>
     </div>
   </footer>
-);
+  );
+};
+
+Footer.propTypes = {
+  variant: PropTypes.oneOf(['consulting', 'marketing'])
+};
 
 export default Footer;

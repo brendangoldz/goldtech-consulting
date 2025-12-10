@@ -1,7 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaCheck } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 import SectionHeader from '../shared/SectionHeader';
+import { getContent } from '../../config/content';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -13,14 +15,17 @@ const staggerContainer = {
   animate: { transition: { staggerChildren: 0.1 } }
 };
 
-const AboutSection = () => (
+const AboutSection = ({ variant = 'consulting' }) => {
+  const content = getContent(variant).about;
+  
+  return (
   <section id="about" className="py-20 bg-white" aria-labelledby="about-title">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeader
-        eyebrow="Who we are"
-        title="About GoldTech"
+        eyebrow={content.eyebrow}
+        title={content.title}
         titleId="about-title"
-        subtitle="We harness the power of technology to drive business transformation—pairing engineering rigor with product sensibility."
+        subtitle={content.subtitle}
       />
       <div className="grid md:grid-cols-2 gap-12 items-center">
         <motion.div
@@ -30,30 +35,23 @@ const AboutSection = () => (
           viewport={{ once: true, amount: 0.3 }}
         >
           <motion.p className="text-gray-700 leading-relaxed" variants={fadeInUp}>
-            From cloud solutions and QA automation to bespoke web apps and integrations, our team delivers outcomes,
-            not just artifacts. We keep accessibility, performance, and maintainability front and center—so you scale
-            with confidence.
+            {content.description}
           </motion.p>
 
           <motion.ul className="mt-6 space-y-3" variants={fadeInUp}>
-            {[
-              'Cloud-first architecture & DevOps',
-              'Accessible, responsive UI/UX',
-              'Integration with your existing stack',
-              'Measurable impact and clear reporting'
-            ].map((t, i) => (
+            {content.features.map((feature, i) => (
               <li key={i} className="flex items-start text-gray-700">
-                <FaCheck className="text-gold mt-1 mr-3" /> {t}
+                <FaCheck className="text-gold mt-1 mr-3" /> {feature}
               </li>
             ))}
           </motion.ul>
 
           <motion.div className="mt-8 flex flex-wrap gap-3" variants={fadeInUp}>
-            <span className="px-3 py-1 rounded-full bg-lightGray text-navy text-sm">React</span>
-            <span className="px-3 py-1 rounded-full bg-lightGray text-navy text-sm">Node</span>
-            <span className="px-3 py-1 rounded-full bg-lightGray text-navy text-sm">AWS</span>
-            <span className="px-3 py-1 rounded-full bg-lightGray text-navy text-sm">PostgreSQL</span>
-            <span className="px-3 py-1 rounded-full bg-lightGray text-navy text-sm">CICD</span>
+            {content.techStack.map((tech, i) => (
+              <span key={i} className="px-3 py-1 rounded-full bg-lightGray text-navy text-sm">
+                {tech}
+              </span>
+            ))}
           </motion.div>
         </motion.div>
 
@@ -73,6 +71,11 @@ const AboutSection = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
+
+AboutSection.propTypes = {
+  variant: PropTypes.oneOf(['consulting', 'marketing'])
+};
 
 export default AboutSection;

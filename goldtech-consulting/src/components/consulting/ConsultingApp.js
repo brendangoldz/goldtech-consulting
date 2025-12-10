@@ -99,14 +99,14 @@ const ConsultingApp = () => {
       />
       
       <main id="main-content" role="main">
-        <HeroSection scrollTo={scrollTo} />
-        <AboutSection />
-        <ServicesSection />
-        <ProjectsSection />
+        <HeroSection scrollTo={scrollTo} variant="consulting" />
+        <AboutSection variant="consulting" />
+        <ServicesSection variant="consulting" />
+        <ProjectsSection variant="consulting" />
         <ContactSection />
       </main>
       
-      <Footer />
+      <Footer variant="consulting" />
     </div>
   );
 };
