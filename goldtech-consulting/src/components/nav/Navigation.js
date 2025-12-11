@@ -13,14 +13,17 @@ import Logo from '../shared/Logo';
  * - Keyboard navigation support
  * - ARIA attributes for screen readers
  * - Smooth animations with Framer Motion
+ * - Optional back navigation to landing page
  * 
  * @component
  * @param {Object} props - Component props
  * @param {string} props.activeSection - Currently active section ID
  * @param {Function} props.scrollTo - Function to scroll to a section
+ * @param {Function} [props.onBackToLanding] - Optional function to navigate back to landing page
+ * @param {string} [props.logoVariant] - Logo variant ('consulting' or 'marketing')
  * @returns {JSX.Element} Rendered navigation
  */
-const Navigation = ({ activeSection, scrollTo }) => {
+const Navigation = ({ activeSection, scrollTo, onBackToLanding, logoVariant = 'consulting' }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -84,7 +87,7 @@ const Navigation = ({ activeSection, scrollTo }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 p-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Logo size="default" />
+          <Logo size="large" variant={logoVariant} />
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8" role="menubar">
@@ -186,7 +189,9 @@ const Navigation = ({ activeSection, scrollTo }) => {
 
 Navigation.propTypes = {
   activeSection: PropTypes.string.isRequired,
-  scrollTo: PropTypes.func.isRequired
+  scrollTo: PropTypes.func.isRequired,
+  onBackToLanding: PropTypes.func,
+  logoVariant: PropTypes.oneOf(['consulting', 'marketing'])
 };
 
 export default Navigation;

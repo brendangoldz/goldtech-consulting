@@ -2,6 +2,7 @@ import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { FaArrowRight } from 'react-icons/fa';
 import PropTypes from 'prop-types';
+import { getContent } from '../../config/content';
 
 /**
  * HeroSection - Main hero section with accessibility improvements
@@ -13,13 +14,16 @@ import PropTypes from 'prop-types';
  * - Semantic HTML structure
  * - Accessibility support
  * - Responsive design
+ * - Variant-based content (consulting/marketing)
  * 
  * @component
  * @param {Object} props - Component props
  * @param {Function} props.scrollTo - Function to scroll to a section
+ * @param {string} props.variant - Content variant: 'consulting' or 'marketing'
  * @returns {JSX.Element} Rendered hero section
  */
-const HeroSection = ({ scrollTo }) => {
+const HeroSection = ({ scrollTo, variant = 'consulting' }) => {
+  const content = getContent(variant).hero;
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], [0, 150]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
@@ -79,13 +83,13 @@ const HeroSection = ({ scrollTo }) => {
             className="inline-flex items-center px-4 py-2 rounded-full bg-gold/10 border border-gold/20 text-navy text-sm font-medium mb-8"
             variants={fadeInUp}
             role="img"
-            aria-label="Trust indicator showing 50+ businesses served"
+            aria-label={`Trust indicator: ${content.trustIndicator}`}
           >
             <span 
               className="w-2 h-2 bg-gold rounded-full mr-2 animate-pulse" 
               aria-hidden="true"
             />
-            Delivered Solutions for 50+ businesses worldwide
+            {content.trustIndicator}
           </motion.div>
 
           {/* Main heading */}
@@ -94,28 +98,28 @@ const HeroSection = ({ scrollTo }) => {
             className="text-5xl sm:text-6xl lg:text-7xl font-bold text-navy mb-6" 
             variants={fadeInUp}
           >
-            Build{' '}
+            {content.heading.line1}{' '}
             <span 
               className="bg-gradient-to-r from-gold to-goldLight bg-clip-text text-transparent"
-              aria-label="Faster"
+              aria-label={content.heading.highlight1}
             >
-              Faster
+              {content.heading.highlight1}
             </span>
             <br />
-            Ship{' '}
+            {content.heading.line2}{' '}
             <span 
               className="bg-gradient-to-r from-gold to-goldLight bg-clip-text text-transparent"
-              aria-label="Cleaner"
+              aria-label={content.heading.highlight2}
             >
-              Cleaner
+              {content.heading.highlight2}
             </span>
             <br />
-            Look{' '}
+            {content.heading.line3}{' '}
             <span 
               className="bg-gradient-to-r from-gold to-goldLight bg-clip-text text-transparent"
-              aria-label="Premium"
+              aria-label={content.heading.highlight3}
             >
-              Premium
+              {content.heading.highlight3}
             </span>
           </motion.h1>
 
@@ -124,7 +128,7 @@ const HeroSection = ({ scrollTo }) => {
             className="text-xl sm:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed"
             variants={fadeInUp}
           >
-            Your trusted partner for modern software, integrations, and QA automation.
+            {content.subtitle}
           </motion.p>
 
           {/* Call-to-action buttons */}
@@ -142,7 +146,7 @@ const HeroSection = ({ scrollTo }) => {
               aria-describedby="primary-cta-description"
             >
               <span className="flex items-center justify-center text-navy">
-                Start Your Project
+                {content.primaryCTA}
                 <FaArrowRight 
                   className="ml-2 group-hover:translate-x-1 transition-transform duration-300" 
                   aria-hidden="true"
@@ -160,7 +164,7 @@ const HeroSection = ({ scrollTo }) => {
               whileTap={{ scale: 0.95 }}
               aria-describedby="secondary-cta-description"
             >
-              View Our Services
+              {content.secondaryCTA}
             </motion.button>
             <span id="secondary-cta-description" className="sr-only">
               Navigate to services section to learn about our offerings
@@ -173,7 +177,8 @@ const HeroSection = ({ scrollTo }) => {
 };
 
 HeroSection.propTypes = {
-  scrollTo: PropTypes.func.isRequired
+  scrollTo: PropTypes.func.isRequired,
+  variant: PropTypes.oneOf(['consulting', 'marketing'])
 };
 
 export default HeroSection;
