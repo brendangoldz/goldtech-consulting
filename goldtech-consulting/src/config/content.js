@@ -115,8 +115,8 @@ export const contentConfig = {
         'ROI tracking and performance optimization'
       ],
       techStack: ['SEO', 'Design', 'Social Media', 'Analytics', 'Content'],
-      image: '/at_desk_smirk.JPG',
-      imageAlt: 'Brendan at his desk working on marketing strategy and campaigns'
+      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop&q=80',
+      imageAlt: 'Professional marketing workspace - Coming soon'
     },
     services: {
       eyebrow: 'What we do',

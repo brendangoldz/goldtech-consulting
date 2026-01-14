@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 
 import SectionHeader from '../shared/SectionHeader';
 import { getContent } from '../../config/content';
+import { getSectionBg } from '../../config/theme';
 
 /**
  * ContactSection - Contact form with validation and accessibility
@@ -27,6 +28,7 @@ import { getContent } from '../../config/content';
  */
 const ContactSection = ({ variant = 'consulting' }) => {
   const contact = getContent(variant).contact;
+  const isMarketing = variant === 'marketing';
   
   const [formData, setFormData] = useState({
     name: '',
@@ -149,7 +151,7 @@ const ContactSection = ({ variant = 'consulting' }) => {
   return (
     <section 
       id="contact" 
-      className="py-20 bg-lightGray"
+      className={`py-20 ${getSectionBg(variant)}`}
       aria-labelledby="contact-heading"
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -157,6 +159,7 @@ const ContactSection = ({ variant = 'consulting' }) => {
           eyebrow="Let's talk"
           title="Start Your Project"
           subtitle="Tell us a bit about your goals. We'll follow up with a short discovery call and a clear plan."
+          variant={variant}
         />
 
         <div className="grid md:grid-cols-5 gap-8">
@@ -186,7 +189,7 @@ const ContactSection = ({ variant = 'consulting' }) => {
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className={`w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold/40 transition-colors ${
+                    className={`w-full border p-3 rounded-lg focus:outline-none ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'} focus:ring-2 transition-colors ${
                       errors.name ? 'border-red-500' : 'border-gray-300'
                     }`}
                     aria-invalid={errors.name ? 'true' : 'false'}
@@ -217,7 +220,7 @@ const ContactSection = ({ variant = 'consulting' }) => {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className={`w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold/40 transition-colors ${
+                    className={`w-full border p-3 rounded-lg focus:outline-none ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'} focus:ring-2 transition-colors ${
                       errors.email ? 'border-red-500' : 'border-gray-300'
                     }`}
                     aria-invalid={errors.email ? 'true' : 'false'}
@@ -249,7 +252,7 @@ const ContactSection = ({ variant = 'consulting' }) => {
                   name="subject"
                   value={formData.subject}
                   onChange={handleInputChange}
-                  className={`w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold/40 transition-colors ${
+                  className={`w-full border p-3 rounded-lg focus:outline-none ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'} focus:ring-2 transition-colors ${
                     errors.subject ? 'border-red-500' : 'border-gray-300'
                   }`}
                   aria-invalid={errors.subject ? 'true' : 'false'}
@@ -280,7 +283,7 @@ const ContactSection = ({ variant = 'consulting' }) => {
                   value={formData.message}
                   onChange={handleInputChange}
                   rows="6"
-                  className={`w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold/40 transition-colors resize-vertical ${
+                  className={`w-full border p-3 rounded-lg focus:outline-none ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'} focus:ring-2 transition-colors resize-vertical ${
                     errors.message ? 'border-red-500' : 'border-gray-300'
                   }`}
                   aria-invalid={errors.message ? 'true' : 'false'}
@@ -304,7 +307,7 @@ const ContactSection = ({ variant = 'consulting' }) => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="mt-6 bg-gradient-to-r from-gold to-goldLight text-navy px-6 py-3 rounded-xl font-semibold shadow-gold hover:shadow-gold-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gold/40 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className={`mt-6 bg-gradient-to-r ${isMarketing ? 'from-marketing-primary to-marketing-accent text-white' : 'from-gold to-goldLight text-navy'} px-6 py-3 rounded-xl font-semibold ${isMarketing ? 'shadow-lg hover:shadow-xl' : 'shadow-gold hover:shadow-gold-lg'} transition-all duration-300 focus:outline-none ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'} focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed`}
                 aria-describedby="submit-status"
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
@@ -342,16 +345,16 @@ const ContactSection = ({ variant = 'consulting' }) => {
             </h3>
             <ul className="space-y-3 text-gray-700">
               <li className="flex items-center">
-                <FaEnvelope className="text-gold mr-3 flex-shrink-0" aria-hidden="true" />
+                <FaEnvelope className={`${isMarketing ? 'text-marketing-primary' : 'text-gold'} mr-3 flex-shrink-0`} aria-hidden="true" />
                 <a 
                   href={`mailto:${contact.email}`}
-                  className="hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold/40 rounded"
+                  className={`${isMarketing ? 'hover:text-marketing-primary' : 'hover:text-gold'} transition-colors focus:outline-none ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'} focus:ring-2 rounded`}
                 >
                   {contact.email}
                 </a>
               </li>
               <li className="flex items-center">
-                <FaMapMarkerAlt className="text-gold mr-3 flex-shrink-0" aria-hidden="true" />
+                <FaMapMarkerAlt className={`${isMarketing ? 'text-marketing-primary' : 'text-gold'} mr-3 flex-shrink-0`} aria-hidden="true" />
                 {contact.location}
               </li>
             </ul>
@@ -364,10 +367,10 @@ const ContactSection = ({ variant = 'consulting' }) => {
                     href={contact.socialLinks.linkedin} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="p-2 rounded-lg border hover:bg-lightGray transition-colors focus:outline-none focus:ring-2 focus:ring-gold/40"
+                    className={`p-2 rounded-lg border ${isMarketing ? 'hover:bg-marketing-bg' : 'hover:bg-lightGray'} transition-colors focus:outline-none ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'} focus:ring-2`}
                     aria-label="Connect on LinkedIn"
                   >
-                    <FaLinkedin className="text-navy hover:text-gold transition-colors" aria-hidden="true" />
+                    <FaLinkedin className={`text-navy ${isMarketing ? 'hover:text-marketing-primary' : 'hover:text-gold'} transition-colors`} aria-hidden="true" />
                   </a>
                 )}
                 {contact.socialLinks.github && (
@@ -375,10 +378,10 @@ const ContactSection = ({ variant = 'consulting' }) => {
                     href={contact.socialLinks.github} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="p-2 rounded-lg border hover:bg-lightGray transition-colors focus:outline-none focus:ring-2 focus:ring-gold/40"
+                    className={`p-2 rounded-lg border ${isMarketing ? 'hover:bg-marketing-bg' : 'hover:bg-lightGray'} transition-colors focus:outline-none ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'} focus:ring-2`}
                     aria-label="View GitHub profile"
                   >
-                    <FaGithub className="text-navy hover:text-gold transition-colors" aria-hidden="true" />
+                    <FaGithub className={`text-navy ${isMarketing ? 'hover:text-marketing-primary' : 'hover:text-gold'} transition-colors`} aria-hidden="true" />
                   </a>
                 )}
                 {contact.socialLinks.upwork && (
@@ -386,11 +389,11 @@ const ContactSection = ({ variant = 'consulting' }) => {
                     href={contact.socialLinks.upwork} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="p-2 rounded-lg border hover:bg-lightGray transition-colors focus:outline-none focus:ring-2 focus:ring-gold/40"
+                    className={`p-2 rounded-lg border ${isMarketing ? 'hover:bg-marketing-bg' : 'hover:bg-lightGray'} transition-colors focus:outline-none ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'} focus:ring-2`}
                     aria-label="View Upwork profile"
                   >
                     <svg 
-                      className="w-5 h-5 text-navy hover:text-gold transition-colors" 
+                      className={`w-5 h-5 text-navy ${isMarketing ? 'hover:text-marketing-primary' : 'hover:text-gold'} transition-colors`}
                       viewBox="0 0 56.7 56.7" 
                       fill="currentColor"
                       aria-hidden="true"

@@ -85,7 +85,7 @@ const MarketingApp = () => {
   }, [navigate]);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-marketing-bg" data-variant="marketing">
       <Seo
         title="Digital Marketing Agency | Mount Laurel, NJ | GoldTech Marketing"
         description="Full-service digital marketing agency in Mount Laurel, NJ. SEO consulting, social media management, content marketing, PPC advertising, and brand development services. 100+ successful campaigns delivered."

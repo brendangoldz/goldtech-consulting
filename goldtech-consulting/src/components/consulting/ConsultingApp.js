@@ -83,7 +83,7 @@ const ConsultingApp = () => {
   }, [navigate]);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white" data-variant="consulting">
       <Seo
         title="Software Development Consulting | Mount Laurel, NJ | GoldTech"
         description="Expert software development consulting in Mount Laurel, NJ. Custom software development, React/AWS consulting, QA automation, IoT integration, and DevOps services. Trusted by 50+ businesses worldwide."
