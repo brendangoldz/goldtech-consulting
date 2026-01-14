@@ -17,7 +17,7 @@ export const contentConfig = {
         line3: 'Look',
         highlight3: 'Premium'
       },
-      subtitle: 'Expert software development consulting in Mount Laurel, NJ. Custom software development, web apps, cloud solutions, and QA automation for businesses nationwide.',
+      subtitle: 'Expert software development consulting based in NJ, serving businesses nationwide. Custom software development, web apps, cloud solutions, and QA automation for businesses nationwide.',
       primaryCTA: 'Start Your Project',
       secondaryCTA: 'View Our Services'
     },
@@ -69,7 +69,7 @@ export const contentConfig = {
       subtitle: 'A peek at how we turn requirements into reliable, production-grade systems.',
       items: [
         {
-          title: '100+ Websites Delivered for Entrepreneurs & Businesses',
+          title: '200+ Websites Delivered for Entrepreneurs & Businesses',
           summary: 'Designed and developed modern Wix websites with custom branding, optimized layouts, and scalable templates. Streamlined delivery process reduced turnaround time and enabled consistent, premium-quality results across industries.'
         }
       ]
@@ -99,7 +99,7 @@ export const contentConfig = {
         line3: 'Convert',
         highlight3: 'Better'
       },
-      subtitle: 'Full-service digital marketing agency in Mount Laurel, NJ. SEO consulting, social media marketing, content creation, and brand development services for growing businesses.',
+      subtitle: 'Full-service digital marketing agency in NJ, serving businesses nationwide. SEO consulting, social media marketing, content creation, and brand development services for growing businesses.',
       primaryCTA: 'Get Started',
       secondaryCTA: 'See Our Work'
     },

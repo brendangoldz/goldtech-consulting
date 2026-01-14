@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 
 import Logo from '../shared/Logo';
+import { getThemeClasses } from '../../config/theme';
 
 /**
  * Navigation - Main navigation component with accessibility features
@@ -26,6 +27,7 @@ import Logo from '../shared/Logo';
 const Navigation = ({ activeSection, scrollTo, onBackToLanding, logoVariant = 'consulting' }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const isMarketing = logoVariant === 'marketing';
 
   const navItems = [
     { id: 'home', label: 'Home' },
@@ -95,8 +97,10 @@ const Navigation = ({ activeSection, scrollTo, onBackToLanding, logoVariant = 'c
               <motion.button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`relative font-bold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold/40 focus:ring-offset-2 rounded px-2 py-1 ${
-                  activeSection === item.id ? 'text-gold' : 'text-navy hover:text-gold'
+                className={`relative font-bold transition-colors duration-200 focus:outline-none ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'} focus:ring-2 focus:ring-offset-2 rounded px-2 py-1 ${
+                  activeSection === item.id 
+                    ? (isMarketing ? 'text-marketing-primary' : 'text-gold')
+                    : (isMarketing ? 'text-navy hover:text-marketing-primary' : 'text-navy hover:text-gold')
                 }`}
                 whileHover={{ y: -2 }}
                 role="menuitem"
@@ -106,7 +110,7 @@ const Navigation = ({ activeSection, scrollTo, onBackToLanding, logoVariant = 'c
                 {item.label}
                 {activeSection === item.id && (
                   <motion.div
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gold"
+                    className={`absolute -bottom-1 left-0 right-0 h-0.5 ${isMarketing ? 'bg-marketing-primary' : 'bg-gold'}`}
                     layoutId="activeSection"
                     initial={false}
                     transition={{ duration: 0.3 }}
@@ -119,7 +123,7 @@ const Navigation = ({ activeSection, scrollTo, onBackToLanding, logoVariant = 'c
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 rounded-lg text-navy hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gold/40"
+            className={`md:hidden p-2 rounded-lg text-navy hover:bg-gray-100 focus:outline-none focus:ring-2 ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
@@ -168,9 +172,9 @@ const Navigation = ({ activeSection, scrollTo, onBackToLanding, logoVariant = 'c
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className={`block w-full text-left px-3 py-2 rounded-lg font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold/40 ${
+                  className={`block w-full text-left px-3 py-2 rounded-lg font-medium transition-colors duration-200 focus:outline-none ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'} focus:ring-2 ${
                     activeSection === item.id
-                      ? 'bg-gold/10 text-gold'
+                      ? (isMarketing ? 'bg-marketing-primary/10 text-marketing-primary' : 'bg-gold/10 text-gold')
                       : 'text-navy hover:bg-gray-100'
                   }`}
                   role="menuitem"

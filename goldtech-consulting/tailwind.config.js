@@ -25,6 +25,16 @@ module.exports = {
         'gold': '0 4px 14px 0 rgba(255, 195, 0)',
         'gold-lg': '0 10px 25px 0 rgba(255, 195, 0)',
       },
+      animation: {
+        'fade-in': 'fadeIn 0.8s ease-out',
+        'fade-in-delay': 'fadeIn 1s ease-out 0.3s both',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+      },
     },
   },
   plugins: [],

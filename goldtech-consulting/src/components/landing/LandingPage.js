@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../shared/Logo';
 import { getContent } from '../../config/content';
+import DOTS from 'vanta/dist/vanta.dots.min';
 
 /**
  * LandingPage - Engaging card-based landing page for choosing between Consulting and Marketing
@@ -20,10 +21,86 @@ const LandingPage = () => {
   const navigate = useNavigate();
   const [isConsultingHovered, setIsConsultingHovered] = useState(false);
   const [isMarketingHovered, setIsMarketingHovered] = useState(false);
+  const [isBackgroundHovered, setIsBackgroundHovered] = useState(false);
+  const vantaRef = useRef(null);
+  const vantaEffect = useRef(null);
   
   // Get content for each section
   const consultingContent = getContent('consulting');
   const marketingContent = getContent('marketing');
+
+  useEffect(() => {
+    // Wait for THREE to be available from CDN
+    const initVanta = () => {
+      if (vantaRef.current && !vantaEffect.current && window.THREE) {
+        try {
+          vantaEffect.current = DOTS({
+            el: vantaRef.current,
+            THREE: window.THREE,
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: true,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0xffc300, // Gold color
+            color2: 0x3b82f6, // Blue color
+            backgroundColor: 0xfafafa, // Light gray background
+            size: 4.00,
+            spacing: 30.00,
+            showLines: false
+          });
+        } catch (error) {
+          console.error('Error initializing Vanta:', error);
+        }
+      }
+    };
+
+    // Check if THREE is already loaded
+    if (window.THREE) {
+      initVanta();
+    } else {
+      // Wait for THREE to load
+      const checkTHREE = setInterval(() => {
+        if (window.THREE) {
+          clearInterval(checkTHREE);
+          initVanta();
+        }
+      }, 100);
+
+      // Timeout after 5 seconds
+      setTimeout(() => {
+        clearInterval(checkTHREE);
+      }, 5000);
+    }
+
+    return () => {
+      if (vantaEffect.current) {
+        try {
+          vantaEffect.current.destroy();
+        } catch (error) {
+          console.error('Error destroying Vanta:', error);
+        }
+        vantaEffect.current = null;
+      }
+    };
+  }, []);
+
+  // Update Vanta effect on hover
+  useEffect(() => {
+    if (vantaEffect.current) {
+      try {
+        // Change dot size and spacing on hover for more dynamic effect
+        vantaEffect.current.setOptions({
+          size: isBackgroundHovered ? 6.00 : 4.00,
+          spacing: isBackgroundHovered ? 20.00 : 30.00,
+        });
+      } catch (error) {
+        console.error('Error updating Vanta on hover:', error);
+      }
+    }
+  }, [isBackgroundHovered]);
 
   /**
    * Handle navigation to Consulting section
@@ -53,15 +130,31 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-gray-50 via-white to-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen w-full relative overflow-hidden">
       {/* Screen reader only heading for SEO */}
       <h1 className="sr-only">GoldTech - Choose Your Path: Software Development or Marketing Solutions</h1>
 
-      {/* Main container - centered with max width */}
-      <div className="w-full max-w-6xl">
+      {/* Vanta.js animated background */}
+      <div ref={vantaRef} className="absolute inset-0 w-full h-full" />
+      
+      {/* Overlay to ensure content is readable */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-50/80 via-white/60 to-gray-50/80" />
+
+      {/* Main content */}
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+        {/* Hero section */}
+        <div className="w-full max-w-6xl mb-12 text-center">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-navy mb-4 animate-fade-in">
+            Choose Your Path
+          </h2>
+          <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in-delay">
+            Select the service that best fits your business needs
+          </p>
+        </div>
 
         {/* Cards container */}
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="w-full max-w-6xl">
+          <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
           {/* Goldtech Consulting Card */}
           <div
             className={`group relative bg-white rounded-2xl shadow-lg border-2 transition-all duration-300 ease-in-out cursor-pointer overflow-hidden ${
@@ -177,6 +270,19 @@ const LandingPage = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        {/* Trust indicators / Footer section */}
+        <div className="w-full max-w-6xl mt-16 pt-8 border-t border-gray-200">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 text-sm text-gray-500">
+            <div className="flex items-center gap-2">
+              <svg className="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              <span>Mount Laurel, NJ</span>
             </div>
           </div>
         </div>

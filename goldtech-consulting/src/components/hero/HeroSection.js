@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { FaArrowRight } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import { getContent } from '../../config/content';
 import { getHeroGradient, getThemeClasses } from '../../config/theme';
+import DOTS from 'vanta/dist/vanta.dots.min';
 
 /**
  * HeroSection - Main hero section with accessibility improvements
@@ -29,6 +30,8 @@ const HeroSection = ({ scrollTo, variant = 'consulting' }) => {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], [0, 150]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const vantaRef = useRef(null);
+  const vantaEffect = useRef(null);
 
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
@@ -39,6 +42,64 @@ const HeroSection = ({ scrollTo, variant = 'consulting' }) => {
   const staggerContainer = {
     animate: { transition: { staggerChildren: 0.1 } }
   };
+
+  // Initialize Vanta.js background
+  useEffect(() => {
+    const initVanta = () => {
+      if (vantaRef.current && !vantaEffect.current && window.THREE) {
+        try {
+          vantaEffect.current = DOTS({
+            el: vantaRef.current,
+            THREE: window.THREE,
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 100.00,
+            minWidth: 200.00,
+            scale: 0.80,
+            scaleMobile: 1.00,
+            color: isMarketing ? 0x3b82f6 : 0xffc300, // Blue for marketing, gold for consulting
+            color2: isMarketing ? 0xec4899 : 0x1a1a2e, // Pink accent for marketing, light gold for consulting
+            backgroundColor: isMarketing ? 0xfafafa : 0xffffff, // Marketing bg or white for consulting
+            size: 3.0,
+            spacing: 25.00,
+            showLines: false
+          });
+        } catch (error) {
+          console.error('Error initializing Vanta:', error);
+        }
+      }
+    };
+
+    // Check if THREE is already loaded
+    if (window.THREE) {
+      initVanta();
+    } else {
+      // Wait for THREE to load
+      const checkTHREE = setInterval(() => {
+        if (window.THREE) {
+          clearInterval(checkTHREE);
+          initVanta();
+        }
+      }, 100);
+
+      // Timeout after 5 seconds
+      setTimeout(() => {
+        clearInterval(checkTHREE);
+      }, 5000);
+    }
+
+    return () => {
+      if (vantaEffect.current) {
+        try {
+          vantaEffect.current.destroy();
+        } catch (error) {
+          console.error('Error destroying Vanta:', error);
+        }
+        vantaEffect.current = null;
+      }
+    };
+  }, [isMarketing]);
 
   /**
    * Handle primary CTA button click
@@ -61,22 +122,14 @@ const HeroSection = ({ scrollTo, variant = 'consulting' }) => {
       aria-labelledby="hero-heading"
       role="banner"
     >
-      {/* Decorative background elements */}
-      <motion.div
-        className={`absolute top-20 right-10 w-72 h-72 ${isMarketing ? 'bg-marketing-primary/10' : 'bg-gold/10'} rounded-full blur-3xl`}
-        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-        aria-hidden="true"
-      />
-      <motion.div
-        className={`absolute bottom-20 left-10 w-96 h-96 ${isMarketing ? 'bg-marketing-accent/5' : 'bg-navy/5'} rounded-full blur-3xl`}
-        animate={{ scale: [1.2, 1, 1.2], opacity: [0.2, 0.4, 0.2] }}
-        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-        aria-hidden="true"
-      />
+      {/* Vanta.js animated background */}
+      <div ref={vantaRef} className="absolute inset-0 w-full h-full" />
+      
+      {/* Overlay to ensure content readability */}
+      <div className={`absolute inset-0 ${isMarketing ? 'bg-marketing-bg/60' : 'bg-white/70'}`} />
 
       <motion.div
-        className="relative z-10 text-center max-w-5xl mx-auto px-4 sm:px-6 lg:px-8"
+        className="backdrop-blur-sm relative z-10 text-center max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 rounded-3xl"
         style={{ y, opacity }}
       >
         <motion.div variants={staggerContainer} initial="initial" animate="animate">
