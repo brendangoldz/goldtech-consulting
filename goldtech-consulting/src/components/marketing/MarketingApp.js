@@ -87,8 +87,8 @@ const MarketingApp = () => {
   return (
     <div className="min-h-screen bg-white">
       <Seo
-        title="GoldTech Marketing - Strategic Marketing Solutions & Growth"
-        description="Grow smarter, engage deeper, convert better. Strategic marketing solutions including digital strategy, social media management, content creation, SEO, and brand development. 100+ campaigns delivered."
+        title="Digital Marketing Agency | Mount Laurel, NJ | GoldTech Marketing"
+        description="Full-service digital marketing agency in Mount Laurel, NJ. SEO consulting, social media management, content marketing, PPC advertising, and brand development services. 100+ successful campaigns delivered."
         path="/marketing"
         type="website"
         schema={{
@@ -97,9 +97,18 @@ const MarketingApp = () => {
           name: 'GoldTech Marketing',
           url: 'https://goldtech-consulting.com/marketing',
           logo: 'https://goldtech-consulting.com/goldtech-marketing-logo.svg',
-          description: 'Strategic marketing solutions that drive growth, engagement, and measurable results for your business.',
-          serviceType: ['Digital Marketing Strategy', 'Social Media Management', 'Content Creation', 'SEO', 'Brand Development'],
-          areaServed: 'Worldwide',
+          description: 'Full-service digital marketing agency in Mount Laurel, NJ. SEO consulting, social media management, content marketing, PPC advertising, and brand development services.',
+          serviceType: ['Digital Marketing', 'SEO Consulting', 'Social Media Marketing', 'Content Marketing', 'PPC Advertising', 'Brand Development', 'Marketing Strategy', 'Marketing Consulting'],
+          areaServed: {
+            '@type': 'Country',
+            name: 'United States'
+          },
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: 'Mount Laurel',
+            addressRegion: 'NJ',
+            addressCountry: 'US'
+          },
           hasOfferCatalog: {
             '@type': 'OfferCatalog',
             name: 'Marketing Services',

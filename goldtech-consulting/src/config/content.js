@@ -17,7 +17,7 @@ export const contentConfig = {
         line3: 'Look',
         highlight3: 'Premium'
       },
-      subtitle: 'Your trusted partner for modern software solutions in both commercial and residential markets.',
+      subtitle: 'Expert software development consulting in Mount Laurel, NJ. Custom software development, web apps, cloud solutions, and QA automation for businesses nationwide.',
       primaryCTA: 'Start Your Project',
       secondaryCTA: 'View Our Services'
     },
@@ -99,7 +99,7 @@ export const contentConfig = {
         line3: 'Convert',
         highlight3: 'Better'
       },
-      subtitle: 'Strategic marketing solutions that drive growth, engagement, and measurable results for your business.',
+      subtitle: 'Full-service digital marketing agency in Mount Laurel, NJ. SEO consulting, social media marketing, content creation, and brand development services for growing businesses.',
       primaryCTA: 'Get Started',
       secondaryCTA: 'See Our Work'
     },
