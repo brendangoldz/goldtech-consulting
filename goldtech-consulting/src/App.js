@@ -36,11 +36,11 @@ const App = () => {
                   '@context': 'https://schema.org',
                   '@type': 'WebSite',
                   name: 'GoldTech',
-                  url: 'https://goldtechconsulting.com',
+                  url: 'https://goldtech-consulting.com',
                   description: 'GoldTech Consulting and Marketing - Modern software development and strategic marketing solutions.',
                   potentialAction: {
                     '@type': 'SearchAction',
-                    target: 'https://goldtechconsulting.com?q={search_term_string}',
+                    target: 'https://goldtech-consulting.com?q={search_term_string}',
                     'query-input': 'required name=search_term_string'
                   }
                 }}

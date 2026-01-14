@@ -30,7 +30,7 @@ const Seo = ({
   image,
   schema
 }) => {
-  const siteUrl = process.env.REACT_APP_SITE_URL || 'https://goldtechconsulting.com';
+  const siteUrl = process.env.REACT_APP_SITE_URL || 'https://goldtech-consulting.com';
   const fullUrl = `${siteUrl}${path}`;
   const defaultImage = `${siteUrl}/goldtech-logo.svg`;
   const ogImage = image || defaultImage;
