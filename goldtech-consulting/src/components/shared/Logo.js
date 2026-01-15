@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import PropTypes from 'prop-types';
 
 /**
@@ -62,8 +62,8 @@ const Logo = ({ className = '', size = 'default', variant = 'consulting', onClic
 
   const logoElement = (
     <motion.div
-      className={`flex items-center ${className}`}
-      whileHover={{ scale: 1.05 }}
+      className={`flex items-center ${className} relative`}
+      whileHover={onClick || href ? { scale: 1.05 } : {}}
       transition={{ duration: 0.2 }}
       role={onClick || href ? 'button' : 'img'}
       tabIndex={onClick || href ? 0 : undefined}
@@ -75,15 +75,23 @@ const Logo = ({ className = '', size = 'default', variant = 'consulting', onClic
           if (href) window.location.href = href;
         }
       }}
-      aria-label={onClick || href ? `${logoInfo.alt} - Go to homepage` : `${logoInfo.alt} logo`}
+      aria-label={onClick || href ? `Click to switch to ${variant === 'consulting' ? 'GoldTech Marketing' : 'GoldTech Consulting'}` : `${logoInfo.alt} logo`}
+      style={{ minHeight: sizeStyles.style.height }}
     >
-      <img
-        src={logoInfo.src}
-        alt={logoInfo.alt}
-        className={sizeStyles.className}
-        style={sizeStyles.style}
-        loading="eager"
-      />
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={variant}
+          src={logoInfo.src}
+          alt={logoInfo.alt}
+          className={sizeStyles.className}
+          style={sizeStyles.style}
+          loading="eager"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
+        />
+      </AnimatePresence>
     </motion.div>
   );
 

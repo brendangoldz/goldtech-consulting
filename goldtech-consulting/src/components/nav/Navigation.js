@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Logo from '../shared/Logo';
@@ -27,7 +28,11 @@ import { getThemeClasses } from '../../config/theme';
 const Navigation = ({ activeSection, scrollTo, onBackToLanding, logoVariant = 'consulting' }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLogoDropdownOpen, setIsLogoDropdownOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
   const isMarketing = logoVariant === 'marketing';
+  const canSwitch = location.pathname === '/consulting' || location.pathname === '/marketing';
 
   const navItems = [
     { id: 'home', label: 'Home' },
@@ -62,8 +67,46 @@ const Navigation = ({ activeSection, scrollTo, onBackToLanding, logoVariant = 'c
   const handleKeyDown = useCallback((event) => {
     if (event.key === 'Escape') {
       setIsMobileMenuOpen(false);
+      setIsLogoDropdownOpen(false);
     }
   }, []);
+
+  /**
+   * Handle logo dropdown toggle
+   */
+  const handleLogoDropdownToggle = useCallback(() => {
+    if (canSwitch) {
+      setIsLogoDropdownOpen(prev => !prev);
+    }
+  }, [canSwitch]);
+
+  /**
+   * Handle switching to the other site
+   */
+  const handleSwitchSite = useCallback((targetSite) => {
+    if (targetSite === 'consulting' && location.pathname !== '/consulting') {
+      navigate('/consulting');
+    } else if (targetSite === 'marketing' && location.pathname !== '/marketing') {
+      navigate('/marketing');
+    }
+    setIsLogoDropdownOpen(false);
+  }, [location.pathname, navigate]);
+
+  /**
+   * Close dropdown when clicking outside
+   */
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isLogoDropdownOpen && !event.target.closest('.logo-dropdown-container')) {
+        setIsLogoDropdownOpen(false);
+      }
+    };
+
+    if (isLogoDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, [isLogoDropdownOpen]);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -88,8 +131,158 @@ const Navigation = ({ activeSection, scrollTo, onBackToLanding, logoVariant = 'c
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 p-4">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Logo size="large" variant={logoVariant} />
+          {/* Logo with Dropdown */}
+          {canSwitch ? (
+            <div className="logo-dropdown-container relative">
+              <motion.div
+                className="flex items-center gap-2 cursor-pointer"
+                onClick={handleLogoDropdownToggle}
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.2 }}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleLogoDropdownToggle();
+                  }
+                }}
+                aria-label={`Switch between Consulting and Marketing. Currently viewing ${isMarketing ? 'Marketing' : 'Consulting'}`}
+                aria-expanded={isLogoDropdownOpen}
+                aria-haspopup="true"
+              >
+                <Logo 
+                  size="large" 
+                  variant={logoVariant}
+                />
+                {/* Dropdown Arrow */}
+                <motion.div
+                  animate={{ rotate: isLogoDropdownOpen ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                  className={`${isMarketing ? 'text-marketing-primary' : 'text-gold'}`}
+                >
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </motion.div>
+              </motion.div>
+
+              {/* Dropdown Menu */}
+              <AnimatePresence>
+                {isLogoDropdownOpen && (
+                  <motion.div
+                    className="absolute top-full left-0 mt-2 bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden z-50 min-w-[200px]"
+                    initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
+                    role="menu"
+                    aria-label="Website selection menu"
+                  >
+                    {/* Option: Switch to Consulting */}
+                    {isMarketing && (
+                      <motion.button
+                        className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gold/10 transition-colors duration-200 text-left group"
+                        onClick={() => handleSwitchSite('consulting')}
+                        role="menuitem"
+                        whileHover={{ x: 4 }}
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <div className="flex-shrink-0">
+                          <img
+                            src="/goldtech-logo.svg"
+                            alt="GoldTech Consulting"
+                            className="h-8 w-auto"
+                          />
+                        </div>
+                        <div className="flex-1">
+                          <div className="font-semibold text-navy group-hover:text-gold transition-colors">
+                            Consulting
+                          </div>
+                          <div className="text-xs text-gray-500">
+                            Software Development
+                          </div>
+                        </div>
+                        <svg
+                          className="w-4 h-4 text-gold opacity-0 group-hover:opacity-100 transition-opacity"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </motion.button>
+                    )}
+
+                    {/* Option: Switch to Marketing */}
+                    {!isMarketing && (
+                      <motion.button
+                        className="w-full flex items-center gap-3 px-4 py-3 hover:bg-marketing-primary/10 transition-colors duration-200 text-left group"
+                        onClick={() => handleSwitchSite('marketing')}
+                        role="menuitem"
+                        whileHover={{ x: 4 }}
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <div className="flex-shrink-0">
+                          <img
+                            src="/goldtech-marketing-logo.svg"
+                            alt="GoldTech Marketing"
+                            className="h-8 w-auto"
+                          />
+                        </div>
+                        <div className="flex-1">
+                          <div className="font-semibold text-navy group-hover:text-marketing-primary transition-colors">
+                            Marketing
+                          </div>
+                          <div className="text-xs text-gray-500">
+                            Digital Marketing
+                          </div>
+                        </div>
+                        <svg
+                          className="w-4 h-4 text-marketing-primary opacity-0 group-hover:opacity-100 transition-opacity"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </motion.button>
+                    )}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          ) : (
+            <Logo 
+              size="large" 
+              variant={logoVariant}
+            />
+          )}
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8" role="menubar">
