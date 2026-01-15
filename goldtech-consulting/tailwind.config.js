@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  safelist: [
+    'bg-marketing-bg/60',
+    'bg-white/70',
+  ],
   theme: {
     extend: {
       fontFamily: {
