@@ -1,0 +1,7 @@
+# AWS Amplify redirects for React Router SPA
+# All routes should redirect to index.html to be handled by React Router
+# This ensures /marketing, /marketing/, /consulting, etc. all work correctly
+
+/marketing /index.html 200
+/consulting /index.html 200
+/* /index.html 200
