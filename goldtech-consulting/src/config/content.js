@@ -115,8 +115,8 @@ export const contentConfig = {
         'ROI tracking and performance optimization'
       ],
       techStack: ['SEO', 'Design', 'Social Media', 'Analytics', 'Content'],
-      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop&q=80',
-      imageAlt: 'Professional marketing workspace - Coming soon'
+      image: '/heather_headshot.JPG',
+      imageAlt: 'Heather headshot'
     },
     services: {
       eyebrow: 'What we do',
