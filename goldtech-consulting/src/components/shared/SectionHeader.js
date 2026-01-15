@@ -20,6 +20,7 @@ import PropTypes from 'prop-types';
  * @param {boolean} props.center - Whether to center align content
  * @param {string} props.className - Additional CSS classes
  * @param {string} props.level - Heading level (h1, h2, h3, etc.)
+ * @param {string} props.variant - Content variant: 'consulting' or 'marketing'
  * @returns {JSX.Element} Rendered section header
  */
 const SectionHeader = ({ 
@@ -29,8 +30,10 @@ const SectionHeader = ({
   center = true, 
   className = '',
   level = 'h2',
-  titleId
+  titleId,
+  variant = 'consulting'
 }) => {
+  const isMarketing = variant === 'marketing';
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
     animate: { opacity: 1, y: 0 },
@@ -54,7 +57,11 @@ const SectionHeader = ({
     >
       {eyebrow && (
         <motion.div
-          className="inline-flex items-center px-3 py-1 rounded-full bg-gold/10 border border-gold/20 text-gold text-xs font-medium mb-4"
+          className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 ${
+            isMarketing 
+              ? 'bg-marketing-primary/10 border border-marketing-primary/20 text-marketing-primary' 
+              : 'bg-gold/10 border border-gold/20 text-gold'
+          }`}
           variants={fadeInUp}
           role="img"
           aria-label={`Section category: ${eyebrow}`}
@@ -88,7 +95,8 @@ SectionHeader.propTypes = {
   center: PropTypes.bool,
   className: PropTypes.string,
   level: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']),
-  titleId: PropTypes.string
+  titleId: PropTypes.string,
+  variant: PropTypes.oneOf(['consulting', 'marketing'])
 };
 
 export default SectionHeader;

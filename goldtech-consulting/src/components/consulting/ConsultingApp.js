@@ -83,10 +83,10 @@ const ConsultingApp = () => {
   }, [navigate]);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white" data-variant="consulting">
       <Seo
-        title="GoldTech Consulting - Modern Software Development & QA Automation"
-        description="Build faster, ship cleaner, look premium. Custom software development, cloud solutions, integrations, and QA automation services. Trusted by 50+ businesses worldwide."
+        title="Software Development Consulting | Mount Laurel, NJ | GoldTech"
+        description="Expert software development consulting in Mount Laurel, NJ. Custom software development, React/AWS consulting, QA automation, IoT integration, and DevOps services. Trusted by 50+ businesses worldwide."
         path="/consulting"
         type="website"
         schema={{
@@ -95,9 +95,18 @@ const ConsultingApp = () => {
           name: 'GoldTech Consulting',
           url: 'https://goldtech-consulting.com/consulting',
           logo: 'https://goldtech-consulting.com/goldtech-logo.svg',
-          description: 'Modern software development, integrations, and QA automation services. Build faster, ship cleaner, look premium.',
-          serviceType: ['Software Development', 'Cloud Solutions', 'QA Automation', 'IoT Integration', 'Tech Consultation'],
-          areaServed: 'Worldwide',
+          description: 'Expert software development consulting in Mount Laurel, NJ. Custom software development, React/AWS consulting, QA automation, IoT integration, and DevOps services.',
+          serviceType: ['Software Development', 'Custom Software Development', 'Web Development', 'App Development', 'Cloud Solutions', 'AWS Consulting', 'QA Automation', 'IoT Integration', 'DevOps Consulting', 'Tech Consultation'],
+          areaServed: {
+            '@type': 'Country',
+            name: 'United States'
+          },
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: 'Mount Laurel',
+            addressRegion: 'NJ',
+            addressCountry: 'US'
+          },
           hasOfferCatalog: {
             '@type': 'OfferCatalog',
             name: 'Consulting Services',

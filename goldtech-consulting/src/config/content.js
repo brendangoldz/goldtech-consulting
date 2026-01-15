@@ -17,7 +17,7 @@ export const contentConfig = {
         line3: 'Look',
         highlight3: 'Premium'
       },
-      subtitle: 'Your trusted partner for modern software solutions in both commercial and residential markets.',
+      subtitle: 'Expert software development consulting based in NJ, serving businesses nationwide. Custom software development, web apps, cloud solutions, and QA automation for businesses nationwide.',
       primaryCTA: 'Start Your Project',
       secondaryCTA: 'View Our Services'
     },
@@ -69,7 +69,7 @@ export const contentConfig = {
       subtitle: 'A peek at how we turn requirements into reliable, production-grade systems.',
       items: [
         {
-          title: '100+ Websites Delivered for Entrepreneurs & Businesses',
+          title: '200+ Websites Delivered for Entrepreneurs & Businesses',
           summary: 'Designed and developed modern Wix websites with custom branding, optimized layouts, and scalable templates. Streamlined delivery process reduced turnaround time and enabled consistent, premium-quality results across industries.'
         }
       ]
@@ -99,7 +99,7 @@ export const contentConfig = {
         line3: 'Convert',
         highlight3: 'Better'
       },
-      subtitle: 'Strategic marketing solutions that drive growth, engagement, and measurable results for your business.',
+      subtitle: 'Full-service digital marketing agency in NJ, serving businesses nationwide. SEO consulting, social media marketing, content creation, and brand development services for growing businesses.',
       primaryCTA: 'Get Started',
       secondaryCTA: 'See Our Work'
     },
@@ -115,8 +115,8 @@ export const contentConfig = {
         'ROI tracking and performance optimization'
       ],
       techStack: ['SEO', 'Design', 'Social Media', 'Analytics', 'Content'],
-      image: '/at_desk_smirk.JPG',
-      imageAlt: 'Brendan at his desk working on marketing strategy and campaigns'
+      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop&q=80',
+      imageAlt: 'Professional marketing workspace - Coming soon'
     },
     services: {
       eyebrow: 'What we do',
@@ -151,8 +151,8 @@ export const contentConfig = {
       subtitle: 'Real campaigns, real results—see how we\'ve helped brands achieve their marketing goals.',
       items: [
         {
-          title: '100+ Marketing Campaigns Delivered',
-          summary: 'Developed and executed comprehensive marketing campaigns across multiple industries. From startup launches to enterprise rebrands, we\'ve delivered consistent results through strategic planning, creative execution, and data-driven optimization.'
+          title: '200+ Wix Websites Delivered for Entrepreneurs & Businesses',
+          summary: 'Designed, developed and executed fully-responsive Wix websites for public speaking students. '
         }
       ]
     },

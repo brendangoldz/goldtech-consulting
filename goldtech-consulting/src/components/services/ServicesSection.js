@@ -6,6 +6,7 @@ import {
 } from 'react-icons/fa';
 import SectionHeader from '../shared/SectionHeader';
 import { getContent } from '../../config/content';
+import { getSectionBg } from '../../config/theme';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -22,15 +23,17 @@ const iconMap = {
 
 const ServicesSection = ({ variant = 'consulting' }) => {
   const content = getContent(variant).services;
+  const isMarketing = variant === 'marketing';
   
   return (
-  <section id="services" className="py-20 bg-lightGray" aria-labelledby="services-title">
+  <section id="services" className={`py-20 ${getSectionBg(variant)}`} aria-labelledby="services-title">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeader
         eyebrow={content.eyebrow}
         title={content.title}
         titleId="services-title"
         subtitle={content.subtitle}
+        variant={variant}
       />
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         {content.items.map((service, i) => {
@@ -38,14 +41,14 @@ const ServicesSection = ({ variant = 'consulting' }) => {
           return (
             <motion.div
               key={i}
-              className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition will-change-transform"
+              className={`${isMarketing ? 'bg-marketing-bgAlt' : 'bg-white'} rounded-xl p-6 shadow-sm ${isMarketing ? 'border-marketing-primary/20' : 'border-gray-100'} border hover:shadow-lg hover:-translate-y-1 transition will-change-transform`}
               variants={fadeInUp}
               initial="initial"
               whileInView="animate"
               viewport={{ once: true, amount: 0.2 }}
             >
               <div className="mb-4" role="img" aria-hidden="true">
-                {IconComponent && <IconComponent className="text-3xl text-gold" />}
+                {IconComponent && <IconComponent className={`text-3xl ${isMarketing ? 'text-marketing-primary' : 'text-gold'}`} />}
               </div>
               <h3 className="font-semibold text-lg text-navy mb-2">{service.title}</h3>
               <p className="text-gray-600 text-sm leading-relaxed">{service.desc}</p>

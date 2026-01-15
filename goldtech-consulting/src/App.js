@@ -29,8 +29,8 @@ const App = () => {
           element={
             <>
               <Seo
-                title="GoldTech - Choose Your Path | Software Development & Marketing"
-                description="Choose between GoldTech Consulting for modern software development, integrations, and QA automation, or GoldTech Marketing for strategic marketing solutions that drive growth."
+                title="GoldTech Consulting & Marketing | Software Development & Digital Marketing Services"
+                description="GoldTech Consulting offers custom software development, QA automation, and IT consulting services in Mount Laurel, NJ. GoldTech Marketing provides digital marketing, SEO, and brand development solutions. Trusted by 50+ businesses."
                 path="/"
                 schema={{
                   '@context': 'https://schema.org',
