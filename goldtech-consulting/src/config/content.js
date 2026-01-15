@@ -151,8 +151,8 @@ export const contentConfig = {
       subtitle: 'Real campaigns, real results—see how we\'ve helped brands achieve their marketing goals.',
       items: [
         {
-          title: '100+ Marketing Campaigns Delivered',
-          summary: 'Developed and executed comprehensive marketing campaigns across multiple industries. From startup launches to enterprise rebrands, we\'ve delivered consistent results through strategic planning, creative execution, and data-driven optimization.'
+          title: '200+ Wix Websites Delivered for Entrepreneurs & Businesses',
+          summary: 'Designed, developed and executed fully-responsive Wix websites for public speaking students. '
         }
       ]
     },
