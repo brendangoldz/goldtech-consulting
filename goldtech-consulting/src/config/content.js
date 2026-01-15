@@ -115,7 +115,7 @@ export const contentConfig = {
         'ROI tracking and performance optimization'
       ],
       techStack: ['SEO', 'Design', 'Social Media', 'Analytics', 'Content'],
-      image: '/heather_headshot.JPG',
+      image: '/heather_headshot.jpg',
       imageAlt: 'Heather headshot'
     },
     services: {
