@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { FaArrowRight, FaImages } from 'react-icons/fa';
 import SectionHeader from '../shared/SectionHeader';
 import ProjectModal from './ProjectModal';
+import Logo from '../shared/Logo';
 import { getContent } from '../../config/content';
 import { getSectionBg } from '../../config/theme';
 
@@ -57,6 +58,21 @@ const ProjectsSection = ({ variant = 'consulting' }) => {
               whileInView="animate"
               viewport={{ once: true, amount: 0.2 }}
             >
+              {/* Collaboration Banner */}
+              {project.isShared && (
+                <div className={`${isMarketing ? 'bg-marketing-primary/5 border-marketing-primary/20' : 'bg-gold/5 border-gold/20'} border-b px-6 py-4`}>
+                  <div className="flex flex-col items-center gap-3">
+                    <div className="flex items-center justify-center gap-4">
+                      <Logo variant="consulting" size="small" />
+                      <span className={`text-2xl font-semibold ${isMarketing ? 'text-marketing-primary' : 'text-gold'}`}>×</span>
+                      <Logo variant="marketing" size="small" />
+                    </div>
+                    {/* <p className={`text-sm font-medium ${isMarketing ? 'text-marketing-primary' : 'text-gold'}`}>
+                      GoldTech Consulting × GoldTech Marketing
+                    </p> */}
+                  </div>
+                </div>
+              )}
               {/* Project Content */}
               <div className="p-6">
                 <h3 className="font-semibold text-xl text-navy mb-2">{project.title}</h3>

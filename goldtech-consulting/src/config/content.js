@@ -72,6 +72,7 @@ export const contentConfig = {
           id: 'wix-websites-delivered',
           title: '200+ Websites Delivered for Entrepreneurs & Businesses',
           summary: 'Designed and developed modern Wix websites with custom branding, optimized layouts, and scalable templates. Streamlined delivery process reduced turnaround time and enabled consistent, premium-quality results across industries.',
+          isShared: true,
           screenshots: [
             {
               src: '/projects/thespeakerlab-wixsite-com-camilo-gomez-1.png',
@@ -202,6 +203,7 @@ export const contentConfig = {
           id: 'marketing-wix-websites',
           title: '200+ Wix Websites Delivered for Entrepreneurs & Businesses',
           summary: 'Designed, developed and executed fully-responsive Wix websites for public speaking students.',
+          isShared: true,
           screenshots: [
             {
               src: '/projects/thespeakerlab-wixsite-com-camilo-gomez-1.png',
