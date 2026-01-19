@@ -69,8 +69,56 @@ export const contentConfig = {
       subtitle: 'A peek at how we turn requirements into reliable, production-grade systems.',
       items: [
         {
+          id: 'wix-websites-delivered',
           title: '200+ Websites Delivered for Entrepreneurs & Businesses',
-          summary: 'Designed and developed modern Wix websites with custom branding, optimized layouts, and scalable templates. Streamlined delivery process reduced turnaround time and enabled consistent, premium-quality results across industries.'
+          summary: 'Designed and developed modern Wix websites with custom branding, optimized layouts, and scalable templates. Streamlined delivery process reduced turnaround time and enabled consistent, premium-quality results across industries.',
+          screenshots: [
+            {
+              src: '/projects/thespeakerlab-wixsite-com-camilo-gomez-1.png',
+              alt: 'Camilo Gomez speaker website homepage',
+              websiteUrl: 'https://thespeakerlab.wixsite.com/camilo-gomez',
+            },
+            {
+              src: '/projects/thespeakerlab-wixsite-com-neneh-biffinger-2.png',
+              alt: 'Neneh Biffinger speaker website homepage',
+              websiteUrl: 'https://thespeakerlab.wixsite.com/neneh-biffinger',
+            },
+            {
+              src: '/projects/thespeakerlab-wixsite-com-mary-curran-hackett-3.png',
+              alt: 'Mary Curran Hackett speaker website homepage',
+              websiteUrl: 'https://thespeakerlab.wixsite.com/mary-curran-hackett',
+            },
+            {
+              src: '/projects/donnalevibooks-wixsite-com-donna-levi-4.png',
+              alt: 'Donna Levi books website homepage',
+              websiteUrl: 'https://donnalevibooks.wixsite.com/donna-levi',
+            },
+            {
+              src: '/projects/thespeakerlab-wixsite-com-deb-borzellino-5.png',
+              alt: 'Deb Borzellino speaker website homepage',
+              websiteUrl: 'https://thespeakerlab.wixsite.com/deb-borzellino',
+            },
+            {
+              src: '/projects/risingtideconsultingllc-com-7.png',
+              alt: 'Rising Tide Consulting LLC website homepage',
+              websiteUrl: 'https://www.risingtideconsultingllc.com/',
+            },
+            {
+              src: '/projects/shelbypaige-com-8.png',
+              alt: 'Shelby Paige website homepage',
+              websiteUrl: 'https://www.shelbypaige.com/',
+            },
+            {
+              src: '/projects/jayboothspeaks-com-9.png',
+              alt: 'Jay Booth Speaks website homepage',
+              websiteUrl: 'https://www.jayboothspeaks.com/',
+            },
+            {
+              src: '/projects/andiehenrich-com-10.png',
+              alt: 'Andie Henrich website homepage',
+              websiteUrl: 'https://www.andiehenrich.com/',
+            },
+          ],
         }
       ]
     },
@@ -151,8 +199,56 @@ export const contentConfig = {
       subtitle: 'Real campaigns, real results—see how we\'ve helped brands achieve their marketing goals.',
       items: [
         {
+          id: 'marketing-wix-websites',
           title: '200+ Wix Websites Delivered for Entrepreneurs & Businesses',
-          summary: 'Designed, developed and executed fully-responsive Wix websites for public speaking students. '
+          summary: 'Designed, developed and executed fully-responsive Wix websites for public speaking students.',
+          screenshots: [
+            {
+              src: '/projects/thespeakerlab-wixsite-com-camilo-gomez-1.png',
+              alt: 'Camilo Gomez speaker website homepage',
+              websiteUrl: 'https://thespeakerlab.wixsite.com/camilo-gomez',
+            },
+            {
+              src: '/projects/thespeakerlab-wixsite-com-neneh-biffinger-2.png',
+              alt: 'Neneh Biffinger speaker website homepage',
+              websiteUrl: 'https://thespeakerlab.wixsite.com/neneh-biffinger',
+            },
+            {
+              src: '/projects/thespeakerlab-wixsite-com-mary-curran-hackett-3.png',
+              alt: 'Mary Curran Hackett speaker website homepage',
+              websiteUrl: 'https://thespeakerlab.wixsite.com/mary-curran-hackett',
+            },
+            {
+              src: '/projects/donnalevibooks-wixsite-com-donna-levi-4.png',
+              alt: 'Donna Levi books website homepage',
+              websiteUrl: 'https://donnalevibooks.wixsite.com/donna-levi',
+            },
+            {
+              src: '/projects/thespeakerlab-wixsite-com-deb-borzellino-5.png',
+              alt: 'Deb Borzellino speaker website homepage',
+              websiteUrl: 'https://thespeakerlab.wixsite.com/deb-borzellino',
+            },
+            {
+              src: '/projects/risingtideconsultingllc-com-7.png',
+              alt: 'Rising Tide Consulting LLC website homepage',
+              websiteUrl: 'https://www.risingtideconsultingllc.com/',
+            },
+            {
+              src: '/projects/shelbypaige-com-8.png',
+              alt: 'Shelby Paige website homepage',
+              websiteUrl: 'https://www.shelbypaige.com/',
+            },
+            {
+              src: '/projects/jayboothspeaks-com-9.png',
+              alt: 'Jay Booth Speaks website homepage',
+              websiteUrl: 'https://www.jayboothspeaks.com/',
+            },
+            {
+              src: '/projects/andiehenrich-com-10.png',
+              alt: 'Andie Henrich website homepage',
+              websiteUrl: 'https://www.andiehenrich.com/',
+            },
+          ],
         }
       ]
     },
