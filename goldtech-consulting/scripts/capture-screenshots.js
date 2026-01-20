@@ -4,9 +4,14 @@
  * Captures screenshots of client websites for the projects showcase.
  * Run from the base of goldtech-consulting directory.
  * 
+ * By default, loads URLs from public/Wix_Websites_Extracted.csv (published websites only).
+ * 
  * Usage:
+ *   node scripts/capture-screenshots.js
+ *     - Captures screenshots for all published websites in CSV
+ *   
  *   node scripts/capture-screenshots.js [url1] [url2] ...
- *   Or edit the URLs array below to specify websites to capture.
+ *     - Override CSV and capture specific URLs provided as arguments
  */
 
 const { chromium } = require('playwright');
@@ -15,15 +20,60 @@ const path = require('path');
 
 // Configuration
 const SCREENSHOT_DIR = path.join(__dirname, '..', 'public', 'projects');
+const CSV_PATH = path.join(__dirname, '..', 'public', 'Wix_Websites_Extracted.csv');
 const VIEWPORT_WIDTH = 1920;
 const VIEWPORT_HEIGHT = 1080;
 const DELAY_MS = 2000; // Wait time for page to fully load
 const HERO_HEIGHT = 1080; // Height of hero section to capture (viewport height)
 
-// URLs to capture - add your client website URLs here
-const WEBSITES = [
-  'https://thespeakerlab.wixsite.com/ariana-pareja'
-];
+/**
+ * Parse CSV file and extract published website URLs
+ */
+function loadWebsitesFromCSV() {
+  try {
+    const csvContent = fs.readFileSync(CSV_PATH, 'utf8');
+    const lines = csvContent.split('\n').slice(1).filter(line => line.trim());
+    const websites = [];
+
+    lines.forEach((line) => {
+      // Simple CSV parsing (handles quoted fields)
+      const parts = [];
+      let current = '';
+      let inQuotes = false;
+      
+      for (let i = 0; i < line.length; i++) {
+        const char = line[i];
+        if (char === '"') {
+          inQuotes = !inQuotes;
+        } else if (char === ',' && !inQuotes) {
+          parts.push(current.trim());
+          current = '';
+        } else {
+          current += char;
+        }
+      }
+      parts.push(current.trim());
+      
+      if (parts.length >= 4) {
+        const url = parts[1];
+        const published = parts[3] === 'TRUE';
+        
+        if (published && url && url.trim() !== '') {
+          websites.push(url.trim());
+        }
+      }
+    });
+
+    return websites;
+  } catch (error) {
+    console.error(`Error reading CSV file: ${error.message}`);
+    console.log('Falling back to empty array. You can provide URLs via command line arguments.');
+    return [];
+  }
+}
+
+// URLs to capture - loaded from CSV file, or can be overridden via command line
+const WEBSITES = loadWebsitesFromCSV();
 
 /**
  * Ensure the screenshots directory exists
@@ -37,14 +87,15 @@ function ensureDirectoryExists(dirPath) {
 
 /**
  * Sanitize URL to create a valid filename
+ * Matches the pattern used in content.js generation
  */
 function urlToFilename(url) {
   return url
     .replace(/^https?:\/\//, '')
     .replace(/^www\./, '')
-    .replace(/[^a-z0-9]/gi, '-')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '')
+    .replace(/\/$/, '')
+    .replace(/\./g, '-')
+    .replace(/\//g, '-')
     .toLowerCase();
 }
 
@@ -111,11 +162,14 @@ async function main() {
     : WEBSITES;
   
   if (urls.length === 0) {
-    console.log('No URLs provided. Usage:');
-    console.log('  node scripts/capture-screenshots.js [url1] [url2] ...');
-    console.log('  Or edit the WEBSITES array in the script.');
+    console.log('No URLs found. Options:');
+    console.log('  1. Ensure CSV file exists at:', CSV_PATH);
+    console.log('  2. Provide URLs via command line:');
+    console.log('     node scripts/capture-screenshots.js [url1] [url2] ...');
     process.exit(1);
   }
+  
+  console.log(`Loaded ${urls.length} website(s) from CSV file.`);
   
   // Ensure output directory exists
   ensureDirectoryExists(SCREENSHOT_DIR);

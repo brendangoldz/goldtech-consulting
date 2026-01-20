@@ -61,8 +61,8 @@ const ProjectsSection = ({ variant = 'consulting' }) => {
               {/* Collaboration Banner */}
               {project.isShared && (
                 <div className={`${isMarketing ? 'bg-marketing-primary/5 border-marketing-primary/20' : 'bg-gold/5 border-gold/20'} border-b px-6 py-4`}>
-                  <div className="flex flex-col items-center gap-3">
-                    <div className="flex items-center justify-center gap-4">
+                  <div className="flex flex-col items-center gap-2">
+                    <div className="flex items-center justify-center gap-3">
                       <Logo variant="consulting" size="small" />
                       <span className={`text-2xl font-semibold ${isMarketing ? 'text-marketing-primary' : 'text-gold'}`}>×</span>
                       <Logo variant="marketing" size="small" />
