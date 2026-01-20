@@ -1,15 +1,17 @@
 # AWS Amplify redirects for React Router SPA
 # 
-# CRITICAL ACTION REQUIRED: 
-# You MUST remove the Console rewrite rule: /<*> → /index.html
-# Console rewrites are processed BEFORE file existence checks, causing static assets
-# to be rewritten to index.html (resulting in text/html MIME type errors)
+# IMPORTANT: If you removed the Console rewrite rule /<*> → /index.html,
+# this file MUST be present in the build output for SPA routing to work.
 #
-# This _redirects file will handle SPA routing correctly - Amplify automatically
-# serves existing files (like /static/js/*.js) with correct MIME types, and only
-# rewrites non-existent paths to index.html for client-side routing
+# This file handles SPA routing - Amplify automatically serves existing files
+# (like /static/js/*.js) with correct MIME types, and only rewrites non-existent
+# paths to index.html for client-side routing
 
-# SPA routing - catch-all for routes that don't match existing files
-# This ensures /marketing, /consulting, etc. all work correctly
+# Explicit routes for main pages (optional but can help with SEO)
+/consulting /index.html 200
+/marketing /index.html 200
+
+# SPA routing - catch-all for all other routes that don't match existing files
+# This ensures /marketing, /consulting, and any other routes all work correctly
 # Static assets in /static/ will be served automatically with correct MIME types
 /* /index.html 200
