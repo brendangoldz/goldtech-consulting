@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../shared/Logo';
 import { getContent } from '../../config/content';
-import DOTS from 'vanta/dist/vanta.dots.min';
+import useVantaDots from '../../hooks/useVantaDots';
 
 /**
  * LandingPage - Engaging card-based landing page for choosing between Consulting and Marketing
@@ -22,70 +22,26 @@ const LandingPage = () => {
   const [isConsultingHovered, setIsConsultingHovered] = useState(false);
   const [isMarketingHovered, setIsMarketingHovered] = useState(false);
   const [isBackgroundHovered, setIsBackgroundHovered] = useState(false);
-  const vantaRef = useRef(null);
-  const vantaEffect = useRef(null);
+  const vantaOptions = useMemo(() => ({
+    mouseControls: true,
+    touchControls: true,
+    gyroControls: true,
+    minHeight: 200.00,
+    minWidth: 200.00,
+    scale: 1.00,
+    scaleMobile: 1.00,
+    color: 0xffc300,
+    color2: 0x3b82f6,
+    backgroundColor: 0xfafafa,
+    size: 4.00,
+    spacing: 30.00,
+    showLines: false
+  }), []);
+  const { vantaRef, vantaEffect } = useVantaDots(vantaOptions, []);
   
   // Get content for each section
   const consultingContent = getContent('consulting');
   const marketingContent = getContent('marketing');
-
-  useEffect(() => {
-    // Wait for THREE to be available from CDN
-    const initVanta = () => {
-      if (vantaRef.current && !vantaEffect.current && window.THREE) {
-        try {
-          vantaEffect.current = DOTS({
-            el: vantaRef.current,
-            THREE: window.THREE,
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: true,
-            minHeight: 200.00,
-            minWidth: 200.00,
-            scale: 1.00,
-            scaleMobile: 1.00,
-            color: 0xffc300, // Gold color
-            color2: 0x3b82f6, // Blue color
-            backgroundColor: 0xfafafa, // Light gray background
-            size: 4.00,
-            spacing: 30.00,
-            showLines: false
-          });
-        } catch (error) {
-          console.error('Error initializing Vanta:', error);
-        }
-      }
-    };
-
-    // Check if THREE is already loaded
-    if (window.THREE) {
-      initVanta();
-    } else {
-      // Wait for THREE to load
-      const checkTHREE = setInterval(() => {
-        if (window.THREE) {
-          clearInterval(checkTHREE);
-          initVanta();
-        }
-      }, 100);
-
-      // Timeout after 5 seconds
-      setTimeout(() => {
-        clearInterval(checkTHREE);
-      }, 5000);
-    }
-
-    return () => {
-      if (vantaEffect.current) {
-        try {
-          vantaEffect.current.destroy();
-        } catch (error) {
-          console.error('Error destroying Vanta:', error);
-        }
-        vantaEffect.current = null;
-      }
-    };
-  }, []);
 
   // Update Vanta effect on hover
   useEffect(() => {

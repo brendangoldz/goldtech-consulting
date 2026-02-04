@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import SectionHeader from '../shared/SectionHeader';
 import { getContent } from '../../config/content';
 import { getSectionBg } from '../../config/theme';
+import { fadeInUp } from '../../utils/animations';
 
 /**
  * ContactSection - Contact form with validation and accessibility
@@ -39,12 +40,6 @@ const ContactSection = ({ variant = 'consulting' }) => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', null
-
-  const fadeInUp = {
-    initial: { opacity: 0, y: 60 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6, ease: 'easeOut' }
-  };
 
   /**
    * Validate email format

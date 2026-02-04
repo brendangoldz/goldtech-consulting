@@ -43,23 +43,27 @@ export const contentConfig = {
       items: [
         {
           icon: 'FaLaptopCode',
-          title: 'Custom Software Development',
-          desc: 'Tailor-made, scalable, and robust solutions for startups and enterprises.'
+          title: 'Wix & Custom Website Development',
+          desc: 'Wix and custom website builds paired with integrations that connect your CRM, booking tools, and platforms.',
+          slug: 'software-automation-consulting'
         },
         {
           icon: 'FaChartLine',
-          title: 'Tech Consultation & Strategy',
-          desc: 'Technology-driven strategies that give your business a competitive edge.'
+          title: 'Tech Consultation & Website Reviews',
+          desc: 'Focused technical consultations with clear recommendations for tools, architecture, and site experience.',
+          slug: 'system-integration-consulting'
         },
         {
           icon: 'FaShieldAlt',
-          title: 'IoT Implementation, Integration, & Optimization',
-          desc: 'Seamless Internet of Things implementations and streamlined operations across your stack.'
+          title: 'Custom Automation Development',
+          desc: 'Tailor-made workflows, integrations, and monitoring that scale with your operations.',
+          slug: 'custom-automation-development'
         },
         {
           icon: 'FaMobileAlt',
-          title: 'Project Management & Automation',
-          desc: 'Engineering focused project management and automation, performance monitoring, and release readiness.'
+          title: 'Process Automation & Optimization',
+          desc: 'Streamlined delivery workflows, performance monitoring, and repeatable operations.',
+          slug: 'business-process-automation'
         }
       ]
     },
@@ -690,22 +694,26 @@ export const contentConfig = {
         {
           icon: 'FaChartLine',
           title: 'Digital Marketing Strategy',
-          desc: 'Comprehensive marketing strategies tailored to your business goals and target audience.'
+          desc: 'Channel planning, paid media strategy, and ongoing optimization for measurable growth.',
+          slug: 'digital-marketing-strategy'
         },
         {
           icon: 'FaMobileAlt',
-          title: 'Social Media Management',
-          desc: 'Engaging content creation and community management across all major platforms.'
+          title: 'Social Media Strategy',
+          desc: 'Actionable social strategy and content planning to build engagement and lead flow.',
+          slug: 'social-media-management'
         },
         {
           icon: 'FaLaptopCode',
-          title: 'Content Creation & SEO',
-          desc: 'High-quality content that ranks, engages, and converts your audience.'
+          title: 'Website & Content Optimization',
+          desc: 'SEO-focused website reviews, content improvements, and performance enhancements.',
+          slug: 'content-marketing-seo'
         },
         {
           icon: 'FaShieldAlt',
-          title: 'Brand Development & Design',
-          desc: 'Complete brand identity development from concept to execution across all touchpoints.'
+          title: 'Brand Book Development',
+          desc: 'Brand guidelines for colors, typography, logo usage, voice, and core messaging.',
+          slug: 'brand-development-design'
         }
       ]
     },

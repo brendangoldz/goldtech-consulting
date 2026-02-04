@@ -1,14 +1,6 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 
-import Navigation from '../nav/Navigation';
-import HeroSection from '../hero/HeroSection';
-import AboutSection from '../about/About';
-import ServicesSection from '../services/ServicesSection';
-import ProjectsSection from '../projects/ProjectsSection';
-import ContactSection from '../contact/ContactSection';
-import Footer from '../footer/Footer';
-import Seo from '../shared/Seo';
+import BaseApp from '../shared/BaseApp';
 
 /**
  * MarketingApp - Main application component for Goldtech Marketing
@@ -26,154 +18,77 @@ import Seo from '../shared/Seo';
  * @returns {JSX.Element} Rendered marketing application
  */
 const MarketingApp = () => {
-  const [activeSection, setActiveSection] = useState('home');
-  const navigate = useNavigate();
-
-  /**
-   * Smooth scroll to a specific section
-   * 
-   * @param {string} id - The ID of the section to scroll to
-   */
-  const scrollTo = useCallback((id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
-      
-      // Update focus for accessibility
-      element.focus({ preventScroll: true });
-    }
-  }, []);
-
-  /**
-   * Handle scroll events to update active section
-   */
-  const handleScroll = useCallback(() => {
-    const sectionIds = ['home', 'about', 'services', 'projects', 'contact'];
-    const scrollPosition = window.scrollY + 120;
-    
-    for (const id of sectionIds) {
-      const element = document.getElementById(id);
-      if (!element) continue;
-      
-      const { offsetTop, offsetHeight } = element;
-      if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-        setActiveSection(id);
-        break;
+  const seo = {
+    title: 'Digital Marketing Agency | Mount Laurel, NJ | GoldTech Marketing',
+    description: 'Full-service digital marketing agency in Mount Laurel, NJ. SEO consulting, social media management, content marketing, PPC advertising, and brand development services. 100+ successful campaigns delivered.',
+    path: '/marketing',
+    type: 'website',
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'MarketingAgency',
+      name: 'GoldTech Marketing',
+      url: 'https://goldtech-consulting.com/marketing',
+      logo: 'https://goldtech-consulting.com/goldtech-marketing-logo.svg',
+      description: 'Full-service digital marketing agency in Mount Laurel, NJ. SEO consulting, social media management, content marketing, PPC advertising, and brand development services.',
+      serviceType: ['Digital Marketing', 'SEO Consulting', 'Social Media Marketing', 'Content Marketing', 'PPC Advertising', 'Brand Development', 'Marketing Strategy', 'Marketing Consulting'],
+      areaServed: {
+        '@type': 'Country',
+        name: 'United States'
+      },
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Mount Laurel',
+        addressRegion: 'NJ',
+        addressCountry: 'US'
+      },
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Marketing Services',
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Digital Marketing Strategy',
+              description: 'Comprehensive marketing strategies tailored to your business goals and target audience.'
+            }
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Social Media Management',
+              description: 'Engaging content creation and community management across all major platforms.'
+            }
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Content Creation & SEO',
+              description: 'High-quality content that ranks, engages, and converts your audience.'
+            }
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Brand Development & Design',
+              description: 'Complete brand identity development from concept to execution across all touchpoints.'
+            }
+          }
+        ]
       }
     }
-  }, []);
-
-  useEffect(() => {
-    // Add scroll event listener with passive option for performance
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
-    // Initial call to set active section
-    handleScroll();
-    
-    // Cleanup event listener
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [handleScroll]);
-
-  /**
-   * Handle navigation back to landing page
-   */
-  const handleBackToLanding = useCallback(() => {
-    navigate('/');
-  }, [navigate]);
+  };
 
   return (
-    <div className="min-h-screen bg-marketing-bg" data-variant="marketing">
-      <Seo
-        title="Digital Marketing Agency | Mount Laurel, NJ | GoldTech Marketing"
-        description="Full-service digital marketing agency in Mount Laurel, NJ. SEO consulting, social media management, content marketing, PPC advertising, and brand development services. 100+ successful campaigns delivered."
-        path="/marketing"
-        type="website"
-        schema={{
-          '@context': 'https://schema.org',
-          '@type': 'MarketingAgency',
-          name: 'GoldTech Marketing',
-          url: 'https://goldtech-consulting.com/marketing',
-          logo: 'https://goldtech-consulting.com/goldtech-marketing-logo.svg',
-          description: 'Full-service digital marketing agency in Mount Laurel, NJ. SEO consulting, social media management, content marketing, PPC advertising, and brand development services.',
-          serviceType: ['Digital Marketing', 'SEO Consulting', 'Social Media Marketing', 'Content Marketing', 'PPC Advertising', 'Brand Development', 'Marketing Strategy', 'Marketing Consulting'],
-          areaServed: {
-            '@type': 'Country',
-            name: 'United States'
-          },
-          address: {
-            '@type': 'PostalAddress',
-            addressLocality: 'Mount Laurel',
-            addressRegion: 'NJ',
-            addressCountry: 'US'
-          },
-          hasOfferCatalog: {
-            '@type': 'OfferCatalog',
-            name: 'Marketing Services',
-            itemListElement: [
-              {
-                '@type': 'Offer',
-                itemOffered: {
-                  '@type': 'Service',
-                  name: 'Digital Marketing Strategy',
-                  description: 'Comprehensive marketing strategies tailored to your business goals and target audience.'
-                }
-              },
-              {
-                '@type': 'Offer',
-                itemOffered: {
-                  '@type': 'Service',
-                  name: 'Social Media Management',
-                  description: 'Engaging content creation and community management across all major platforms.'
-                }
-              },
-              {
-                '@type': 'Offer',
-                itemOffered: {
-                  '@type': 'Service',
-                  name: 'Content Creation & SEO',
-                  description: 'High-quality content that ranks, engages, and converts your audience.'
-                }
-              },
-              {
-                '@type': 'Offer',
-                itemOffered: {
-                  '@type': 'Service',
-                  name: 'Brand Development & Design',
-                  description: 'Complete brand identity development from concept to execution across all touchpoints.'
-                }
-              }
-            ]
-          }
-        }}
-      />
-      {/* Skip navigation links for accessibility */}
-      <a 
-        href="#main-content" 
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-navy text-white px-4 py-2 rounded z-50"
-      >
-        Skip to main content
-      </a>
-      
-      <Navigation 
-        activeSection={activeSection} 
-        scrollTo={scrollTo}
-        onBackToLanding={handleBackToLanding}
-        logoVariant="marketing"
-      />
-      
-      <main id="main-content" role="main">
-        <HeroSection scrollTo={scrollTo} variant="marketing" />
-        <AboutSection variant="marketing" />
-        <ServicesSection variant="marketing" />
-        <ProjectsSection variant="marketing" />
-        <ContactSection variant="marketing" />
-      </main>
-      
-      <Footer variant="marketing" />
-    </div>
+    <BaseApp
+      variant="marketing"
+      rootClassName="min-h-screen bg-marketing-bg"
+      logoVariant="marketing"
+      seo={seo}
+    />
   );
 };
 

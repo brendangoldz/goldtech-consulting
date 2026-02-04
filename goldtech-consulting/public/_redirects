@@ -9,6 +9,10 @@
 # serves existing files (like /static/js/*.js) with correct MIME types, and only
 # rewrites non-existent paths to index.html for client-side routing
 
+# Explicitly serve sitemap/robots without SPA rewrite
+/sitemap.xml /sitemap.xml 200
+/robots.txt /robots.txt 200
+
 # SPA routing - catch-all for routes that don't match existing files
 # This ensures /marketing, /consulting, etc. all work correctly
 # Static assets in /static/ will be served automatically with correct MIME types

@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@aws-amplify/storage": "^6.11.1",
+    "@aws-sdk/client-s3": "^3.490.0",
+    "aws-amplify": "^6.15.10",
     "axios": "^1.12.0",
     "express": "^4.22.1",
     "framer-motion": "^12.23.12",
@@ -52,6 +55,9 @@
     "format": "prettier --write src/**/*.{js,jsx,json,css,md}",
     "format:check": "prettier --check src/**/*.{js,jsx,json,css,md}",
     "screenshots": "node scripts/capture-screenshots.js",
+    "upload-images": "node scripts/upload-images-to-s3.js",
+    "setup-aws-images": "cd aws/image-optimization && bash setup.sh",
+    "deploy-lambda": "cd aws/image-optimization && bash deploy-lambda.sh",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
