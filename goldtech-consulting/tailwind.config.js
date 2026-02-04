@@ -4,6 +4,9 @@ module.exports = {
   safelist: [
     'bg-marketing-bg/60',
     'bg-white/70',
+    'pt-32',
+    'pb-24',
+    'min-h-[calc(100vh-14rem)]',
   ],
   theme: {
     extend: {

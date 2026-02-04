@@ -39,6 +39,8 @@ export const getThemeClasses = (variant, element) => {
         return 'bg-marketing-bg';
       case 'card-bg':
         return 'bg-marketing-bgAlt';
+      case 'card-border':
+        return 'border-marketing-primary/20';
       default:
         return '';
     }
@@ -69,11 +71,23 @@ export const getThemeClasses = (variant, element) => {
         return 'bg-lightGray';
       case 'card-bg':
         return 'bg-white';
+      case 'card-border':
+        return 'border-gray-100';
       default:
         return '';
     }
   }
 };
+
+/**
+ * Resolve variant class from a mapping object.
+ * 
+ * @param {string} variant - 'consulting' or 'marketing'
+ * @param {Object} classes - { marketing: string, consulting: string }
+ * @returns {string} Variant-specific classes
+ */
+export const getVariantClasses = (variant, classes) =>
+  variant === 'marketing' ? classes.marketing : classes.consulting;
 
 /**
  * Get hero background gradient classes

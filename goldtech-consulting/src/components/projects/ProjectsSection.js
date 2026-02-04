@@ -6,17 +6,31 @@ import SectionHeader from '../shared/SectionHeader';
 import ProjectModal from './ProjectModal';
 import Logo from '../shared/Logo';
 import { getContent } from '../../config/content';
-import { getSectionBg } from '../../config/theme';
-
-const fadeInUp = {
-  initial: { opacity: 0, y: 60 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: "easeOut" }
-};
+import { getSectionBg, getVariantClasses } from '../../config/theme';
+import { fadeInUp } from '../../utils/animations';
 
 const ProjectsSection = ({ variant = 'consulting' }) => {
   const content = getContent(variant).projects;
-  const isMarketing = variant === 'marketing';
+  const cardClasses = getVariantClasses(variant, {
+    marketing: 'bg-marketing-bg border-marketing-primary/20 hover:bg-marketing-bgAlt',
+    consulting: 'bg-lightGray/60 border-gray-200 hover:bg-lightGray'
+  });
+  const sharedBannerClasses = getVariantClasses(variant, {
+    marketing: 'bg-marketing-primary/5 border-marketing-primary/20',
+    consulting: 'bg-gold/5 border-gold/20'
+  });
+  const sharedAccentClasses = getVariantClasses(variant, {
+    marketing: 'text-marketing-primary',
+    consulting: 'text-gold'
+  });
+  const galleryButtonClasses = getVariantClasses(variant, {
+    marketing: 'bg-marketing-primary/10 text-marketing-primary hover:bg-marketing-primary/20',
+    consulting: 'bg-gold/10 text-gold hover:bg-gold/20'
+  });
+  const comingSoonClasses = getVariantClasses(variant, {
+    marketing: 'hover:text-marketing-primary',
+    consulting: 'hover:underline'
+  });
   const [selectedProject, setSelectedProject] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -52,7 +66,7 @@ const ProjectsSection = ({ variant = 'consulting' }) => {
           {content.items.map((project, i) => (
             <motion.article
               key={project.id || i}
-              className={`${isMarketing ? 'bg-marketing-bg border-marketing-primary/20' : 'bg-lightGray/60 border-gray-200'} rounded-xl border overflow-hidden ${isMarketing ? 'hover:bg-marketing-bgAlt' : 'hover:bg-lightGray'} transition-all hover:shadow-lg`}
+              className={`${cardClasses} rounded-xl border overflow-hidden flex flex-col transition-all hover:shadow-lg`}
               variants={fadeInUp}
               initial="initial"
               whileInView="animate"
@@ -60,11 +74,11 @@ const ProjectsSection = ({ variant = 'consulting' }) => {
             >
               {/* Collaboration Banner */}
               {project.isShared && (
-                <div className={`${isMarketing ? 'bg-marketing-primary/5 border-marketing-primary/20' : 'bg-gold/5 border-gold/20'} border-b px-6 py-4`}>
+                <div className={`${sharedBannerClasses} border-b px-6 py-4`}>
                   <div className="flex flex-col items-center gap-2">
                     <div className="flex items-center justify-center gap-3">
                       <Logo variant="consulting" size="small" />
-                      <span className={`text-2xl font-semibold ${isMarketing ? 'text-marketing-primary' : 'text-gold'}`}>×</span>
+                      <span className={`text-2xl font-semibold ${sharedAccentClasses}`}>×</span>
                       <Logo variant="marketing" size="small" />
                     </div>
                     {/* <p className={`text-sm font-medium ${isMarketing ? 'text-marketing-primary' : 'text-gold'}`}>
@@ -74,20 +88,16 @@ const ProjectsSection = ({ variant = 'consulting' }) => {
                 </div>
               )}
               {/* Project Content */}
-              <div className="p-6">
+              <div className="p-6 flex flex-col flex-grow min-h-[200px]">
                 <h3 className="font-semibold text-xl text-navy mb-2">{project.title}</h3>
-                <p className="text-gray-700 mb-4">{project.summary}</p>
+                <p className="text-gray-700 mb-4 flex-grow">{project.summary}</p>
                 
                 {/* Action Buttons */}
-                <div className="flex flex-wrap gap-3 items-center">
+                <div className="flex flex-wrap gap-3 items-center mt-auto">
                   {project.screenshots && project.screenshots.length > 0 && (
                     <button 
                       onClick={() => handleOpenModal(project)}
-                      className={`text-navy font-medium inline-flex items-center px-4 py-2 rounded-lg transition-colors ${
-                        isMarketing 
-                          ? 'bg-marketing-primary/10 text-marketing-primary hover:bg-marketing-primary/20' 
-                          : 'bg-gold/10 text-gold hover:bg-gold/20'
-                      }`}
+                      className={`text-navy font-medium inline-flex items-center px-4 py-2 rounded-lg transition-colors ${galleryButtonClasses}`}
                       aria-label={`View gallery for ${project.title}`}
                     >
                       <FaImages className="mr-2" />
@@ -95,8 +105,8 @@ const ProjectsSection = ({ variant = 'consulting' }) => {
                     </button>
                   )}
                   {(!project.screenshots || project.screenshots.length === 0) && !project.websiteUrl && (
-                    <button className={`text-navy font-medium inline-flex items-center ${isMarketing ? 'hover:text-marketing-primary' : 'hover:underline'}`} aria-label="View case study details - Coming Soon">
-                      Coming Soon <FaArrowRight className={`ml-2 ${isMarketing ? 'text-marketing-primary' : 'text-gold'}`} />
+                    <button className={`text-navy font-medium inline-flex items-center ${comingSoonClasses}`} aria-label="View case study details - Coming Soon">
+                      Coming Soon <FaArrowRight className={`ml-2 ${sharedAccentClasses}`} />
                     </button>
                   )}
                 </div>

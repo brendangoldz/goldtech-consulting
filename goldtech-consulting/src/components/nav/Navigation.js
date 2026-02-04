@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import Logo from '../shared/Logo';
-import { getThemeClasses } from '../../config/theme';
+import LogoSwitcher from './LogoSwitcher';
+import DesktopNavLinks from './DesktopNavLinks';
+import MobileNavMenu from './MobileNavMenu';
 
 /**
  * Navigation - Main navigation component with accessibility features
@@ -132,188 +133,22 @@ const Navigation = ({ activeSection, scrollTo, onBackToLanding, logoVariant = 'c
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 p-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo with Dropdown */}
-          {canSwitch ? (
-            <div className="logo-dropdown-container relative">
-              <motion.div
-                className="flex items-center gap-2 cursor-pointer"
-                onClick={handleLogoDropdownToggle}
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.2 }}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    handleLogoDropdownToggle();
-                  }
-                }}
-                aria-label={`Switch between Consulting and Marketing. Currently viewing ${isMarketing ? 'Marketing' : 'Consulting'}`}
-                aria-expanded={isLogoDropdownOpen}
-                aria-haspopup="true"
-              >
-                <Logo 
-                  size="large" 
-                  variant={logoVariant}
-                />
-                {/* Dropdown Arrow */}
-                <motion.div
-                  animate={{ rotate: isLogoDropdownOpen ? 180 : 0 }}
-                  transition={{ duration: 0.3 }}
-                  className={`${isMarketing ? 'text-marketing-primary' : 'text-gold'}`}
-                >
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </motion.div>
-              </motion.div>
-
-              {/* Dropdown Menu */}
-              <AnimatePresence>
-                {isLogoDropdownOpen && (
-                  <motion.div
-                    className="absolute top-full left-0 mt-2 bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden z-50"
-                    style={{ minWidth: '200px' }}
-                    initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                    transition={{ duration: 0.2 }}
-                    role="menu"
-                    aria-label="Website selection menu"
-                  >
-                    {/* Option: Switch to Consulting */}
-                    {isMarketing && (
-                      <motion.button
-                        className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gold/10 transition-colors duration-200 text-left group"
-                        onClick={() => handleSwitchSite('consulting')}
-                        role="menuitem"
-                        whileHover={{ x: 4 }}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <div className="flex-shrink-0">
-                          <img
-                            src="/goldtech-logo.svg"
-                            alt="GoldTech Consulting"
-                            className="h-8 w-auto"
-                          />
-                        </div>
-                        <div className="flex-1">
-                          <div className="font-semibold text-navy group-hover:text-gold transition-colors">
-                            Consulting
-                          </div>
-                          <div className="text-xs text-gray-500">
-                            Software Development
-                          </div>
-                        </div>
-                        <svg
-                          className="w-4 h-4 text-gold opacity-0 group-hover:opacity-100 transition-opacity"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 5l7 7-7 7"
-                          />
-                        </svg>
-                      </motion.button>
-                    )}
-
-                    {/* Option: Switch to Marketing */}
-                    {!isMarketing && (
-                      <motion.button
-                        className="w-full flex items-center gap-3 px-4 py-3 hover:bg-marketing-primary/10 transition-colors duration-200 text-left group"
-                        onClick={() => handleSwitchSite('marketing')}
-                        role="menuitem"
-                        whileHover={{ x: 4 }}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <div className="flex-shrink-0">
-                          <img
-                            src="/goldtech-marketing-logo.svg"
-                            alt="GoldTech Marketing"
-                            className="h-8 w-auto"
-                          />
-                        </div>
-                        <div className="flex-1">
-                          <div className="font-semibold text-navy group-hover:text-marketing-primary transition-colors">
-                            Marketing
-                          </div>
-                          <div className="text-xs text-gray-500">
-                            Digital Marketing
-                          </div>
-                        </div>
-                        <svg
-                          className="w-4 h-4 text-marketing-primary opacity-0 group-hover:opacity-100 transition-opacity"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 5l7 7-7 7"
-                          />
-                        </svg>
-                      </motion.button>
-                    )}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          ) : (
-            <Logo 
-              size="large" 
-              variant={logoVariant}
-            />
-          )}
+          <LogoSwitcher
+            canSwitch={canSwitch}
+            isLogoDropdownOpen={isLogoDropdownOpen}
+            isMarketing={isMarketing}
+            logoVariant={logoVariant}
+            onToggle={handleLogoDropdownToggle}
+            onSwitchSite={handleSwitchSite}
+          />
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8" role="menubar">
-            {navItems.map((item) => (
-              <motion.button
-                key={item.id}
-                onClick={() => handleNavClick(item.id)}
-                className={`relative font-bold transition-colors duration-200 focus:outline-none ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'} focus:ring-2 focus:ring-offset-2 rounded px-2 py-1 ${
-                  activeSection === item.id 
-                    ? (isMarketing ? 'text-marketing-primary' : 'text-gold')
-                    : (isMarketing ? 'text-navy hover:text-marketing-primary' : 'text-navy hover:text-gold')
-                }`}
-                whileHover={{ y: -2 }}
-                role="menuitem"
-                aria-current={activeSection === item.id ? 'page' : undefined}
-                aria-label={`Navigate to ${item.label} section`}
-              >
-                {item.label}
-                {activeSection === item.id && (
-                  <motion.div
-                    className={`absolute -bottom-1 left-0 right-0 h-0.5 ${isMarketing ? 'bg-marketing-primary' : 'bg-gold'}`}
-                    layoutId="activeSection"
-                    initial={false}
-                    transition={{ duration: 0.3 }}
-                    aria-hidden="true"
-                  />
-                )}
-              </motion.button>
-            ))}
-          </div>
+          <DesktopNavLinks
+            navItems={navItems}
+            activeSection={activeSection}
+            onNavClick={handleNavClick}
+            isMarketing={isMarketing}
+          />
 
           {/* Mobile Menu Button */}
           <button
@@ -351,34 +186,12 @@ const Navigation = ({ activeSection, scrollTo, onBackToLanding, logoVariant = 'c
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <motion.div
-            id="mobile-menu"
-            className="md:hidden bg-white border-t border-gray-200 shadow-lg"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            role="menu"
-            aria-label="Mobile navigation menu"
-          >
-            <div className="px-4 py-2 space-y-1">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => handleNavClick(item.id)}
-                  className={`block w-full text-left px-3 py-2 rounded-lg font-medium transition-colors duration-200 focus:outline-none ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'} focus:ring-2 ${
-                    activeSection === item.id
-                      ? (isMarketing ? 'bg-marketing-primary/10 text-marketing-primary' : 'bg-gold/10 text-gold')
-                      : 'text-navy hover:bg-gray-100'
-                  }`}
-                  role="menuitem"
-                  aria-current={activeSection === item.id ? 'page' : undefined}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-          </motion.div>
+          <MobileNavMenu
+            navItems={navItems}
+            activeSection={activeSection}
+            onNavClick={handleNavClick}
+            isMarketing={isMarketing}
+          />
         )}
       </div>
     </motion.nav>
