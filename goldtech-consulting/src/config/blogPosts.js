@@ -37,7 +37,7 @@ export const blogPosts = [
     ],
     cta: {
       text: 'If you want this implemented for your business, here is how we help.',
-      href: '/consulting/services/software-automation-consulting',
+      href: '/consulting/services/systems-integration-consulting',
       secondaryText: 'Start your project',
       secondaryHref: '/consulting#contact'
     }
@@ -79,7 +79,7 @@ export const blogPosts = [
     ],
     cta: {
       text: 'If you want this implemented for your business, here is how we help.',
-      href: '/consulting/services/crm-integration-services',
+      href: '/consulting/services/systems-integration-consulting',
       secondaryText: 'Start your project',
       secondaryHref: '/consulting#contact'
     }
@@ -120,7 +120,7 @@ export const blogPosts = [
     ],
     cta: {
       text: 'If you want this implemented for your business, here is how we help.',
-      href: '/consulting/services/business-process-automation',
+      href: '/consulting/services/business-technology-advisory',
       secondaryText: 'Start your project',
       secondaryHref: '/consulting#contact'
     }

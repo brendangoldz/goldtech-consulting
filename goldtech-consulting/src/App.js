@@ -8,6 +8,7 @@ import Seo from './components/shared/Seo';
 import SeoLandingPage from './components/pages/SeoLandingPage';
 import BlogIndex from './components/pages/BlogIndex';
 import BlogArticle from './components/pages/BlogArticle';
+import ConfirmationPage from './components/pages/ConfirmationPage';
 import NotFoundPage from './components/pages/NotFoundPage';
 import {
   consultingServicePages,
@@ -120,6 +121,7 @@ const App = () => {
 
         <Route path="/blog" element={<BlogIndex />} />
         <Route path="/blog/:slug" element={<BlogArticle />} />
+        <Route path="/confirmation" element={<ConfirmationPage />} />
         <Route path="*" element={<NotFoundPage variant="consulting" />} />
       </Routes>
     </BrowserRouter>

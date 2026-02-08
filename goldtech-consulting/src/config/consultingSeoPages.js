@@ -1,107 +1,59 @@
 export const consultingServicePages = [
   {
-    slug: 'software-automation-consulting',
-    path: '/consulting/services/software-automation-consulting',
-    seoTitle: 'Software Automation Consulting | GoldTech Consulting',
-    metaDescription: 'Software automation consulting that connects your website, CRM, and booking tools into reliable workflows that scale.',
-    eyebrow: 'Automation services',
-    h1: 'Software Automation Consulting Services',
+    slug: 'wix-custom-website-development',
+    path: '/consulting/services/wix-custom-website-development',
+    seoTitle: 'Wix & Custom Website Development | GoldTech Consulting',
+    metaDescription: 'Wix and custom website development with conversion-focused UX, technical reviews, and performance improvements.',
+    eyebrow: 'Web development',
+    h1: 'Wix & Custom Website Development',
     intro:
-      'We design and implement automation that connects your website, CRM, and booking tools, reducing manual work and improving data accuracy.',
+      'We build Wix and custom websites that look premium, load fast, and convert visitors into leads.',
     sections: [
       {
         title: 'Who it is for',
         items: [
-          'Teams spending hours on manual data entry and handoffs',
-          'Owners who need reliable workflows across sales, ops, and support',
-          'Growing businesses that want automation built into their stack'
+          'Teams launching a new Wix or custom site',
+          'Brands ready for a redesign with clearer conversion paths',
+          'Owners who want a technical review before scaling traffic'
         ]
       },
       {
         title: 'Problems we solve',
         items: [
-          'Disconnected systems and duplicate data entry',
-          'Slow client intake, approvals, and follow-through',
-          'Limited visibility into what is happening inside workflows'
+          'Websites that look good but do not convert',
+          'Slow load times and inconsistent UX',
+          'Sites that are difficult to update or scale'
         ]
       },
       {
         title: 'Tools and platforms',
         items: [
-          'Wix, booking tools, and CRM integrations',
-          'Custom API workflows with reliable monitoring',
-          'AWS services for secure, scalable automation'
+          'Wix Editor, Wix Studio, and custom builds',
+          'Content structure and UX conversion flows',
+          'Performance, analytics, and technical QA'
         ]
       },
       {
         title: 'Outcomes you can expect',
         items: [
-          'Faster workflows with fewer manual steps',
-          'Cleaner data across tools and teams',
-          'More time back for client delivery and growth'
+          'A website you are proud to share',
+          'Clear conversion paths and stronger lead flow',
+          'Improved performance and site reliability'
         ]
       }
     ],
     cta: {
-      text: 'Start your automation project',
+      text: 'Build or improve your site',
       href: '/consulting#contact'
     }
   },
   {
-    slug: 'business-process-automation',
-    path: '/consulting/services/business-process-automation',
-    seoTitle: 'Business Process Automation | GoldTech Consulting',
-    metaDescription: 'Business process automation that standardizes workflows, reduces errors, and improves visibility across operations.',
-    eyebrow: 'Process improvement',
-    h1: 'Business Process Automation',
-    intro:
-      'We streamline recurring processes so your team moves faster with fewer mistakes, clearer ownership, and better reporting.',
-    sections: [
-      {
-        title: 'Who it is for',
-        items: [
-          'Businesses with repeated tasks across teams',
-          'Operations leaders who need consistency and reporting',
-          'Teams struggling to scale without chaos'
-        ]
-      },
-      {
-        title: 'Problems we solve',
-        items: [
-          'Manual handoffs and missed steps',
-          'Delayed approvals and inconsistent outcomes',
-          'Limited reporting on workflow health'
-        ]
-      },
-      {
-        title: 'Tools and platforms',
-        items: [
-          'Workflow automation with Zapier or custom code',
-          'Integrations with CRMs, project tools, and payment systems',
-          'AWS-backed services for reliability and scale'
-        ]
-      },
-      {
-        title: 'Outcomes you can expect',
-        items: [
-          'Repeatable processes that scale',
-          'Reduced operational errors',
-          'Clear reporting and accountability'
-        ]
-      }
-    ],
-    cta: {
-      text: 'Automate your core processes',
-      href: '/consulting#contact'
-    }
-  },
-  {
-    slug: 'system-integration-consulting',
-    path: '/consulting/services/system-integration-consulting',
-    seoTitle: 'System Integration Consulting | GoldTech Consulting',
-    metaDescription: 'System integration consulting that connects your CRM, website, and third-party tools with secure APIs.',
+    slug: 'systems-integration-consulting',
+    path: '/consulting/services/systems-integration-consulting',
+    seoTitle: 'Systems & Integration Consulting | GoldTech Consulting',
+    metaDescription: 'Systems and integration consulting that connects your website, CRM, and tools with reliable workflows and data flows.',
     eyebrow: 'Integrations',
-    h1: 'System Integration Consulting',
+    h1: 'Systems & Integration Consulting',
     intro:
       'We connect the tools you already use so data flows cleanly between your website, CRM, and operations systems.',
     sections: [
@@ -124,8 +76,8 @@ export const consultingServicePages = [
       {
         title: 'Tools and platforms',
         items: [
+          'Wix CRM, HubSpot, and custom CRM integrations',
           'API integrations across Wix, CRMs, and booking tools',
-          'Custom middleware on AWS',
           'Monitoring and logging for reliability'
         ]
       },
@@ -144,62 +96,14 @@ export const consultingServicePages = [
     }
   },
   {
-    slug: 'crm-integration-services',
-    path: '/consulting/services/crm-integration-services',
-    seoTitle: 'CRM Integration Services | GoldTech Consulting',
-    metaDescription: 'CRM integration services that connect your website, forms, and booking tools to keep client data accurate.',
-    eyebrow: 'CRM integrations',
-    h1: 'CRM Integration Services',
-    intro:
-      'We integrate your CRM with the tools you use to capture leads, automate follow-ups, and keep every record accurate.',
-    sections: [
-      {
-        title: 'Who it is for',
-        items: [
-          'Businesses with leads scattered across forms and inboxes',
-          'Sales teams missing updates between systems',
-          'Operations teams needing clean, reliable CRM data'
-        ]
-      },
-      {
-        title: 'Problems we solve',
-        items: [
-          'Duplicate or incomplete CRM records',
-          'Manual lead routing and follow-ups',
-          'Broken syncs between website and CRM'
-        ]
-      },
-      {
-        title: 'Tools and platforms',
-        items: [
-          'Wix CRM, HubSpot, and custom CRM integrations',
-          'Zapier and API-based workflows',
-          'AWS services for secure processing'
-        ]
-      },
-      {
-        title: 'Outcomes you can expect',
-        items: [
-          'Clean, consistent CRM data',
-          'Automated lead capture and routing',
-          'Better reporting and faster follow-ups'
-        ]
-      }
-    ],
-    cta: {
-      text: 'Integrate your CRM',
-      href: '/consulting#contact'
-    }
-  },
-  {
-    slug: 'custom-automation-development',
-    path: '/consulting/services/custom-automation-development',
-    seoTitle: 'Custom Automation Development | GoldTech Consulting',
-    metaDescription: 'Custom automation development tailored to your workflows, data, and tools for measurable operational gains.',
+    slug: 'custom-software-solutions',
+    path: '/consulting/services/custom-software-solutions',
+    seoTitle: 'Custom Software Solutions | GoldTech Consulting',
+    metaDescription: 'Custom software solutions tailored to your workflows, data, and tools for measurable operational gains.',
     eyebrow: 'Custom solutions',
-    h1: 'Custom Automation Development',
+    h1: 'Custom Software Solutions',
     intro:
-      'When off-the-shelf tools are not enough, we build custom automation and integrations that fit your workflows and scale with your business.',
+      'When off-the-shelf tools are not enough, we build custom software, automations, and integrations that fit your workflows.',
     sections: [
       {
         title: 'Who it is for',
@@ -235,7 +139,55 @@ export const consultingServicePages = [
       }
     ],
     cta: {
-      text: 'Build a custom automation',
+      text: 'Build a custom solution',
+      href: '/consulting#contact'
+    }
+  },
+  {
+    slug: 'business-technology-advisory',
+    path: '/consulting/services/business-technology-advisory',
+    seoTitle: 'Business & Technology Advisory | GoldTech Consulting',
+    metaDescription: 'Business and technology advisory to prioritize systems, streamline operations, and build a clear execution roadmap.',
+    eyebrow: 'Advisory services',
+    h1: 'Business & Technology Advisory',
+    intro:
+      'We help you prioritize systems, reduce operational friction, and build a practical plan for scaling your business.',
+    sections: [
+      {
+        title: 'Who it is for',
+        items: [
+          'Founders who need clarity on where to invest in tech',
+          'Teams dealing with inefficient operations and handoffs',
+          'Leaders preparing for growth or a major change'
+        ]
+      },
+      {
+        title: 'Problems we solve',
+        items: [
+          'Unclear priorities across systems and tools',
+          'Manual processes that slow delivery',
+          'No roadmap for upgrades and automation'
+        ]
+      },
+      {
+        title: 'Tools and platforms',
+        items: [
+          'Systems audits and technology roadmaps',
+          'Workflow mapping and process optimization',
+          'Vendor evaluation and implementation guidance'
+        ]
+      },
+      {
+        title: 'Outcomes you can expect',
+        items: [
+          'A clear plan tied to business goals',
+          'Faster execution with fewer bottlenecks',
+          'Better alignment between teams and tools'
+        ]
+      }
+    ],
+    cta: {
+      text: 'Get advisory support',
       href: '/consulting#contact'
     }
   }
@@ -410,9 +362,10 @@ export const consultingIndustryPages = [
       {
         title: 'What we deliver',
         items: [
-          'Automated intake and onboarding',
-          'Integrated scheduling and reminders',
-          'Clean CRM records with reporting'
+          'Wix and custom websites that support client intake',
+          'Systems and integrations for scheduling and CRM',
+          'Custom automation for onboarding and follow-ups',
+          'Advisory guidance to prioritize what to automate first'
         ]
       },
       {
@@ -450,9 +403,10 @@ export const consultingIndustryPages = [
       {
         title: 'What we deliver',
         items: [
-          'Streamlined intake and qualification',
-          'Automated proposal and payment workflows',
-          'Connected CRM and project tracking'
+          'Wix and custom sites that convert inbound leads',
+          'Systems and integrations for proposals and payments',
+          'Custom software to streamline intake and delivery',
+          'Business and technology advisory for scale'
         ]
       },
       {
@@ -490,9 +444,10 @@ export const consultingIndustryPages = [
       {
         title: 'What we deliver',
         items: [
-          'Automated lead capture and routing',
-          'CRM and email automation',
-          'Pipeline reporting and dashboards'
+          'Wix and custom sites that capture listing inquiries',
+          'Systems and integrations for lead routing',
+          'Custom software for pipeline visibility',
+          'Advisory support for workflow optimization'
         ]
       },
       {
@@ -530,9 +485,10 @@ export const consultingIndustryPages = [
       {
         title: 'What we deliver',
         items: [
-          'Automated booking intake and routing',
-          'Calendar and CRM integrations',
-          'Reporting for inquiries and conversions'
+          'Wix and custom sites that support booking inquiries',
+          'Systems and integrations for calendar and CRM',
+          'Custom automation for follow-up and reporting',
+          'Advisory guidance for a scalable booking funnel'
         ]
       },
       {
