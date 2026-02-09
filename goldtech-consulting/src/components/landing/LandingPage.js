@@ -37,7 +37,10 @@ const LandingPage = () => {
     spacing: 30.00,
     showLines: false
   }), []);
-  const { vantaRef, vantaEffect } = useVantaDots(vantaOptions, []);
+  const { vantaRef, vantaEffect, isVantaEnabled } = useVantaDots(
+    vantaOptions,
+    []
+  );
   
   // Get content for each section
   const consultingContent = getContent('consulting');
@@ -86,12 +89,18 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="min-h-screen w-full relative overflow-hidden">
+    <div
+      className={`min-h-screen w-full relative overflow-hidden ${
+        isVantaEnabled ? '' : 'bg-gray-50'
+      }`}
+    >
       {/* Screen reader only heading for SEO */}
       <h1 className="sr-only">GoldTech - Choose Your Path: Software Development or Marketing Solutions</h1>
 
       {/* Vanta.js animated background */}
-      <div ref={vantaRef} className="absolute inset-0 w-full h-full" />
+      {isVantaEnabled && (
+        <div ref={vantaRef} className="absolute inset-0 w-full h-full" />
+      )}
       
       {/* Overlay to ensure content is readable */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50/80 via-white/60 to-gray-50/80" />

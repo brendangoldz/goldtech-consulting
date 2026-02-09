@@ -72,6 +72,13 @@ describe('Footer', () => {
     expect(githubLink).toHaveAttribute('href', 'https://github.com/brendangoldz');
     expect(githubLink).toHaveAttribute('target', '_blank');
     expect(githubLink).toHaveAttribute('rel', 'noopener noreferrer');
+
+    // Facebook link
+    const facebookLink = screen.getByRole('link', { name: 'Connect on Facebook' });
+    expect(facebookLink).toBeInTheDocument();
+    expect(facebookLink).toHaveAttribute('href', 'https://www.facebook.com/profile.php?id=61587235855071');
+    expect(facebookLink).toHaveAttribute('target', '_blank');
+    expect(facebookLink).toHaveAttribute('rel', 'noopener noreferrer');
     
     // Upwork link
     const upworkLink = screen.getByRole('link', { name: 'View Upwork profile' });

@@ -44,26 +44,26 @@ export const contentConfig = {
         {
           icon: 'FaLaptopCode',
           title: 'Wix & Custom Website Development',
-          desc: 'Wix and custom website builds paired with integrations that connect your CRM, booking tools, and platforms.',
-          slug: 'software-automation-consulting'
+          desc: 'Wix and custom website builds with conversion-focused UX, technical reviews, and reliability improvements.',
+          slug: 'wix-custom-website-development'
         },
         {
           icon: 'FaChartLine',
-          title: 'Tech Consultation & Website Reviews',
-          desc: 'Focused technical consultations with clear recommendations for tools, architecture, and site experience.',
-          slug: 'system-integration-consulting'
+          title: 'Systems & Integration Consulting',
+          desc: 'Integration planning and execution across Wix, CRMs, booking tools, and internal systems.',
+          slug: 'systems-integration-consulting'
         },
         {
           icon: 'FaShieldAlt',
-          title: 'Custom Automation Development',
-          desc: 'Tailor-made workflows, integrations, and monitoring that scale with your operations.',
-          slug: 'custom-automation-development'
+          title: 'Custom Software Solutions',
+          desc: 'Tailor-made software, workflows, and automations that fit your operations and scale with demand.',
+          slug: 'custom-software-solutions'
         },
         {
           icon: 'FaMobileAlt',
-          title: 'Process Automation & Optimization',
-          desc: 'Streamlined delivery workflows, performance monitoring, and repeatable operations.',
-          slug: 'business-process-automation'
+          title: 'Business & Technology Advisory',
+          desc: 'Strategic guidance to prioritize systems, streamline operations, and improve execution.',
+          slug: 'business-technology-advisory'
         }
       ]
     },
@@ -74,8 +74,8 @@ export const contentConfig = {
       items: [
         {
           id: 'wix-websites-delivered',
-          title: '100+ Websites Delivered for Entrepreneurs & Businesses',
-          summary: 'Designed and developed modern Wix websites with custom branding, optimized layouts, and scalable templates. Streamlined delivery process reduced turnaround time and enabled consistent, premium-quality results across industries.',
+          title: '100+ Wix Websites Delivered for Entrepreneurs & Businesses',
+          summary: 'Designed and developed modern Wix websites with custom branding, optimized layouts, and conversion-focused content. Streamlined delivery reduced turnaround time and enabled consistent, premium-quality results across industries.',
           isShared: true,
           screenshots: [
             {
@@ -651,6 +651,7 @@ export const contentConfig = {
       location: 'Mount Laurel, NJ',
       socialLinks: {
         linkedin: 'https://www.linkedin.com/in/brendangoldsmith/',
+        facebook: 'https://www.facebook.com/profile.php?id=61587235855071',
         github: 'https://github.com/brendangoldz',
         upwork: 'https://www.upwork.com/freelancers/~014de678477c7c319c?mp_source=share'
       }
@@ -689,30 +690,30 @@ export const contentConfig = {
     services: {
       eyebrow: 'What we do',
       title: 'Our Services',
-      subtitle: 'Comprehensive marketing services designed to elevate your brand and drive meaningful engagement.',
+      subtitle: 'Brand, content, and growth-focused marketing services designed to attract the right audience and convert attention into leads.',
       items: [
         {
           icon: 'FaChartLine',
-          title: 'Digital Marketing Strategy',
-          desc: 'Channel planning, paid media strategy, and ongoing optimization for measurable growth.',
+          title: 'Digital & Social Marketing Strategy',
+          desc: 'Integrated marketing strategy covering social media, content, and paid channels to drive visibility, engagement, and lead growth.',
           slug: 'digital-marketing-strategy'
         },
         {
-          icon: 'FaMobileAlt',
-          title: 'Social Media Strategy',
-          desc: 'Actionable social strategy and content planning to build engagement and lead flow.',
-          slug: 'social-media-management'
+          icon: 'FaLaptopCode',
+          title: 'Wix Web Design, Content & SEO',
+          desc: 'Conversion-focused Wix web design, on-site content, SEO improvements, and social content planning that turn visitors into qualified leads.',
+          slug: 'content-marketing-seo'
         },
         {
-          icon: 'FaLaptopCode',
-          title: 'Website & Content Optimization',
-          desc: 'SEO-focused website reviews, content improvements, and performance enhancements.',
-          slug: 'content-marketing-seo'
+          icon: 'FaChartLine',
+          title: 'SEO Consulting',
+          desc: 'Technical audits, content briefs, and on-page optimization to improve rankings and lead quality.',
+          slug: 'seo-consulting'
         },
         {
           icon: 'FaShieldAlt',
           title: 'Brand Book Development',
-          desc: 'Brand guidelines for colors, typography, logo usage, voice, and core messaging.',
+          desc: 'Clear brand guidelines for visuals, voice, and messaging to keep marketing consistent across every channel.',
           slug: 'brand-development-design'
         }
       ]
@@ -1300,13 +1301,32 @@ export const contentConfig = {
       email: 'heather@goldtech-consulting.com',
       location: 'Mount Laurel, NJ',
       socialLinks: {
-        linkedin: 'https://www.linkedin.com/in/brendangoldsmith/',
-        github: 'https://github.com/brendangoldz',
-        upwork: 'https://www.upwork.com/freelancers/~014de678477c7c319c?mp_source=share'
+     
       }
     }
   }
 };
+
+const hasProjectThumbnail = (screenshot) =>
+  Boolean(screenshot?.src) && !screenshot.src.toLowerCase().endsWith('.svg');
+
+const sortScreenshotsByThumbnail = (screenshots = []) =>
+  [...screenshots].sort((a, b) => {
+    const aHasThumbnail = hasProjectThumbnail(a);
+    const bHasThumbnail = hasProjectThumbnail(b);
+    if (aHasThumbnail === bHasThumbnail) {
+      return 0;
+    }
+    return aHasThumbnail ? -1 : 1;
+  });
+
+const sharedProjectItems = contentConfig.consulting.projects.items.map((project) => ({
+  ...project,
+  screenshots: sortScreenshotsByThumbnail(project.screenshots)
+}));
+
+contentConfig.consulting.projects.items = sharedProjectItems;
+contentConfig.marketing.projects.items = sharedProjectItems;
 
 /**
  * Get content for a specific variant

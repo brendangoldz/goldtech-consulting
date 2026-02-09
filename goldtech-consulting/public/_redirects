@@ -13,6 +13,13 @@
 /sitemap.xml /sitemap.xml 200
 /robots.txt /robots.txt 200
 
+# Consulting service redirects
+/consulting/services/software-automation-consulting /consulting/services/systems-integration-consulting 301
+/consulting/services/system-integration-consulting /consulting/services/systems-integration-consulting 301
+/consulting/services/crm-integration-services /consulting/services/systems-integration-consulting 301
+/consulting/services/custom-automation-development /consulting/services/custom-software-solutions 301
+/consulting/services/business-process-automation /consulting/services/business-technology-advisory 301
+
 # SPA routing - catch-all for routes that don't match existing files
 # This ensures /marketing, /consulting, etc. all work correctly
 # Static assets in /static/ will be served automatically with correct MIME types

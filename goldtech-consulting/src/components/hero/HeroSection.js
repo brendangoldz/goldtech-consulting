@@ -67,7 +67,9 @@ const HeroSection = ({ scrollTo, variant = 'consulting' }) => {
     spacing: 25.00,
     showLines: false
   }), [isMarketing]);
-  const { vantaRef } = useVantaDots(vantaOptions, [isMarketing]);
+  const { vantaRef, isVantaEnabled } = useVantaDots(vantaOptions, [
+    isMarketing
+  ]);
 
   /**
    * Handle primary CTA button click
@@ -91,7 +93,9 @@ const HeroSection = ({ scrollTo, variant = 'consulting' }) => {
       role="banner"
     >
       {/* Vanta.js animated background */}
-      <div ref={vantaRef} className="absolute inset-0 w-full h-full" />
+      {isVantaEnabled && (
+        <div ref={vantaRef} className="absolute inset-0 w-full h-full" />
+      )}
       
       {/* Overlay to ensure content readability */}
       <div className={`absolute inset-0 ${overlayClasses}`} />

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FaLinkedin, FaGithub } from 'react-icons/fa';
+import { FaFacebookF, FaGithub, FaLinkedin } from 'react-icons/fa';
 import Logo from '../shared/Logo';
 import { getContent } from '../../config/content';
 import { getThemeClasses } from '../../config/theme';
@@ -57,6 +57,11 @@ const Footer = ({ variant = 'consulting' }) => {
             {contact.socialLinks.linkedin && (
               <a href={contact.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className={`p-2 rounded-lg border ${isMarketing ? 'border-white/30 hover:border-white hover:bg-white/10' : 'border-gray-600 hover:border-gold hover:bg-gold/10'} transition-all duration-300`} aria-label="Connect on LinkedIn">
                 <FaLinkedin className={`text-gray-300 ${isMarketing ? 'hover:text-white' : 'hover:text-gold'} transition-colors`} />
+              </a>
+            )}
+            {contact.socialLinks.facebook && (
+              <a href={contact.socialLinks.facebook} target="_blank" rel="noopener noreferrer" className={`p-2 rounded-lg border ${isMarketing ? 'border-white/30 hover:border-white hover:bg-white/10' : 'border-gray-600 hover:border-gold hover:bg-gold/10'} transition-all duration-300`} aria-label="Connect on Facebook">
+                <FaFacebookF className={`text-gray-300 ${isMarketing ? 'hover:text-white' : 'hover:text-gold'} transition-colors`} />
               </a>
             )}
             {contact.socialLinks.github && (

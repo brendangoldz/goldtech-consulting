@@ -96,68 +96,20 @@ export const marketingServicePages = [
     }
   },
   {
-    slug: 'social-media-management',
-    path: '/marketing/services/social-media-management',
-    seoTitle: 'Social Media Management | GoldTech Marketing',
-    metaDescription: 'Social media strategy and management that builds consistent engagement and drives leads with a clear plan.',
-    eyebrow: 'Social services',
-    h1: 'Social Media Management',
-    intro:
-      'We deliver social media strategy and guidance that builds trust, drives engagement, and supports your growth goals.',
-    sections: [
-      {
-        title: 'Who it is for',
-        items: [
-          'Brands with inconsistent social presence',
-          'Teams needing a repeatable content plan',
-          'Companies that want more leads from social'
-        ]
-      },
-      {
-        title: 'Problems we solve',
-        items: [
-          'Low engagement and weak brand visibility',
-          'Content that does not align with the funnel',
-          'No system for testing and improving'
-        ]
-      },
-      {
-        title: 'Channels and tools',
-        items: [
-          'LinkedIn, Instagram, and Facebook',
-          'Content calendars and campaign planning',
-          'Analytics and reporting'
-        ]
-      },
-      {
-        title: 'Outcomes you can expect',
-        items: [
-          'Stronger brand presence and engagement',
-          'Consistent content production',
-          'Clear metrics and growth insights'
-        ]
-      }
-    ],
-    cta: {
-      text: 'Strengthen your social presence',
-      href: '/marketing#contact'
-    }
-  },
-  {
     slug: 'content-marketing-seo',
     path: '/marketing/services/content-marketing-seo',
-    seoTitle: 'Content Marketing & SEO | GoldTech Marketing',
-    metaDescription: 'Content marketing and SEO that ranks, engages, and converts with an ongoing optimization cadence.',
+    seoTitle: 'Content Marketing, SEO & Web Design | GoldTech Marketing',
+    metaDescription: 'Wix web design, content marketing, and SEO that ranks, engages, and converts with an ongoing optimization cadence.',
     eyebrow: 'Content services',
-    h1: 'Content Marketing and SEO',
+    h1: 'Content Marketing, SEO, and Web Design',
     intro:
-      'We create and optimize content that ranks for high-intent queries and turns visitors into leads.',
+      'We design and optimize Wix websites with content that ranks for high-intent queries and turns visitors into leads.',
     sections: [
       {
         title: 'Who it is for',
         items: [
           'Businesses that need consistent content production',
-          'Brands launching new service pages',
+          'Brands launching new Wix service pages or redesigns',
           'Teams that want SEO-focused content strategy'
         ]
       },
@@ -166,14 +118,16 @@ export const marketingServicePages = [
         items: [
           'Blog posts that do not rank',
           'Content with unclear conversion goals',
-          'Lack of editorial consistency'
+          'Wix sites that are not built to convert',
+          'Social content that does not support the funnel'
         ]
       },
       {
         title: 'Channels and tools',
         items: [
+          'Wix web design, UX improvements, and SEO updates',
           'SEO content briefs and on-page optimization',
-          'Editorial calendars and content planning',
+          'Social content planning and publishing',
           'Performance tracking and updates'
         ]
       },
@@ -250,7 +204,7 @@ export const marketingPlatformPages = [
     eyebrow: 'LinkedIn',
     h1: 'LinkedIn Marketing Services',
     intro:
-      'We help B2B teams grow visibility and generate leads with consistent LinkedIn content and campaigns.',
+      'We help B2B teams grow visibility and generate leads with a LinkedIn strategy that ties into brand, SEO, and web conversion.',
     sections: [
       {
         title: 'Who it is for',
@@ -263,17 +217,17 @@ export const marketingPlatformPages = [
       {
         title: 'What we deliver',
         items: [
-          'Content strategy and publishing cadence',
-          'Profile optimization and positioning',
-          'Campaign planning and reporting'
+          'Digital & social marketing strategy for LinkedIn',
+          'Brand messaging and profile positioning',
+          'Wix landing pages and SEO-informed content that converts'
         ]
       },
       {
         title: 'Outcomes you can expect',
         items: [
-          'Stronger visibility in your market',
-          'More consistent inbound interest',
-          'Clear performance tracking'
+          'Stronger visibility and credibility',
+          'Consistent inbound interest from the right audience',
+          'Traffic routed to conversion-ready pages'
         ]
       }
     ],
@@ -290,7 +244,7 @@ export const marketingPlatformPages = [
     eyebrow: 'Instagram',
     h1: 'Instagram for Business',
     intro:
-      'We build Instagram strategies that grow engagement and support your sales funnel with consistent content.',
+      'We build Instagram strategies that grow engagement and connect your content to conversion-focused web experiences.',
     sections: [
       {
         title: 'Who it is for',
@@ -303,17 +257,17 @@ export const marketingPlatformPages = [
       {
         title: 'What we deliver',
         items: [
-          'Content planning and creative direction',
-          'Engagement strategy and community management',
-          'Reporting and optimization'
+          'Digital & social marketing strategy for Instagram',
+          'Brand design guidance and content direction',
+          'Wix web design, SEO updates, and funnel alignment'
         ]
       },
       {
         title: 'Outcomes you can expect',
         items: [
           'Consistent engagement growth',
-          'Clear content performance insights',
-          'Stronger brand presence'
+          'A cohesive brand presence across platforms',
+          'Social traffic that converts into leads'
         ]
       }
     ],
@@ -330,7 +284,7 @@ export const marketingPlatformPages = [
     eyebrow: 'Paid media',
     h1: 'Google Ads and PPC Management',
     intro:
-      'We manage Google Ads campaigns end-to-end, from strategy and setup to ongoing optimization and reporting.',
+      'We manage Google Ads campaigns end-to-end with landing pages, SEO hygiene, and brand alignment that improve conversion rates.',
     sections: [
       {
         title: 'Who it is for',
@@ -343,9 +297,9 @@ export const marketingPlatformPages = [
       {
         title: 'What we deliver',
         items: [
-          'Campaign strategy, setup, and optimization',
-          'Audience targeting and conversion improvements',
-          'Performance reporting and insights'
+          'Digital marketing strategy and campaign execution',
+          'Wix landing pages, content, and SEO readiness',
+          'Conversion optimization and performance reporting'
         ]
       },
       {
@@ -386,17 +340,18 @@ export const marketingIndustryPages = [
       {
         title: 'What we deliver',
         items: [
-          'Clear messaging and positioning',
-          'Content strategy and publishing plan',
-          'Lead generation funnel setup'
+          'Digital & social marketing strategy',
+          'Wix web design, content, and SEO improvements',
+          'SEO consulting for core offers',
+          'Brand development and design guidance'
         ]
       },
       {
         title: 'Channels we focus on',
         items: [
-          'SEO and content marketing',
-          'LinkedIn and Instagram',
-          'Email and nurture sequences'
+          'LinkedIn and Instagram content',
+          'Conversion-focused landing pages',
+          'Lead magnets and nurture sequences'
         ]
       }
     ],
@@ -426,17 +381,18 @@ export const marketingIndustryPages = [
       {
         title: 'What we deliver',
         items: [
-          'Positioning and messaging strategy',
-          'Content plans and lead magnets',
-          'SEO and social campaigns'
+          'Digital & social marketing strategy',
+          'Wix web design, content, and SEO improvements',
+          'SEO consulting for niche services',
+          'Brand development and design systems'
         ]
       },
       {
         title: 'Channels we focus on',
         items: [
-          'LinkedIn and SEO',
-          'Content marketing',
-          'Email nurture sequences'
+          'LinkedIn thought leadership and SEO',
+          'Conversion-ready service pages',
+          'Email nurture and lead magnets'
         ]
       }
     ],
@@ -466,9 +422,10 @@ export const marketingIndustryPages = [
       {
         title: 'What we deliver',
         items: [
-          'Local SEO and listing optimization',
-          'Lead generation campaigns',
-          'Content and social strategy'
+          'Digital & social marketing strategy',
+          'Wix web design, content, and SEO improvements',
+          'SEO consulting for local visibility',
+          'Brand development and design for listings'
         ]
       },
       {
@@ -476,7 +433,7 @@ export const marketingIndustryPages = [
         items: [
           'Local SEO and Google Business Profile',
           'Paid search and social ads',
-          'Email and CRM nurture'
+          'Follow-up and CRM nurture'
         ]
       }
     ],
@@ -506,9 +463,10 @@ export const marketingIndustryPages = [
       {
         title: 'What we deliver',
         items: [
-          'Positioning and messaging strategy',
-          'Content and social media plan',
-          'Lead capture and booking funnels'
+          'Digital & social marketing strategy',
+          'Wix web design, content, and SEO improvements',
+          'SEO consulting for speaker topics',
+          'Brand development and design for authority'
         ]
       },
       {
@@ -516,7 +474,7 @@ export const marketingIndustryPages = [
         items: [
           'SEO and content marketing',
           'LinkedIn and Instagram',
-          'Email and nurture systems'
+          'Booking funnels and follow-up'
         ]
       }
     ],

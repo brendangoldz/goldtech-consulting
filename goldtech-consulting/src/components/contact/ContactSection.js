@@ -1,7 +1,13 @@
 import React, { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import {
-  FaEnvelope, FaMapMarkerAlt, FaLinkedin, FaGithub, FaCheckCircle, FaExclamationCircle
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaLinkedin,
+  FaFacebookF,
+  FaGithub,
+  FaCheckCircle,
+  FaExclamationCircle
 } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 
@@ -366,6 +372,17 @@ const ContactSection = ({ variant = 'consulting' }) => {
                     aria-label="Connect on LinkedIn"
                   >
                     <FaLinkedin className={`text-navy ${isMarketing ? 'hover:text-marketing-primary' : 'hover:text-gold'} transition-colors`} aria-hidden="true" />
+                  </a>
+                )}
+                {contact.socialLinks.facebook && (
+                  <a 
+                    href={contact.socialLinks.facebook} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className={`p-2 rounded-lg border ${isMarketing ? 'hover:bg-marketing-bg' : 'hover:bg-lightGray'} transition-colors focus:outline-none ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'} focus:ring-2`}
+                    aria-label="Connect on Facebook"
+                  >
+                    <FaFacebookF className={`text-navy ${isMarketing ? 'hover:text-marketing-primary' : 'hover:text-gold'} transition-colors`} aria-hidden="true" />
                   </a>
                 )}
                 {contact.socialLinks.github && (
