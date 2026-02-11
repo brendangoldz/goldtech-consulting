@@ -15,6 +15,7 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const rateLimit = require('express-rate-limit');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -22,6 +23,12 @@ const PORT = process.env.PORT || 3001;
 // Serve static files from the React app build
 const buildPath = path.join(__dirname, '../build');
 app.use(express.static(buildPath));
+
+// Rate limiter for catch-all route to protect file system access
+const catchAllLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 300, // limit each IP to 300 requests per windowMs
+});
 
 // Read the HTML template
 let htmlTemplate;
@@ -103,7 +110,7 @@ app.get('/marketing', (req, res) => {
 });
 
 // Catch-all handler: send back React's index.html file for client-side routing
-app.get('*', (req, res) => {
+app.get('*', catchAllLimiter, (req, res) => {
   res.sendFile(path.join(buildPath, 'index.html'));
 });
 
