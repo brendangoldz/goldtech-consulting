@@ -1,10 +1,27 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom';
 
 import LandingPage from './components/landing/LandingPage';
 import ConsultingApp from './components/consulting/ConsultingApp';
 import MarketingApp from './components/marketing/MarketingApp';
 import Seo from './components/shared/Seo';
+import SeoLandingPage from './components/pages/SeoLandingPage';
+import BlogIndex from './components/pages/BlogIndex';
+import BlogArticle from './components/pages/BlogArticle';
+import ConfirmationPage from './components/pages/ConfirmationPage';
+import NotFoundPage from './components/pages/NotFoundPage';
+import {
+  consultingServicePages,
+  consultingPlatformPages,
+  consultingIndustryPages,
+  getConsultingPageBySlug
+} from './config/consultingSeoPages';
+import {
+  marketingServicePages,
+  marketingPlatformPages,
+  marketingIndustryPages,
+  getMarketingPageBySlug
+} from './config/marketingSeoPages';
 
 import './index.css';
 
@@ -20,6 +37,24 @@ import './index.css';
  * @component
  * @returns {JSX.Element} Rendered application with routing
  */
+const ConsultingServiceRoute = () => {
+  const { slug } = useParams();
+  const page = getConsultingPageBySlug(consultingServicePages, slug);
+  if (!page) {
+    return <NotFoundPage variant="consulting" />;
+  }
+  return <SeoLandingPage variant="consulting" page={page} />;
+};
+
+const MarketingServiceRoute = () => {
+  const { slug } = useParams();
+  const page = getMarketingPageBySlug(marketingServicePages, slug);
+  if (!page) {
+    return <NotFoundPage variant="marketing" />;
+  }
+  return <SeoLandingPage variant="marketing" page={page} />;
+};
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -51,6 +86,43 @@ const App = () => {
         />
         <Route path="/consulting" element={<ConsultingApp />} />
         <Route path="/marketing" element={<MarketingApp />} />
+
+        <Route path="/consulting/services/:slug" element={<ConsultingServiceRoute />} />
+        {consultingPlatformPages.map((page) => (
+          <Route
+            key={page.path}
+            path={page.path}
+            element={<SeoLandingPage variant="consulting" page={page} />}
+          />
+        ))}
+        {consultingIndustryPages.map((page) => (
+          <Route
+            key={page.path}
+            path={page.path}
+            element={<SeoLandingPage variant="consulting" page={page} />}
+          />
+        ))}
+
+        <Route path="/marketing/services/:slug" element={<MarketingServiceRoute />} />
+        {marketingPlatformPages.map((page) => (
+          <Route
+            key={page.path}
+            path={page.path}
+            element={<SeoLandingPage variant="marketing" page={page} />}
+          />
+        ))}
+        {marketingIndustryPages.map((page) => (
+          <Route
+            key={page.path}
+            path={page.path}
+            element={<SeoLandingPage variant="marketing" page={page} />}
+          />
+        ))}
+
+        <Route path="/blog" element={<BlogIndex />} />
+        <Route path="/blog/:slug" element={<BlogArticle />} />
+        <Route path="/confirmation" element={<ConfirmationPage />} />
+        <Route path="*" element={<NotFoundPage variant="consulting" />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+  <title id="title">Website screenshot placeholder</title>
+  <desc id="desc">Placeholder layout showing a hero banner and content sections.</desc>
+  <rect width="1400" height="900" fill="#f8fafc" />
+  <rect x="60" y="80" width="1280" height="740" rx="28" fill="#ffffff" stroke="#e2e8f0" stroke-width="8" />
+  <rect x="120" y="140" width="520" height="36" rx="18" fill="#1e293b" />
+  <rect x="120" y="200" width="380" height="18" rx="9" fill="#94a3b8" />
+  <rect x="120" y="240" width="440" height="18" rx="9" fill="#cbd5f5" />
+  <rect x="120" y="300" width="220" height="52" rx="26" fill="#b45309" />
+  <rect x="720" y="150" width="520" height="300" rx="24" fill="#e2e8f0" />
+  <rect x="140" y="420" width="1080" height="18" rx="9" fill="#e2e8f0" />
+  <rect x="140" y="460" width="980" height="18" rx="9" fill="#e2e8f0" />
+  <rect x="140" y="520" width="340" height="180" rx="20" fill="#fde68a" />
+  <rect x="520" y="520" width="340" height="180" rx="20" fill="#bae6fd" />
+  <rect x="900" y="520" width="340" height="180" rx="20" fill="#bbf7d0" />
+  <rect x="140" y="740" width="280" height="22" rx="11" fill="#94a3b8" />
+  <rect x="440" y="740" width="280" height="22" rx="11" fill="#94a3b8" />
+  <rect x="740" y="740" width="280" height="22" rx="11" fill="#94a3b8" />
+</svg>

@@ -4,6 +4,9 @@ module.exports = {
   safelist: [
     'bg-marketing-bg/60',
     'bg-white/70',
+    'pt-32',
+    'pb-24',
+    'min-h-[calc(100vh-14rem)]',
   ],
   theme: {
     extend: {
@@ -28,6 +31,19 @@ module.exports = {
       boxShadow: {
         'gold': '0 4px 14px 0 rgba(255, 195, 0)',
         'gold-lg': '0 10px 25px 0 rgba(255, 195, 0)',
+        'modal': '0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1)',
+      },
+      height: {
+        'modal': '85vh',
+        'image-viewer': '90vh',
+      },
+      maxHeight: {
+        'modal': '85vh',
+        'image-viewer': '90vh',
+      },
+      zIndex: {
+        'modal': 50,
+        'image-viewer': 60,
       },
       animation: {
         'fade-in': 'fadeIn 0.8s ease-out',
@@ -38,6 +54,11 @@ module.exports = {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
+      },
+      aspectRatio: {
+        '4/4': '4 / 4',
+        'video': '16 / 9',
+        'screenshot': '4 / 3',
       },
     },
   },

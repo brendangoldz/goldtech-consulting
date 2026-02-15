@@ -1,13 +1,20 @@
 import React, { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import {
-  FaEnvelope, FaMapMarkerAlt, FaLinkedin, FaGithub, FaCheckCircle, FaExclamationCircle
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaLinkedin,
+  FaFacebookF,
+  FaGithub,
+  FaCheckCircle,
+  FaExclamationCircle
 } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 
 import SectionHeader from '../shared/SectionHeader';
 import { getContent } from '../../config/content';
 import { getSectionBg } from '../../config/theme';
+import { fadeInUp } from '../../utils/animations';
 
 /**
  * ContactSection - Contact form with validation and accessibility
@@ -39,12 +46,6 @@ const ContactSection = ({ variant = 'consulting' }) => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', null
-
-  const fadeInUp = {
-    initial: { opacity: 0, y: 60 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6, ease: 'easeOut' }
-  };
 
   /**
    * Validate email format
@@ -371,6 +372,17 @@ const ContactSection = ({ variant = 'consulting' }) => {
                     aria-label="Connect on LinkedIn"
                   >
                     <FaLinkedin className={`text-navy ${isMarketing ? 'hover:text-marketing-primary' : 'hover:text-gold'} transition-colors`} aria-hidden="true" />
+                  </a>
+                )}
+                {contact.socialLinks.facebook && (
+                  <a 
+                    href={contact.socialLinks.facebook} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className={`p-2 rounded-lg border ${isMarketing ? 'hover:bg-marketing-bg' : 'hover:bg-lightGray'} transition-colors focus:outline-none ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'} focus:ring-2`}
+                    aria-label="Connect on Facebook"
+                  >
+                    <FaFacebookF className={`text-navy ${isMarketing ? 'hover:text-marketing-primary' : 'hover:text-gold'} transition-colors`} aria-hidden="true" />
                   </a>
                 )}
                 {contact.socialLinks.github && (

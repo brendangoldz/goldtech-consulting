@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://goldtech-consulting.com/sitemap.xml
+Sitemap: https://www.goldtech-consulting.com/sitemap.xml
 
 # Disallow admin/internal pages (if any exist in the future)
 # Disallow: /admin/

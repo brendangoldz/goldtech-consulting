@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
+import { fadeInUp, staggerContainer } from '../../utils/animations';
 
 /**
  * SectionHeader - Reusable section header component
@@ -34,16 +35,6 @@ const SectionHeader = ({
   variant = 'consulting'
 }) => {
   const isMarketing = variant === 'marketing';
-  const fadeInUp = {
-    initial: { opacity: 0, y: 60 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6, ease: 'easeOut' }
-  };
-
-  const staggerContainer = {
-    animate: { transition: { staggerChildren: 0.1 } }
-  };
-
   const HeadingTag = level;
 
   return (

@@ -59,29 +59,17 @@ const AboutSection = ({ variant = 'consulting' }) => {
         </motion.div>
 
         <motion.div
-          className={`${isMarketing ? 'bg-marketing-bg' : 'bg-lightGray/70'} rounded-2xl p-6 h-18 flex items-center justify-center border ${isMarketing ? 'border-marketing-primary/20' : 'border-gray-200'} overflow-hidden relative`}
+          className={`${isMarketing ? 'bg-marketing-bg' : 'bg-lightGray/70'} rounded-2xl p-4 ${isMarketing ? 'aspect-[4/4]' : 'aspect-video'} flex items-center justify-center border ${isMarketing ? 'border-marketing-primary/20' : 'border-gray-200'} overflow-hidden relative`}
           variants={fadeInUp}
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {isMarketing ? (
-            <div className="w-full h-full flex flex-col items-center justify-center text-center p-8">
-              <div className={`w-24 h-24 rounded-full ${isMarketing ? 'bg-marketing-primary/20' : 'bg-gold/20'} flex items-center justify-center mb-4`}>
-                <svg className={`w-12 h-12 ${isMarketing ? 'text-marketing-primary' : 'text-gold'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-              </div>
-              <p className={`text-sm font-medium ${isMarketing ? 'text-marketing-primary' : 'text-gold'}`}>Coming Soon</p>
-              <p className="text-xs text-gray-500 mt-1">Professional headshot</p>
-            </div>
-          ) : (
-            <img 
+          <img 
               src={content.image} 
               alt={content.imageAlt} 
-              className="w-full h-full object-cover rounded-xl"
+              className={`w-full h-full ${isMarketing ? 'object-contain' : 'object-cover'} rounded-xl`}
             />
-          )}
         </motion.div>
       </div>
     </div>
