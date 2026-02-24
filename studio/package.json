@@ -1,0 +1,24 @@
+{
+  "name": "goldtech-studio",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "sanity dev",
+    "start": "sanity start",
+    "build": "sanity build",
+    "deploy": "sanity deploy",
+    "schema": "sanity schema deploy"
+  },
+  "dependencies": {
+    "@sanity/icons": "^3.0.0",
+    "@sanity/vision": "^3.49.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sanity": "^3.49.0",
+    "styled-components": "^6.1.13"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "typescript": "^5.0.0"
+  }
+}
