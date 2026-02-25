@@ -5,7 +5,7 @@ import { FaArrowRight, FaImages } from 'react-icons/fa';
 import SectionHeader from '../shared/SectionHeader';
 import ProjectModal from './ProjectModal';
 import Logo from '../shared/Logo';
-import { getContent } from '../../config/content';
+import { getContent } from '../../sanity/loaders';
 import { getSectionBg, getVariantClasses } from '../../config/theme';
 import { fadeInUp } from '../../utils/animations';
 

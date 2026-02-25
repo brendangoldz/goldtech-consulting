@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FaFacebookF, FaGithub, FaLinkedin } from 'react-icons/fa';
 import Logo from '../shared/Logo';
-import { getContent } from '../../config/content';
+import { getContent } from '../../sanity/loaders';
 import { getThemeClasses } from '../../config/theme';
 
 /**

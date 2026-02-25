@@ -1,0 +1,38 @@
+# Alternative _redirects file if the current one doesn't work
+# This version explicitly preserves all static asset paths
+#
+# If you need to use this, rename it to _redirects (remove .backup)
+
+# Preserve all static assets - these patterns must come BEFORE the catch-all
+/static/* /static/* 200
+/assets/* /assets/* 200
+/fonts/* /fonts/* 200
+/images/* /images/* 200
+
+# Preserve specific files
+/robots.txt /robots.txt 200
+/sitemap.xml /sitemap.xml 200
+/manifest.json /manifest.json 200
+/favicon.ico /favicon.ico 200
+/site.webmanifest /site.webmanifest 200
+
+# Preserve file extensions that should never be rewritten
+/*.js /$1.js 200
+/*.css /$1.css 200
+/*.json /$1.json 200
+/*.ico /$1.ico 200
+/*.png /$1.png 200
+/*.jpg /$1.jpg 200
+/*.jpeg /$1.jpeg 200
+/*.svg /$1.svg 200
+/*.webp /$1.webp 200
+/*.woff /$1.woff 200
+/*.woff2 /$1.woff2 200
+/*.ttf /$1.ttf 200
+/*.otf /$1.otf 200
+/*.eot /$1.eot 200
+/*.map /$1.map 200
+
+# SPA routing - catch-all for routes that don't match above patterns
+# This must be LAST
+/* /index.html 200

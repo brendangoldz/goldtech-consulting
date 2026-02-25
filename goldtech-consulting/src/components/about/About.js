@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { FaCheck } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import SectionHeader from '../shared/SectionHeader';
-import { getContent } from '../../config/content';
+import { getContent } from '../../sanity/loaders';
 import { getSectionBg, getThemeClasses } from '../../config/theme';
 
 const fadeInUp = {
@@ -59,17 +59,21 @@ const AboutSection = ({ variant = 'consulting' }) => {
         </motion.div>
 
         <motion.div
-          className={`${isMarketing ? 'bg-marketing-bg' : 'bg-lightGray/70'} rounded-2xl p-4 ${isMarketing ? 'aspect-[4/4]' : 'aspect-video'} flex items-center justify-center border ${isMarketing ? 'border-marketing-primary/20' : 'border-gray-200'} overflow-hidden relative`}
+          className="flex justify-center md:justify-end"
           variants={fadeInUp}
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <img 
-              src={content.image} 
-              alt={content.imageAlt} 
-              className={`w-full h-full ${isMarketing ? 'object-contain' : 'object-cover'} rounded-xl`}
+          <div
+            className={`${isMarketing ? 'bg-marketing-bg' : 'bg-lightGray/70'} rounded-2xl p-2 flex items-center justify-center border ${isMarketing ? 'border-marketing-primary/20' : 'border-gray-200'} overflow-hidden shrink-0 w-[14rem] h-[14rem] md:w-[33rem] md:h-[33rem]`}
+          >
+            <img
+              src={content.image}
+              alt={content.imageAlt}
+              className="w-full h-full object-cover object-center rounded-xl min-w-0 min-h-0 max-w-[14rem] max-h-[14rem] md:max-w-[33rem] md:max-h-[33rem]"
             />
+          </div>
         </motion.div>
       </div>
     </div>

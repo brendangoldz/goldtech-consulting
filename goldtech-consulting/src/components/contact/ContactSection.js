@@ -12,7 +12,7 @@ import {
 import PropTypes from 'prop-types';
 
 import SectionHeader from '../shared/SectionHeader';
-import { getContent } from '../../config/content';
+import { getContent } from '../../sanity/loaders';
 import { getSectionBg } from '../../config/theme';
 import { fadeInUp } from '../../utils/animations';
 

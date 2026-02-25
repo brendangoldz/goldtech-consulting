@@ -3,18 +3,26 @@ import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import {
-  FaLaptopCode, FaChartLine, FaShieldAlt, FaMobileAlt, FaArrowRight
+  FaLaptopCode, FaChartLine, FaShieldAlt, FaMobileAlt, FaArrowRight,
+  FaGlobeAmericas, FaClipboardCheck, FaPlug, FaCogs, FaPalette, FaPenFancy, FaStamp
 } from 'react-icons/fa';
 import SectionHeader from '../shared/SectionHeader';
-import { getContent } from '../../config/content';
+import { getContent } from '../../sanity/loaders';
 import { getSectionBg, getThemeClasses, getVariantClasses } from '../../config/theme';
 import { fadeInUp } from '../../utils/animations';
 
 const iconMap = {
-  FaLaptopCode: FaLaptopCode,
-  FaChartLine: FaChartLine,
-  FaShieldAlt: FaShieldAlt,
-  FaMobileAlt: FaMobileAlt
+  FaLaptopCode,
+  FaChartLine,
+  FaShieldAlt,
+  FaMobileAlt,
+  FaGlobeAmericas,
+  FaClipboardCheck,
+  FaPlug,
+  FaCogs,
+  FaPalette,
+  FaPenFancy,
+  FaStamp
 };
 
 const ServicesSection = ({ variant = 'consulting' }) => {
