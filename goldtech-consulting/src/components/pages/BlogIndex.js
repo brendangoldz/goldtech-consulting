@@ -1,20 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
 import Seo from '../shared/Seo';
 import PageLayout from './PageLayout';
 import { loadBlogPosts } from '../../sanity/loaders';
 
-const LOGO_SWITCH_MS = 2500;
-const LOGOS = [
-  { src: '/goldtech-logo.svg', key: 'consulting' },
-  { src: '/goldtech-marketing-logo.svg', key: 'marketing' }
-];
-
 const BlogIndex = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [consultingFirst, setConsultingFirst] = useState(true);
 
   useEffect(() => {
     loadBlogPosts()
@@ -22,14 +14,6 @@ const BlogIndex = () => {
       .catch(() => setPosts([]))
       .finally(() => setLoading(false));
   }, []);
-
-  useEffect(() => {
-    const id = setInterval(() => setConsultingFirst((prev) => !prev), LOGO_SWITCH_MS);
-    return () => clearInterval(id);
-  }, []);
-
-  const leftLogo = consultingFirst ? LOGOS[0] : LOGOS[1];
-  const rightLogo = consultingFirst ? LOGOS[1] : LOGOS[0];
 
   return (
     <PageLayout

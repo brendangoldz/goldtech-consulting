@@ -34,6 +34,7 @@ const Navigation = ({ activeSection, scrollTo, onBackToLanding, logoVariant = 'c
   const location = useLocation();
   const isMarketing = logoVariant === 'marketing';
   const canSwitch = location.pathname === '/consulting' || location.pathname === '/marketing';
+  const isBlogSection = location.pathname === '/blog' || location.pathname.startsWith('/blog/');
 
   const navItems = [
     { id: 'home', label: 'Home' },
@@ -140,6 +141,7 @@ const Navigation = ({ activeSection, scrollTo, onBackToLanding, logoVariant = 'c
           {/* Logo with Dropdown */}
           <LogoSwitcher
             canSwitch={canSwitch}
+            isBlogSection={isBlogSection}
             isLogoDropdownOpen={isLogoDropdownOpen}
             isMarketing={isMarketing}
             logoVariant={logoVariant}

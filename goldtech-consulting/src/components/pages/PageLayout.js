@@ -89,7 +89,7 @@ const PageLayout = ({
       <main
         id="main-content"
         role="main"
-        className="pt-24 pb-16 min-h-[calc(100vh-12rem)] sm:pt-28 sm:pb-20 sm:min-h-[calc(100vh-14rem)] lg:pt-32 lg:pb-24"
+        className="pt-32 pb-16 min-h-[calc(100vh-12rem)] sm:pt-32 sm:pb-20 sm:min-h-[calc(100vh-14rem)] lg:pt-32 lg:pb-24"
       >
         {showBackButton && backFallbackPath && (
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4">

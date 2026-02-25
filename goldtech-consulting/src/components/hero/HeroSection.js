@@ -88,7 +88,7 @@ const HeroSection = ({ scrollTo, variant = 'consulting' }) => {
   return (
     <section
       id="home"
-      className={`relative min-h-screen flex items-center justify-center overflow-hidden ${getHeroGradient(variant)}`}
+      className={`pt-32 relative min-h-screen flex items-center justify-center overflow-hidden ${getHeroGradient(variant)}`}
       aria-labelledby="hero-heading"
       role="banner"
     >
