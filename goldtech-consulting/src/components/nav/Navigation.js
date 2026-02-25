@@ -130,8 +130,8 @@ const Navigation = ({ activeSection, scrollTo, onBackToLanding, logoVariant = 'c
       role="navigation"
       aria-label="Main navigation"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 p-4">
-        <div className="flex justify-between items-center h-16">
+      <div className="max-w-7xl mx-auto px-4 py-3 sm:px-6 lg:px-8">
+        <div className="flex min-h-[3.5rem] items-center justify-between gap-3">
           {/* Logo with Dropdown */}
           <LogoSwitcher
             canSwitch={canSwitch}

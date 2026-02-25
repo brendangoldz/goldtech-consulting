@@ -4,5 +4,7 @@ export default defineCliConfig({
   api: {
     projectId: 'twgmhgf2',
     dataset: 'production',
+   
   },
+  studioHost: 'goldtech-consulting'
 })

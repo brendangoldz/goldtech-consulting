@@ -1,6 +1,8 @@
-import React from 'react';
+import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom';
 
+import ContentProvider from './contexts/ContentProvider';
 import LandingPage from './components/landing/LandingPage';
 import ConsultingApp from './components/consulting/ConsultingApp';
 import MarketingApp from './components/marketing/MarketingApp';
@@ -10,55 +12,75 @@ import BlogIndex from './components/pages/BlogIndex';
 import BlogArticle from './components/pages/BlogArticle';
 import ConfirmationPage from './components/pages/ConfirmationPage';
 import NotFoundPage from './components/pages/NotFoundPage';
+import { loadServicePageBySlug } from './sanity/loaders';
 import {
-  consultingServicePages,
   consultingPlatformPages,
-  consultingIndustryPages,
-  getConsultingPageBySlug
+  consultingIndustryPages
 } from './config/consultingSeoPages';
 import {
-  marketingServicePages,
   marketingPlatformPages,
-  marketingIndustryPages,
-  getMarketingPageBySlug
+  marketingIndustryPages
 } from './config/marketingSeoPages';
 
 import './index.css';
 
 /**
+ * Resolves a service page by slug from Sanity (with static fallback) and renders SeoLandingPage or NotFound.
+ */
+const ServicePageRoute = ({ variant }) => {
+  const { slug } = useParams();
+  const [page, setPage] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let cancelled = false;
+    setLoading(true);
+    loadServicePageBySlug(variant, slug)
+      .then((p) => {
+        if (!cancelled) setPage(p);
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => { cancelled = true; };
+  }, [variant, slug]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center" aria-busy="true">
+        <p className="text-gray-600">Loading…</p>
+      </div>
+    );
+  }
+  if (!page) {
+    return <NotFoundPage variant={variant} />;
+  }
+  return <SeoLandingPage variant={variant} page={page} />;
+};
+
+ServicePageRoute.propTypes = {
+  variant: PropTypes.oneOf(['consulting', 'marketing']).isRequired
+};
+
+/**
  * App - Main application component with routing
- * 
+ *
  * Features:
  * - React Router for navigation between landing page and business sections
  * - Landing page with split screen for Consulting vs Marketing
  * - Separate routes for Consulting and Marketing applications
+ * - Service and blog content from Sanity with static fallback
  * - Accessibility support
- * 
+ *
  * @component
  * @returns {JSX.Element} Rendered application with routing
  */
-const ConsultingServiceRoute = () => {
-  const { slug } = useParams();
-  const page = getConsultingPageBySlug(consultingServicePages, slug);
-  if (!page) {
-    return <NotFoundPage variant="consulting" />;
-  }
-  return <SeoLandingPage variant="consulting" page={page} />;
-};
-
-const MarketingServiceRoute = () => {
-  const { slug } = useParams();
-  const page = getMarketingPageBySlug(marketingServicePages, slug);
-  if (!page) {
-    return <NotFoundPage variant="marketing" />;
-  }
-  return <SeoLandingPage variant="marketing" page={page} />;
-};
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
+    <ContentProvider>
+      <BrowserRouter>
+        <Routes>
         <Route
           path="/"
           element={
@@ -87,7 +109,7 @@ const App = () => {
         <Route path="/consulting" element={<ConsultingApp />} />
         <Route path="/marketing" element={<MarketingApp />} />
 
-        <Route path="/consulting/services/:slug" element={<ConsultingServiceRoute />} />
+        <Route path="/consulting/services/:slug" element={<ServicePageRoute variant="consulting" />} />
         {consultingPlatformPages.map((page) => (
           <Route
             key={page.path}
@@ -103,7 +125,7 @@ const App = () => {
           />
         ))}
 
-        <Route path="/marketing/services/:slug" element={<MarketingServiceRoute />} />
+        <Route path="/marketing/services/:slug" element={<ServicePageRoute variant="marketing" />} />
         {marketingPlatformPages.map((page) => (
           <Route
             key={page.path}
@@ -123,8 +145,9 @@ const App = () => {
         <Route path="/blog/:slug" element={<BlogArticle />} />
         <Route path="/confirmation" element={<ConfirmationPage />} />
         <Route path="*" element={<NotFoundPage variant="consulting" />} />
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
+    </ContentProvider>
   );
 };
 

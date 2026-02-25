@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { FaArrowRight } from 'react-icons/fa';
 import PropTypes from 'prop-types';
-import { getContent } from '../../config/content';
+import { getContent } from '../../sanity/loaders';
 import { getHeroGradient, getThemeClasses, getVariantClasses } from '../../config/theme';
 import { fadeInUp, staggerContainer } from '../../utils/animations';
 import useVantaDots from '../../hooks/useVantaDots';

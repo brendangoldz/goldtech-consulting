@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 import { FaCheck } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import SectionHeader from '../shared/SectionHeader';
-import { getContent } from '../../config/content';
-import { getSectionBg, getThemeClasses } from '../../config/theme';
+import { getContent } from '../../sanity/loaders';
+import { getSectionBg } from '../../config/theme';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -19,6 +19,9 @@ const staggerContainer = {
 const AboutSection = ({ variant = 'consulting' }) => {
   const content = getContent(variant).about;
   const isMarketing = variant === 'marketing';
+  const imageFrameClasses = isMarketing
+    ? 'bg-marketing-bg border-marketing-primary/20'
+    : 'bg-lightGray/70 border-gray-200';
   
   return (
   <section id="about" className={`py-20 ${getSectionBg(variant, true)}`} aria-labelledby="about-title">
@@ -59,17 +62,21 @@ const AboutSection = ({ variant = 'consulting' }) => {
         </motion.div>
 
         <motion.div
-          className={`${isMarketing ? 'bg-marketing-bg' : 'bg-lightGray/70'} rounded-2xl p-4 ${isMarketing ? 'aspect-[4/4]' : 'aspect-video'} flex items-center justify-center border ${isMarketing ? 'border-marketing-primary/20' : 'border-gray-200'} overflow-hidden relative`}
+          className="flex justify-center md:justify-end"
           variants={fadeInUp}
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <img 
-              src={content.image} 
-              alt={content.imageAlt} 
-              className={`w-full h-full ${isMarketing ? 'object-contain' : 'object-cover'} rounded-xl`}
+          <div
+            className={`${imageFrameClasses} rounded-2xl border p-2 flex w-full max-w-[14rem] sm:max-w-sm md:max-w-md xl:max-w-[33rem] aspect-square items-center justify-center overflow-hidden`}
+          >
+            <img
+              src={content.image}
+              alt={content.imageAlt}
+              className="h-full w-full rounded-xl object-cover object-center"
             />
+          </div>
         </motion.div>
       </div>
     </div>

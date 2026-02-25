@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../shared/Logo';
-import { getContent } from '../../config/content';
+import { getContent } from '../../sanity/loaders';
 import useVantaDots from '../../hooks/useVantaDots';
 
 /**
@@ -37,10 +37,7 @@ const LandingPage = () => {
     spacing: 30.00,
     showLines: false
   }), []);
-  const { vantaRef, vantaEffect, isVantaEnabled } = useVantaDots(
-    vantaOptions,
-    []
-  );
+  const { vantaRef, vantaEffect, isVantaEnabled } = useVantaDots(vantaOptions, []);
   
   // Get content for each section
   const consultingContent = getContent('consulting');

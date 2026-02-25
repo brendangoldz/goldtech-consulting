@@ -4,7 +4,7 @@
  */
 import { createClient } from '@sanity/client'
 
-const projectId = process.env.REACT_APP_SANITY_PROJECT_ID || 'twgmhgf2'
+const projectId = process.env.REACT_APP_SANITY_PROJECT_ID
 const dataset = process.env.REACT_APP_SANITY_DATASET || 'production'
 
 export const sanityClient = createClient({
