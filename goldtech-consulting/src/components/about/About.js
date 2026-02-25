@@ -69,7 +69,7 @@ const AboutSection = ({ variant = 'consulting' }) => {
           viewport={{ once: true, amount: 0.2 }}
         >
           <div
-            className={`${imageFrameClasses} rounded-2xl border p-2 flex w-full max-w-[14rem] sm:max-w-xs md:max-w-sm lg:max-w-md xl:max-w-[33rem] aspect-square items-center justify-center overflow-hidden`}
+            className={`${imageFrameClasses} rounded-2xl border p-2 flex w-full max-w-[14rem] sm:max-w-sm md:max-w-md xl:max-w-[33rem] aspect-square items-center justify-center overflow-hidden`}
           >
             <img
               src={content.image}
