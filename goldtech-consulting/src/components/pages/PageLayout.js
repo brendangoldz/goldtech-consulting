@@ -8,6 +8,14 @@ const PageLayout = ({ variant = 'consulting', children }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const basePath = variant === 'marketing' ? '/marketing' : '/consulting';
+  const getNavigationOffset = useCallback(() => {
+    const navigation = document.querySelector('nav[aria-label="Main navigation"]');
+    if (!navigation) {
+      return 96;
+    }
+
+    return navigation.getBoundingClientRect().height + 16;
+  }, []);
 
   const scrollTo = useCallback(
     (id) => {
@@ -38,14 +46,16 @@ const PageLayout = ({ variant = 'consulting', children }) => {
       if (!target) {
         return;
       }
-      const offset = 96;
-      const y = target.getBoundingClientRect().top + window.scrollY - offset;
+      const y =
+        target.getBoundingClientRect().top +
+        window.scrollY -
+        getNavigationOffset();
       window.scrollTo({ top: y, behavior: 'smooth' });
     };
 
     const frame = window.requestAnimationFrame(scrollToHash);
     return () => window.cancelAnimationFrame(frame);
-  }, [location.hash]);
+  }, [location.hash, getNavigationOffset]);
 
   return (
     <div
@@ -69,7 +79,7 @@ const PageLayout = ({ variant = 'consulting', children }) => {
       <main
         id="main-content"
         role="main"
-        className="pt-32 pb-24 min-h-[calc(100vh-14rem)]"
+        className="pt-24 pb-16 min-h-[calc(100vh-12rem)] sm:pt-28 sm:pb-20 sm:min-h-[calc(100vh-14rem)] lg:pt-32 lg:pb-24"
       >
         {children}
       </main>

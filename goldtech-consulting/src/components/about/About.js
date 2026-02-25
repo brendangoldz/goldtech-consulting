@@ -19,6 +19,9 @@ const staggerContainer = {
 const AboutSection = ({ variant = 'consulting' }) => {
   const content = getContent(variant).about;
   const isMarketing = variant === 'marketing';
+  const imageFrameClasses = isMarketing
+    ? 'bg-marketing-bg border-marketing-primary/20'
+    : 'bg-lightGray/70 border-gray-200';
   
   return (
   <section id="about" className={`py-20 ${getSectionBg(variant, true)}`} aria-labelledby="about-title">
@@ -66,12 +69,12 @@ const AboutSection = ({ variant = 'consulting' }) => {
           viewport={{ once: true, amount: 0.2 }}
         >
           <div
-            className={`${isMarketing ? 'bg-marketing-bg' : 'bg-lightGray/70'} rounded-2xl p-2 flex items-center justify-center border ${isMarketing ? 'border-marketing-primary/20' : 'border-gray-200'} overflow-hidden shrink-0 w-[14rem] h-[14rem] md:w-[33rem] md:h-[33rem]`}
+            className={`${imageFrameClasses} rounded-2xl border p-2 flex w-full max-w-[14rem] sm:max-w-xs md:max-w-sm lg:max-w-md xl:max-w-[33rem] aspect-square items-center justify-center overflow-hidden`}
           >
             <img
               src={content.image}
               alt={content.imageAlt}
-              className="w-full h-full object-cover object-center rounded-xl min-w-0 min-h-0 max-w-[14rem] max-h-[14rem] md:max-w-[33rem] md:max-h-[33rem]"
+              className="h-full w-full rounded-xl object-cover object-center"
             />
           </div>
         </motion.div>

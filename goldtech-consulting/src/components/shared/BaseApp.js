@@ -18,6 +18,14 @@ const BaseApp = ({ variant, rootClassName, logoVariant, seo }) => {
   const [activeSection, setActiveSection] = useState('home');
   const navigate = useNavigate();
   const location = useLocation();
+  const getNavigationOffset = useCallback(() => {
+    const navigation = document.querySelector('nav[aria-label="Main navigation"]');
+    if (!navigation) {
+      return 96;
+    }
+
+    return navigation.getBoundingClientRect().height + 16;
+  }, []);
 
   /**
    * Smooth scroll to a specific section.
@@ -27,15 +35,19 @@ const BaseApp = ({ variant, rootClassName, logoVariant, seo }) => {
   const scrollTo = useCallback((id) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ 
+      const y =
+        element.getBoundingClientRect().top +
+        window.scrollY -
+        getNavigationOffset();
+      window.scrollTo({
+        top: y,
         behavior: 'smooth',
-        block: 'start'
       });
       
       // Update focus for accessibility
       element.focus({ preventScroll: true });
     }
-  }, []);
+  }, [getNavigationOffset]);
 
   /**
    * Handle scroll events to update active section.
@@ -76,10 +88,12 @@ const BaseApp = ({ variant, rootClassName, logoVariant, seo }) => {
     if (!target) {
       return;
     }
-    const offset = 96;
-    const y = target.getBoundingClientRect().top + window.scrollY - offset;
+    const y =
+      target.getBoundingClientRect().top +
+      window.scrollY -
+      getNavigationOffset();
     window.scrollTo({ top: y, behavior: 'smooth' });
-  }, [location.hash]);
+  }, [location.hash, getNavigationOffset]);
 
   /**
    * Handle navigation back to landing page.

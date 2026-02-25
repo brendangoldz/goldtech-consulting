@@ -36,6 +36,21 @@ import { fadeInUp } from '../../utils/animations';
 const ContactSection = ({ variant = 'consulting' }) => {
   const contact = getContent(variant).contact;
   const isMarketing = variant === 'marketing';
+  const focusRingClasses = isMarketing
+    ? 'focus:ring-marketing-primary/40'
+    : 'focus:ring-gold/40';
+  const hoverPanelClasses = isMarketing
+    ? 'hover:bg-marketing-bg'
+    : 'hover:bg-lightGray';
+  const hoverAccentClasses = isMarketing
+    ? 'hover:text-marketing-primary'
+    : 'hover:text-gold';
+  const panelClasses = 'rounded-2xl border border-gray-100 bg-white p-6 shadow-sm sm:p-8';
+  const baseInputClasses = `w-full rounded-lg border p-3 transition-colors focus:outline-none focus:ring-2 ${focusRingClasses}`;
+  const getInputClasses = error =>
+    `${baseInputClasses} ${error ? 'border-red-500' : 'border-gray-300'}`;
+  const socialLinkClasses = `rounded-lg border p-2 transition-colors focus:outline-none focus:ring-2 ${hoverPanelClasses} ${focusRingClasses}`;
+  const socialIconClasses = `text-navy transition-colors ${hoverAccentClasses}`;
   
   const [formData, setFormData] = useState({
     name: '',
@@ -166,7 +181,7 @@ const ContactSection = ({ variant = 'consulting' }) => {
         <div className="grid md:grid-cols-5 gap-8">
           {/* Contact Form */}
           <motion.form
-            className="md:col-span-3 bg-white p-8 rounded-2xl shadow-sm border border-gray-100"
+            className={`md:col-span-3 ${panelClasses}`}
             variants={fadeInUp}
             initial="initial"
             whileInView="animate"
@@ -190,9 +205,7 @@ const ContactSection = ({ variant = 'consulting' }) => {
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className={`w-full border p-3 rounded-lg focus:outline-none ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'} focus:ring-2 transition-colors ${
-                      errors.name ? 'border-red-500' : 'border-gray-300'
-                    }`}
+                    className={getInputClasses(errors.name)}
                     aria-invalid={errors.name ? 'true' : 'false'}
                     aria-describedby={errors.name ? 'name-error' : undefined}
                     required
@@ -221,9 +234,7 @@ const ContactSection = ({ variant = 'consulting' }) => {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className={`w-full border p-3 rounded-lg focus:outline-none ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'} focus:ring-2 transition-colors ${
-                      errors.email ? 'border-red-500' : 'border-gray-300'
-                    }`}
+                    className={getInputClasses(errors.email)}
                     aria-invalid={errors.email ? 'true' : 'false'}
                     aria-describedby={errors.email ? 'email-error' : undefined}
                     required
@@ -253,9 +264,7 @@ const ContactSection = ({ variant = 'consulting' }) => {
                   name="subject"
                   value={formData.subject}
                   onChange={handleInputChange}
-                  className={`w-full border p-3 rounded-lg focus:outline-none ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'} focus:ring-2 transition-colors ${
-                    errors.subject ? 'border-red-500' : 'border-gray-300'
-                  }`}
+                  className={getInputClasses(errors.subject)}
                   aria-invalid={errors.subject ? 'true' : 'false'}
                   aria-describedby={errors.subject ? 'subject-error' : undefined}
                   required
@@ -284,9 +293,7 @@ const ContactSection = ({ variant = 'consulting' }) => {
                   value={formData.message}
                   onChange={handleInputChange}
                   rows="6"
-                  className={`w-full border p-3 rounded-lg focus:outline-none ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'} focus:ring-2 transition-colors resize-vertical ${
-                    errors.message ? 'border-red-500' : 'border-gray-300'
-                  }`}
+                  className={`${getInputClasses(errors.message)} resize-vertical`}
                   aria-invalid={errors.message ? 'true' : 'false'}
                   aria-describedby={errors.message ? 'message-error' : undefined}
                   required
@@ -308,7 +315,7 @@ const ContactSection = ({ variant = 'consulting' }) => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`mt-6 bg-gradient-to-r ${isMarketing ? 'from-marketing-primary to-marketing-accent text-white' : 'from-gold to-goldLight text-navy'} px-6 py-3 rounded-xl font-semibold ${isMarketing ? 'shadow-lg hover:shadow-xl' : 'shadow-gold hover:shadow-gold-lg'} transition-all duration-300 focus:outline-none ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'} focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed`}
+                className={`mt-6 bg-gradient-to-r ${isMarketing ? 'from-marketing-primary to-marketing-accent text-white' : 'from-gold to-goldLight text-navy'} px-6 py-3 rounded-xl font-semibold ${isMarketing ? 'shadow-lg hover:shadow-xl' : 'shadow-gold hover:shadow-gold-lg'} transition-all duration-300 focus:outline-none ${focusRingClasses} focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed`}
                 aria-describedby="submit-status"
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
@@ -334,7 +341,7 @@ const ContactSection = ({ variant = 'consulting' }) => {
 
           {/* Contact Information */}
           <motion.aside
-            className="md:col-span-2 bg-white p-8 rounded-2xl shadow-sm border border-gray-100"
+            className={`md:col-span-2 ${panelClasses}`}
             variants={fadeInUp}
             initial="initial"
             whileInView="animate"
@@ -345,16 +352,16 @@ const ContactSection = ({ variant = 'consulting' }) => {
               Contact Info
             </h3>
             <ul className="space-y-3 text-gray-700">
-              <li className="flex items-center">
+              <li className="flex items-start">
                 <FaEnvelope className={`${isMarketing ? 'text-marketing-primary' : 'text-gold'} mr-3 flex-shrink-0`} aria-hidden="true" />
                 <a 
                   href={`mailto:${contact.email}`}
-                  className={`${isMarketing ? 'hover:text-marketing-primary' : 'hover:text-gold'} transition-colors focus:outline-none ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'} focus:ring-2 rounded`}
+                  className={`${hoverAccentClasses} break-all rounded transition-colors focus:outline-none focus:ring-2 ${focusRingClasses}`}
                 >
                   {contact.email}
                 </a>
               </li>
-              <li className="flex items-center">
+              <li className="flex items-start">
                 <FaMapMarkerAlt className={`${isMarketing ? 'text-marketing-primary' : 'text-gold'} mr-3 flex-shrink-0`} aria-hidden="true" />
                 {contact.location}
               </li>
@@ -368,10 +375,10 @@ const ContactSection = ({ variant = 'consulting' }) => {
                     href={contact.socialLinks.linkedin} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className={`p-2 rounded-lg border ${isMarketing ? 'hover:bg-marketing-bg' : 'hover:bg-lightGray'} transition-colors focus:outline-none ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'} focus:ring-2`}
+                    className={socialLinkClasses}
                     aria-label="Connect on LinkedIn"
                   >
-                    <FaLinkedin className={`text-navy ${isMarketing ? 'hover:text-marketing-primary' : 'hover:text-gold'} transition-colors`} aria-hidden="true" />
+                    <FaLinkedin className={socialIconClasses} aria-hidden="true" />
                   </a>
                 )}
                 {contact.socialLinks.facebook && (
@@ -379,10 +386,10 @@ const ContactSection = ({ variant = 'consulting' }) => {
                     href={contact.socialLinks.facebook} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className={`p-2 rounded-lg border ${isMarketing ? 'hover:bg-marketing-bg' : 'hover:bg-lightGray'} transition-colors focus:outline-none ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'} focus:ring-2`}
+                    className={socialLinkClasses}
                     aria-label="Connect on Facebook"
                   >
-                    <FaFacebookF className={`text-navy ${isMarketing ? 'hover:text-marketing-primary' : 'hover:text-gold'} transition-colors`} aria-hidden="true" />
+                    <FaFacebookF className={socialIconClasses} aria-hidden="true" />
                   </a>
                 )}
                 {contact.socialLinks.github && (
@@ -390,10 +397,10 @@ const ContactSection = ({ variant = 'consulting' }) => {
                     href={contact.socialLinks.github} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className={`p-2 rounded-lg border ${isMarketing ? 'hover:bg-marketing-bg' : 'hover:bg-lightGray'} transition-colors focus:outline-none ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'} focus:ring-2`}
+                    className={socialLinkClasses}
                     aria-label="View GitHub profile"
                   >
-                    <FaGithub className={`text-navy ${isMarketing ? 'hover:text-marketing-primary' : 'hover:text-gold'} transition-colors`} aria-hidden="true" />
+                    <FaGithub className={socialIconClasses} aria-hidden="true" />
                   </a>
                 )}
                 {contact.socialLinks.upwork && (
@@ -401,11 +408,11 @@ const ContactSection = ({ variant = 'consulting' }) => {
                     href={contact.socialLinks.upwork} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className={`p-2 rounded-lg border ${isMarketing ? 'hover:bg-marketing-bg' : 'hover:bg-lightGray'} transition-colors focus:outline-none ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'} focus:ring-2`}
+                    className={socialLinkClasses}
                     aria-label="View Upwork profile"
                   >
                     <svg 
-                      className={`w-5 h-5 text-navy ${isMarketing ? 'hover:text-marketing-primary' : 'hover:text-gold'} transition-colors`}
+                      className={`h-5 w-5 ${socialIconClasses}`}
                       viewBox="0 0 56.7 56.7" 
                       fill="currentColor"
                       aria-hidden="true"
