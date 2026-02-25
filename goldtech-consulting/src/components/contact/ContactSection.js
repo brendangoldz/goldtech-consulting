@@ -12,7 +12,7 @@ import {
 import PropTypes from 'prop-types';
 
 import SectionHeader from '../shared/SectionHeader';
-import { getContent } from '../../sanity/loaders';
+import { useContent } from '../../contexts/ContentContext';
 import { getSectionBg } from '../../config/theme';
 import { fadeInUp } from '../../utils/animations';
 
@@ -34,7 +34,7 @@ import { fadeInUp } from '../../utils/animations';
  * @returns {JSX.Element} Rendered contact section
  */
 const ContactSection = ({ variant = 'consulting' }) => {
-  const contact = getContent(variant).contact;
+  const contact = useContent(variant).contact;
   const isMarketing = variant === 'marketing';
   const focusRingClasses = isMarketing
     ? 'focus:ring-marketing-primary/40'

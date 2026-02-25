@@ -65,7 +65,11 @@ const BlogArticle = () => {
   const hasPortableBody = Array.isArray(post.body) && post.body.length > 0;
 
   return (
-    <PageLayout variant={variant}>
+    <PageLayout
+      variant={variant}
+      showBackButton
+      backFallbackPath="/"
+    >
       <Seo
         title={`${post.title} | GoldTech`}
         description={post.description}
@@ -73,7 +77,7 @@ const BlogArticle = () => {
         type="article"
       />
 
-      <article className="pb-20">
+      <article className="pb-2">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-xs uppercase tracking-wide text-gray-500 mb-3">
             {variant === 'marketing' ? 'Marketing' : 'Consulting'} • {post.readTime}

@@ -10,7 +10,7 @@ const LandingPageTemplate = ({ variant = 'consulting', page }) => {
 
   return (
     <div>
-      <section className="py-16">
+      <section className="py-3">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
             eyebrow={page.eyebrow}
@@ -23,7 +23,7 @@ const LandingPageTemplate = ({ variant = 'consulting', page }) => {
         </div>
       </section>
 
-      <section className="py-8">
+      <section className="py-3">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-8 md:grid-cols-2">
           {page.sections.map((section) => (
             <div
@@ -49,7 +49,7 @@ const LandingPageTemplate = ({ variant = 'consulting', page }) => {
         </div>
       </section>
 
-      <section className="py-16">
+      <section className="py-3">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl font-bold text-navy mb-4">
             {page.cta?.headline || 'Ready to move faster?'}

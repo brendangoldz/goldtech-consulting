@@ -13,7 +13,7 @@ const LogoSwitcher = ({
   onSwitchSite
 }) => {
   if (!canSwitch) {
-    return <Logo size="small" variant={logoVariant} />;
+    return <Logo size="large" variant={logoVariant} />;
   }
 
   return (
@@ -35,7 +35,7 @@ const LogoSwitcher = ({
         aria-expanded={isLogoDropdownOpen}
         aria-haspopup="true"
       >
-        <Logo size="small" variant={logoVariant} />
+        <Logo size="large" variant={logoVariant} />
         {/* Dropdown Arrow */}
         <motion.div
           animate={{ rotate: isLogoDropdownOpen ? 180 : 0 }}

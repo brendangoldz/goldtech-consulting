@@ -17,7 +17,7 @@ const MobileNavMenu = ({ navItems, activeSection, onNavClick, isMarketing }) => 
       {navItems.map((item) => (
         <button
           key={item.id}
-          onClick={() => onNavClick(item.id)}
+          onClick={() => onNavClick(item)}
           className={`block w-full text-left px-3 py-2 rounded-lg font-medium transition-colors duration-200 focus:outline-none ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'} focus:ring-2 ${
             activeSection === item.id
               ? (isMarketing ? 'bg-marketing-primary/10 text-marketing-primary' : 'bg-gold/10 text-gold')
@@ -36,7 +36,8 @@ const MobileNavMenu = ({ navItems, activeSection, onNavClick, isMarketing }) => 
 MobileNavMenu.propTypes = {
   navItems: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired
+    label: PropTypes.string.isRequired,
+    path: PropTypes.string
   })).isRequired,
   activeSection: PropTypes.string.isRequired,
   onNavClick: PropTypes.func.isRequired,

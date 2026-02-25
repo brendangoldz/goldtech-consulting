@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import Seo from '../shared/Seo';
 import PageLayout from './PageLayout';
 import { loadBlogPosts } from '../../sanity/loaders';
 
+const LOGO_SWITCH_MS = 2500;
+const LOGOS = [
+  { src: '/goldtech-logo.svg', key: 'consulting' },
+  { src: '/goldtech-marketing-logo.svg', key: 'marketing' }
+];
+
 const BlogIndex = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [consultingFirst, setConsultingFirst] = useState(true);
 
   useEffect(() => {
     loadBlogPosts()
@@ -15,8 +23,20 @@ const BlogIndex = () => {
       .finally(() => setLoading(false));
   }, []);
 
+  useEffect(() => {
+    const id = setInterval(() => setConsultingFirst((prev) => !prev), LOGO_SWITCH_MS);
+    return () => clearInterval(id);
+  }, []);
+
+  const leftLogo = consultingFirst ? LOGOS[0] : LOGOS[1];
+  const rightLogo = consultingFirst ? LOGOS[1] : LOGOS[0];
+
   return (
-    <PageLayout variant="consulting">
+    <PageLayout
+      variant="consulting"
+      showBackButton
+      backFallbackPath="/"
+    >
       <Seo
         title="Automation & Marketing Insights | GoldTech"
         description="Short, tactical articles on automation, integration, and marketing strategy to help your business grow."
@@ -25,14 +45,14 @@ const BlogIndex = () => {
       />
       <section className="pb-16">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold text-navy mb-4">Insights and Playbooks</h1>
+          <h1 className="text-2xl font-bold text-navy mb-4">Insights and Playbooks</h1>
           <p className="text-gray-600 max-w-2xl">
             Practical guides on automation, integrations, and marketing growth. Each article includes clear next steps.
           </p>
         </div>
       </section>
 
-      <section className="pb-20">
+      <section className="pb-8">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-6 md:grid-cols-2">
           {loading ? (
             <p className="text-gray-600 col-span-2">Loading…</p>

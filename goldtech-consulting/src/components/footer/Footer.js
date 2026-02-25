@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FaFacebookF, FaGithub, FaLinkedin } from 'react-icons/fa';
 import Logo from '../shared/Logo';
-import { getContent } from '../../sanity/loaders';
+import { useContent } from '../../contexts/ContentContext';
 
 /**
  * Footer - Site footer with company info, links, and social media
@@ -20,8 +20,9 @@ import { getContent } from '../../sanity/loaders';
  * @returns {JSX.Element} Rendered footer
  */
 const Footer = ({ variant = 'consulting' }) => {
-  const content = getContent(variant).footer;
-  const contact = getContent(variant).contact;
+  const variantContent = useContent(variant);
+  const content = variantContent.footer;
+  const contact = variantContent.contact;
   const isMarketing = variant === 'marketing';
   
   return (

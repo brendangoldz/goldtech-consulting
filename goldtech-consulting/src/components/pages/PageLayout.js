@@ -3,11 +3,21 @@ import PropTypes from 'prop-types';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Navigation from '../nav/Navigation';
 import Footer from '../footer/Footer';
+import BackButton from '../shared/BackButton';
 
-const PageLayout = ({ variant = 'consulting', children }) => {
+const PageLayout = ({
+  variant = 'consulting',
+  logoVariant: logoVariantProp,
+  showBackButton = false,
+  backFallbackPath,
+  backButtonOnlyWhenReferrer = false,
+  children
+}) => {
   const navigate = useNavigate();
   const location = useLocation();
   const basePath = variant === 'marketing' ? '/marketing' : '/consulting';
+  const logoVariant = logoVariantProp ?? variant;
+  const activeSection = location.pathname.startsWith('/blog') ? 'blog' : 'home';
   const getNavigationOffset = useCallback(() => {
     const navigation = document.querySelector('nav[aria-label="Main navigation"]');
     if (!navigation) {
@@ -70,10 +80,10 @@ const PageLayout = ({ variant = 'consulting', children }) => {
       </a>
 
       <Navigation
-        activeSection="home"
+        activeSection={activeSection}
         scrollTo={scrollTo}
         onBackToLanding={handleBackToLanding}
-        logoVariant={variant}
+        logoVariant={logoVariant}
       />
 
       <main
@@ -81,6 +91,16 @@ const PageLayout = ({ variant = 'consulting', children }) => {
         role="main"
         className="pt-24 pb-16 min-h-[calc(100vh-12rem)] sm:pt-28 sm:pb-20 sm:min-h-[calc(100vh-14rem)] lg:pt-32 lg:pb-24"
       >
+        {showBackButton && backFallbackPath && (
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4">
+            <BackButton
+              fallbackPath={backFallbackPath}
+              variant={variant}
+              onlyWhenReferrer={backButtonOnlyWhenReferrer}
+              fromLocation={Boolean(location.state?.from)}
+            />
+          </div>
+        )}
         {children}
       </main>
 
@@ -91,6 +111,10 @@ const PageLayout = ({ variant = 'consulting', children }) => {
 
 PageLayout.propTypes = {
   variant: PropTypes.oneOf(['consulting', 'marketing']),
+  logoVariant: PropTypes.oneOf(['consulting', 'marketing']),
+  showBackButton: PropTypes.bool,
+  backFallbackPath: PropTypes.string,
+  backButtonOnlyWhenReferrer: PropTypes.bool,
   children: PropTypes.node.isRequired
 };
 

@@ -40,7 +40,8 @@ const Navigation = ({ activeSection, scrollTo, onBackToLanding, logoVariant = 'c
     { id: 'about', label: 'About' },
     { id: 'services', label: 'Services' },
     { id: 'projects', label: 'Projects' },
-    { id: 'contact', label: 'Contact' }
+    { id: 'contact', label: 'Contact' },
+    { id: 'blog', path: '/blog', label: 'Blog' }
   ];
 
   /**
@@ -52,13 +53,17 @@ const Navigation = ({ activeSection, scrollTo, onBackToLanding, logoVariant = 'c
 
   /**
    * Handle navigation item click
-   * 
-   * @param {string} sectionId - The section ID to navigate to
+   *
+   * @param {Object} item - Nav item (id, label, optional path)
    */
-  const handleNavClick = useCallback((sectionId) => {
-    scrollTo(sectionId);
+  const handleNavClick = useCallback((item) => {
+    if (item.path) {
+      navigate(item.path);
+    } else {
+      scrollTo(item.id);
+    }
     setIsMobileMenuOpen(false);
-  }, [scrollTo]);
+  }, [navigate, scrollTo]);
 
   /**
    * Handle keyboard navigation

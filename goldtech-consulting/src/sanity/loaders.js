@@ -105,6 +105,9 @@ function getEmptyVariantContent() {
 
 const EMPTY_CONTENT = getEmptyVariantContent();
 
+/** Exported for ContentContext fallback when content is not yet loaded. */
+export { EMPTY_CONTENT };
+
 /**
  * Get content for a variant. Call loadContent() first (e.g. in a provider or root) so cache is populated.
  * If cache is empty, returns empty-shaped object so components do not crash.

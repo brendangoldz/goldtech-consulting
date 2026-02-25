@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { FaCheck } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import SectionHeader from '../shared/SectionHeader';
-import { getContent } from '../../sanity/loaders';
+import { useContent } from '../../contexts/ContentContext';
 import { getSectionBg } from '../../config/theme';
 
 const fadeInUp = {
@@ -17,7 +17,7 @@ const staggerContainer = {
 };
 
 const AboutSection = ({ variant = 'consulting' }) => {
-  const content = getContent(variant).about;
+  const content = useContent(variant).about;
   const isMarketing = variant === 'marketing';
   const imageFrameClasses = isMarketing
     ? 'bg-marketing-bg border-marketing-primary/20'

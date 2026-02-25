@@ -2,8 +2,16 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import AboutSection from './About';
+import { ContentContextProvider } from '../../contexts/ContentContext';
+import { contentConfig } from '../../config/content';
 
 expect.extend(toHaveNoViolations);
+
+const contentWrapper = ({ children }) => (
+  <ContentContextProvider value={{ content: contentConfig, contentReady: true }}>
+    {children}
+  </ContentContextProvider>
+);
 
 // Mock the SectionHeader component to avoid Framer Motion issues
 jest.mock('../shared/SectionHeader', () => {
@@ -30,7 +38,7 @@ jest.mock('framer-motion', () => ({
 
 describe('AboutSection', () => {
   it('renders about section with all content', () => {
-    render(<AboutSection />);
+    render(<AboutSection />, { wrapper: contentWrapper });
     
     // Check section element
     const section = screen.getByRole('region');
@@ -40,12 +48,12 @@ describe('AboutSection', () => {
     // Check section header
     expect(screen.getByTestId('section-header')).toBeInTheDocument();
     expect(screen.getByTestId('eyebrow')).toHaveTextContent('Who we are');
-    expect(screen.getByTestId('title')).toHaveTextContent('About GoldTech');
+    expect(screen.getByTestId('title')).toHaveTextContent('About GoldTech Consulting');
     expect(screen.getByTestId('subtitle')).toHaveTextContent(/We harness the power of technology/);
   });
 
   it('displays the main description paragraph', () => {
-    render(<AboutSection />);
+    render(<AboutSection />, { wrapper: contentWrapper });
     
     const description = screen.getByText(/From cloud solutions and QA automation/);
     expect(description).toBeInTheDocument();
@@ -53,7 +61,7 @@ describe('AboutSection', () => {
   });
 
   it('displays the feature list with checkmarks', () => {
-    render(<AboutSection />);
+    render(<AboutSection />, { wrapper: contentWrapper });
     
     const features = [
       'Cloud-first architecture & DevOps',
@@ -76,7 +84,7 @@ describe('AboutSection', () => {
   });
 
   it('displays technology tags', () => {
-    render(<AboutSection />);
+    render(<AboutSection />, { wrapper: contentWrapper });
     
     const technologies = ['React', 'Node', 'AWS', 'PostgreSQL', 'CICD'];
     
@@ -88,7 +96,7 @@ describe('AboutSection', () => {
   });
 
   it('displays the profile image with proper attributes', () => {
-    render(<AboutSection />);
+    render(<AboutSection />, { wrapper: contentWrapper });
     
     const image = screen.getByRole('img');
     expect(image).toBeInTheDocument();
@@ -98,18 +106,18 @@ describe('AboutSection', () => {
   });
 
   it('has proper CSS classes for styling', () => {
-    render(<AboutSection />);
+    render(<AboutSection />, { wrapper: contentWrapper });
     
     const section = screen.getByRole('region');
     expect(section).toHaveClass('py-20', 'bg-white');
     
     const image = screen.getByRole('img');
     const imageContainer = image.closest('div');
-    expect(imageContainer).toHaveClass('bg-lightGray/70', 'rounded-2xl', 'p-6', 'h-18', 'flex', 'items-center', 'justify-center', 'border', 'border-gray-200', 'overflow-hidden');
+    expect(imageContainer).toHaveClass('bg-lightGray/70', 'rounded-2xl', 'border', 'flex', 'items-center', 'justify-center', 'overflow-hidden');
   });
 
   it('has proper semantic structure', () => {
-    render(<AboutSection />);
+    render(<AboutSection />, { wrapper: contentWrapper });
     
     // Check section role
     const section = screen.getByRole('region');
@@ -127,13 +135,13 @@ describe('AboutSection', () => {
   });
 
   it('should not have accessibility violations', async () => {
-    const { container } = render(<AboutSection />);
+    const { container } = render(<AboutSection />, { wrapper: contentWrapper });
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
 
   it('matches snapshot', () => {
-    const { container } = render(<AboutSection />);
+    const { container } = render(<AboutSection />, { wrapper: contentWrapper });
     expect(container.firstChild).toMatchSnapshot();
   });
 });

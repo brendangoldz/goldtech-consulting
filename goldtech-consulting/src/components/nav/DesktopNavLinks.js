@@ -7,7 +7,7 @@ const DesktopNavLinks = ({ navItems, activeSection, onNavClick, isMarketing }) =
     {navItems.map((item) => (
       <motion.button
         key={item.id}
-        onClick={() => onNavClick(item.id)}
+        onClick={() => onNavClick(item)}
         className={`relative font-bold transition-colors duration-200 focus:outline-none ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'} focus:ring-2 focus:ring-offset-2 rounded px-2 py-1 ${
           activeSection === item.id 
             ? (isMarketing ? 'text-marketing-primary' : 'text-gold')
@@ -16,7 +16,7 @@ const DesktopNavLinks = ({ navItems, activeSection, onNavClick, isMarketing }) =
         whileHover={{ y: -2 }}
         role="menuitem"
         aria-current={activeSection === item.id ? 'page' : undefined}
-        aria-label={`Navigate to ${item.label} section`}
+        aria-label={item.path ? `Navigate to ${item.label}` : `Navigate to ${item.label} section`}
       >
         {item.label}
         {activeSection === item.id && (
@@ -36,7 +36,8 @@ const DesktopNavLinks = ({ navItems, activeSection, onNavClick, isMarketing }) =
 DesktopNavLinks.propTypes = {
   navItems: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired
+    label: PropTypes.string.isRequired,
+    path: PropTypes.string
   })).isRequired,
   activeSection: PropTypes.string.isRequired,
   onNavClick: PropTypes.func.isRequired,

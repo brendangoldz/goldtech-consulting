@@ -5,12 +5,12 @@ import { FaArrowRight, FaImages } from 'react-icons/fa';
 import SectionHeader from '../shared/SectionHeader';
 import ProjectModal from './ProjectModal';
 import Logo from '../shared/Logo';
-import { getContent } from '../../sanity/loaders';
+import { useContent } from '../../contexts/ContentContext';
 import { getSectionBg, getVariantClasses } from '../../config/theme';
 import { fadeInUp } from '../../utils/animations';
 
 const ProjectsSection = ({ variant = 'consulting' }) => {
-  const content = getContent(variant).projects;
+  const content = useContent(variant).projects;
   const cardClasses = getVariantClasses(variant, {
     marketing: 'bg-marketing-bg border-marketing-primary/20 hover:bg-marketing-bgAlt',
     consulting: 'bg-lightGray/60 border-gray-200 hover:bg-lightGray'
