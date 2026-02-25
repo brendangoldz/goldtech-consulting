@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { FaFacebookF, FaGithub, FaLinkedin } from 'react-icons/fa';
 import Logo from '../shared/Logo';
 import { getContent } from '../../sanity/loaders';
-import { getThemeClasses } from '../../config/theme';
 
 /**
  * Footer - Site footer with company info, links, and social media

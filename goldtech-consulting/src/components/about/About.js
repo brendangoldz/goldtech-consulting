@@ -4,7 +4,7 @@ import { FaCheck } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import SectionHeader from '../shared/SectionHeader';
 import { getContent } from '../../sanity/loaders';
-import { getSectionBg, getThemeClasses } from '../../config/theme';
+import { getSectionBg } from '../../config/theme';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
