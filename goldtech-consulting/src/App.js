@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useState, lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 import ContentProvider from './contexts/ContentProvider';
 import LandingPage from './components/landing/LandingPage';
@@ -155,6 +156,7 @@ const App = () => {
         </Suspense>
       </BrowserRouter>
       <Analytics />
+      <SpeedInsights />
     </ContentProvider>
   );
 };
