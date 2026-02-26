@@ -196,7 +196,7 @@ const ContactSection = ({ variant = 'consulting' }) => {
               <div className="grid sm:grid-cols-2 gap-4">
                 {/* Name Field */}
                 <div className="form-group">
-                  <label htmlFor="contact-name" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="contact-name" className="block text-sm font-normal text-gray-700 mb-1">
                     Name *
                   </label>
                   <input
@@ -225,7 +225,7 @@ const ContactSection = ({ variant = 'consulting' }) => {
 
                 {/* Email Field */}
                 <div className="form-group">
-                  <label htmlFor="contact-email" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="contact-email" className="block text-sm font-normal text-gray-700 mb-1">
                     Email *
                   </label>
                   <input
@@ -255,7 +255,7 @@ const ContactSection = ({ variant = 'consulting' }) => {
 
               {/* Subject Field */}
               <div className="form-group mt-4">
-                <label htmlFor="contact-subject" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="contact-subject" className="block text-sm font-normal text-gray-700 mb-1">
                   Subject *
                 </label>
                 <input
@@ -284,7 +284,7 @@ const ContactSection = ({ variant = 'consulting' }) => {
 
               {/* Message Field */}
               <div className="form-group mt-4">
-                <label htmlFor="contact-message" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="contact-message" className="block text-sm font-normal text-gray-700 mb-1">
                   Message *
                 </label>
                 <textarea
@@ -315,7 +315,7 @@ const ContactSection = ({ variant = 'consulting' }) => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`mt-6 bg-gradient-to-r ${isMarketing ? 'from-marketing-primary to-marketing-accent text-white' : 'from-gold to-goldLight text-navy'} px-6 py-3 rounded-xl font-semibold ${isMarketing ? 'shadow-lg hover:shadow-xl' : 'shadow-gold hover:shadow-gold-lg'} transition-all duration-300 focus:outline-none ${focusRingClasses} focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed`}
+                className={`mt-6 bg-gradient-to-r ${isMarketing ? 'from-marketing-primary to-marketing-accent text-white' : 'from-gold to-goldLight text-navy'} px-6 py-3 rounded-xl font-medium ${isMarketing ? 'shadow-lg hover:shadow-xl' : 'shadow-gold hover:shadow-gold-lg'} transition-all duration-300 focus:outline-none ${focusRingClasses} focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed`}
                 aria-describedby="submit-status"
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
@@ -348,7 +348,7 @@ const ContactSection = ({ variant = 'consulting' }) => {
             viewport={{ once: true, amount: 0.2 }}
             aria-labelledby="contact-info-heading"
           >
-            <h3 id="contact-info-heading" className="font-semibold text-navy mb-4">
+            <h3 id="contact-info-heading" className="font-normal text-navy mb-4">
               Contact Info
             </h3>
             <ul className="space-y-3 text-gray-700">
@@ -356,19 +356,19 @@ const ContactSection = ({ variant = 'consulting' }) => {
                 <FaEnvelope className={`${isMarketing ? 'text-marketing-primary' : 'text-gold'} mr-3 flex-shrink-0`} aria-hidden="true" />
                 <a 
                   href={`mailto:${contact.email}`}
-                  className={`${hoverAccentClasses} break-all rounded transition-colors focus:outline-none focus:ring-2 ${focusRingClasses}`}
+                  className={`${hoverAccentClasses} break-all rounded transition-colors focus:outline-none focus:ring-2 ${focusRingClasses} text-sm`}
                 >
                   {contact.email}
                 </a>
               </li>
               <li className="flex items-start">
-                <FaMapMarkerAlt className={`${isMarketing ? 'text-marketing-primary' : 'text-gold'} mr-3 flex-shrink-0`} aria-hidden="true" />
-                {contact.location}
+                <FaMapMarkerAlt className={`${isMarketing ? 'text-marketing-primary' : 'text-gold'} mr-3 flex-shrink-0 `} aria-hidden="true" />
+                <p className="text-sm">{contact.location}</p>
               </li>
             </ul>
             
             <div className="mt-6">
-              <h4 className="font-medium text-navy mb-3">Connect with us</h4>
+              <h4 className="font-normal text-navy mb-3">Connect with us</h4>
               <div className="flex space-x-4">
                 {contact.socialLinks.linkedin && (
                   <a 

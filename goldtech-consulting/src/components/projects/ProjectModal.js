@@ -120,7 +120,7 @@ const ScreenshotItem = React.memo(({
             href={screenshot.websiteUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className={`text-sm font-medium transition-colors break-all ${getLinkColor(isMarketing)}`}
+            className={`text-sm font-normal transition-colors break-all ${getLinkColor(isMarketing)}`}
             onClick={(e) => e.stopPropagation()}
           >
             {screenshot.websiteUrl.replace(/^https?:\/\//, '').replace(/^www\./, '')}
@@ -347,7 +347,7 @@ const ProjectModal = ({
                 <div className="flex-1 min-w-0">
                   <h2 
                     id="modal-title" 
-                    className={`text-xl sm:text-2xl font-semibold truncate ${getTextColor(isMarketing)}`}
+                    className={`text-xl sm:text-2xl font-normal truncate ${getTextColor(isMarketing)}`}
                   >
                     {projectTitle}
                   </h2>
@@ -395,7 +395,7 @@ const ProjectModal = ({
                   </button>
 
                   <div className="flex items-center gap-2">
-                    <span className={`text-sm font-medium ${getTextColor(isMarketing)}`}>
+                    <span className={`text-sm font-normal ${getTextColor(isMarketing)}`}>
                       Page {currentPage} of {totalPages}
                     </span>
                     <span className="text-sm text-gray-500">

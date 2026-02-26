@@ -5,7 +5,7 @@
  */
 
 import { createContext, useContext } from 'react';
-import { EMPTY_CONTENT } from '../sanity/loaders';
+import { EMPTY_CONTENT } from '../sanity/emptyContent';
 
 const ContentContext = createContext({
   content: null,

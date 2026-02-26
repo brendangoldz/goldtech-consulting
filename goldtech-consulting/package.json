@@ -40,6 +40,7 @@
     "eslint-plugin-react": "^7.33.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "jest-axe": "^7.0.1",
+    "lighthouse": "^12.8.2",
     "nodemon": "^3.0.1",
     "playwright": "^1.57.0",
     "prettier": "^3.6.2",
@@ -55,6 +56,8 @@
     "test": "react-scripts test --watchAll=false",
     "test:coverage": "react-scripts test --coverage --watchAll=false",
     "test:ci": "react-scripts test --coverage --watchAll=false --ci",
+    "test:lcp": "node scripts/core-web-vitals-lcp.js",
+    "test:lcp:ci": "node scripts/core-web-vitals-lcp.js --run-server",
     "lint": "eslint src --ext .js,.jsx --fix",
     "lint:check": "eslint src --ext .js,.jsx",
     "format": "prettier --write src/**/*.{js,jsx,json,css,md}",
@@ -111,5 +114,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

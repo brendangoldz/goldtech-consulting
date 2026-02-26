@@ -116,7 +116,7 @@ class ErrorBoundary extends React.Component {
             <div className="space-y-3">
               <button
                 onClick={this.handleRetry}
-                className="w-full bg-gold text-navy px-4 py-2 rounded-lg font-medium hover:bg-gold/90 transition-colors focus:outline-none focus:ring-2 focus:ring-gold/40 focus:ring-offset-2"
+                className="w-full bg-gold text-navy px-4 py-2 rounded-lg font-normal hover:bg-gold/90 transition-colors focus:outline-none focus:ring-2 focus:ring-gold/40 focus:ring-offset-2"
                 aria-label="Try again"
               >
                 Try Again
@@ -124,7 +124,7 @@ class ErrorBoundary extends React.Component {
               
               <button
                 onClick={this.handleReload}
-                className="w-full border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
+                className="w-full border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-normal hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
                 aria-label="Reload page"
               >
                 Reload Page

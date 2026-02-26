@@ -67,9 +67,7 @@ const HeroSection = ({ scrollTo, variant = 'consulting' }) => {
     spacing: 25.00,
     showLines: false
   }), [isMarketing]);
-  const { vantaRef, isVantaEnabled } = useVantaDots(vantaOptions, [
-    isMarketing
-  ]);
+  const { vantaRef, isVantaEnabled } = useVantaDots(vantaOptions);
 
   /**
    * Handle primary CTA button click
@@ -107,7 +105,7 @@ const HeroSection = ({ scrollTo, variant = 'consulting' }) => {
         <motion.div variants={staggerContainer} initial="initial" animate="animate">
           {/* Trust indicator */}
           <motion.div
-            className={`inline-flex items-center px-4 py-2 rounded-full ${trustBadgeClasses} text-sm font-medium mb-8 border`}
+            className={`inline-flex items-center px-4 py-2 rounded-full ${trustBadgeClasses} text-sm font-normal mb-8 border`}
             variants={fadeInUp}
             role="img"
             aria-label={`Trust indicator: ${content.trustIndicator}`}
@@ -167,7 +165,7 @@ const HeroSection = ({ scrollTo, variant = 'consulting' }) => {
           >
             <motion.button
               onClick={handlePrimaryCTA}
-              className={`group relative bg-gradient-to-r ${primaryButtonClasses} px-8 py-4 rounded-xl font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 flex items-center justify-center`}
+              className={`group relative bg-gradient-to-r ${primaryButtonClasses} px-8 py-4 rounded-xl font-normal transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 flex items-center justify-center`}
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               aria-describedby="primary-cta-description"
@@ -186,7 +184,7 @@ const HeroSection = ({ scrollTo, variant = 'consulting' }) => {
 
             <motion.button
               onClick={handleSecondaryCTA}
-              className={`group border-2 ${secondaryButtonClasses} px-8 py-4 rounded-xl font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2`}
+              className={`group border-2 ${secondaryButtonClasses} px-8 py-4 rounded-xl font-normal transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2`}
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               aria-describedby="secondary-cta-description"

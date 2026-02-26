@@ -42,7 +42,7 @@ const BackButton = ({ fallbackPath, variant = 'consulting', onlyWhenReferrer = f
     <button
       type="button"
       onClick={handleClick}
-      className={`inline-flex items-center gap-2 font-medium transition-colors rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 ${focusRing} ${
+      className={`inline-flex items-center gap-2 font-normal transition-colors rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 ${focusRing} ${
         isMarketing
           ? 'text-navy hover:text-marketing-primary'
           : 'text-navy hover:text-gold'

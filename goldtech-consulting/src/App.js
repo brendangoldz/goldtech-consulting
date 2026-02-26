@@ -1,18 +1,10 @@
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom';
 
 import ContentProvider from './contexts/ContentProvider';
 import LandingPage from './components/landing/LandingPage';
-import ConsultingApp from './components/consulting/ConsultingApp';
-import MarketingApp from './components/marketing/MarketingApp';
 import Seo from './components/shared/Seo';
-import SeoLandingPage from './components/pages/SeoLandingPage';
-import BlogIndex from './components/pages/BlogIndex';
-import BlogArticle from './components/pages/BlogArticle';
-import ConfirmationPage from './components/pages/ConfirmationPage';
-import NotFoundPage from './components/pages/NotFoundPage';
-import { loadServicePageBySlug } from './sanity/loaders';
 import {
   consultingPlatformPages,
   consultingIndustryPages
@@ -21,8 +13,13 @@ import {
   marketingPlatformPages,
   marketingIndustryPages
 } from './config/marketingSeoPages';
-
-import './index.css';
+const ConsultingApp = lazy(() => import('./components/consulting/ConsultingApp'));
+const MarketingApp = lazy(() => import('./components/marketing/MarketingApp'));
+const SeoLandingPage = lazy(() => import('./components/pages/SeoLandingPage'));
+const BlogIndex = lazy(() => import('./components/pages/BlogIndex'));
+const BlogArticle = lazy(() => import('./components/pages/BlogArticle'));
+const ConfirmationPage = lazy(() => import('./components/pages/ConfirmationPage'));
+const NotFoundPage = lazy(() => import('./components/pages/NotFoundPage'));
 
 /**
  * Resolves a service page by slug from Sanity (with static fallback) and renders SeoLandingPage or NotFound.
@@ -35,7 +32,8 @@ const ServicePageRoute = ({ variant }) => {
   useEffect(() => {
     let cancelled = false;
     setLoading(true);
-    loadServicePageBySlug(variant, slug)
+    import('./sanity/loaders')
+      .then((m) => m.loadServicePageBySlug(variant, slug))
       .then((p) => {
         if (!cancelled) setPage(p);
       })
@@ -76,10 +74,17 @@ ServicePageRoute.propTypes = {
  * @returns {JSX.Element} Rendered application with routing
  */
 
+const RouteFallback = () => (
+  <div className="min-h-screen flex items-center justify-center" aria-busy="true">
+    <p className="text-gray-600">Loading…</p>
+  </div>
+);
+
 const App = () => {
   return (
     <ContentProvider>
       <BrowserRouter>
+        <Suspense fallback={<RouteFallback />}>
         <Routes>
         <Route
           path="/"
@@ -146,6 +151,7 @@ const App = () => {
         <Route path="/confirmation" element={<ConfirmationPage />} />
         <Route path="*" element={<NotFoundPage variant="consulting" />} />
         </Routes>
+        </Suspense>
       </BrowserRouter>
     </ContentProvider>
   );

@@ -18,7 +18,7 @@ const MobileNavMenu = ({ navItems, activeSection, onNavClick, isMarketing }) => 
         <button
           key={item.id}
           onClick={() => onNavClick(item)}
-          className={`block w-full text-left px-3 py-2 rounded-lg font-medium transition-colors duration-200 focus:outline-none ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'} focus:ring-2 ${
+          className={`block w-full text-left px-3 py-2 rounded-lg font-normal transition-colors duration-200 focus:outline-none ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'} focus:ring-2 ${
             activeSection === item.id
               ? (isMarketing ? 'bg-marketing-primary/10 text-marketing-primary' : 'bg-gold/10 text-gold')
               : 'text-navy hover:bg-gray-100'

@@ -68,14 +68,14 @@ const ServicesSection = ({ variant = 'consulting' }) => {
                   <IconComponent className={`text-3xl ${iconClasses}`} />
                 )}
               </div>
-              <h3 className="font-semibold text-lg text-navy mb-2">{service.title}</h3>
-              <p className="text-gray-600 text-sm leading-relaxed flex-grow">{service.desc}</p>
+              <h3 className="font-medium text-lg text-navy mb-2">{service.title}</h3>
+              <p className="text-gray-600 text-sm leading-relaxed flex-grow mb-4">{service.desc}</p>
               {servicePath && (
                 <Link
                   to={servicePath}
                   state={{ from: location.pathname }}
                   className={`
-                    group mt-auto pt-6 inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium
+                    group mt-auto inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-normal
                     !no-underline transition-colors duration-200
                     focus:outline-none focus:ring-2 focus:ring-offset-2
                     ${linkClasses}

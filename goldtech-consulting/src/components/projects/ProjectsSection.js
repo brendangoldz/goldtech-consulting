@@ -89,7 +89,7 @@ const ProjectsSection = ({ variant = 'consulting' }) => {
               )}
               {/* Project Content */}
               <div className="p-6 flex flex-col flex-grow min-h-[200px]">
-                <h3 className="font-semibold text-xl text-navy mb-2">{project.title}</h3>
+                <h3 className="font-medium text-xl text-navy mb-2">{project.title}</h3>
                 <p className="text-gray-700 mb-4 flex-grow">{project.summary}</p>
                 
                 {/* Action Buttons */}
@@ -97,7 +97,7 @@ const ProjectsSection = ({ variant = 'consulting' }) => {
                   {project.screenshots && project.screenshots.length > 0 && (
                     <button 
                       onClick={() => handleOpenModal(project)}
-                      className={`text-navy font-medium inline-flex items-center px-4 py-2 rounded-lg transition-colors ${galleryButtonClasses}`}
+                      className={`text-navy font-normal inline-flex items-center px-4 py-2 rounded-lg transition-colors ${galleryButtonClasses}`}
                       aria-label={`View gallery for ${project.title}`}
                     >
                       <FaImages className="mr-2" />
@@ -105,7 +105,7 @@ const ProjectsSection = ({ variant = 'consulting' }) => {
                     </button>
                   )}
                   {(!project.screenshots || project.screenshots.length === 0) && !project.websiteUrl && (
-                    <button className={`text-navy font-medium inline-flex items-center ${comingSoonClasses}`} aria-label="View case study details - Coming Soon">
+                    <button className={`text-navy font-normal inline-flex items-center ${comingSoonClasses}`} aria-label="View case study details - Coming Soon">
                       Coming Soon <FaArrowRight className={`ml-2 ${sharedAccentClasses}`} />
                     </button>
                   )}

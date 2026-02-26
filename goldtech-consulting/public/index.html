@@ -1,16 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17940832469"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'AW-17940832469');
-    </script>
-
+    <!-- Preconnect to CDN used for Three.js (Vanta) to reduce LCP impact when it loads -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -126,26 +118,36 @@
     </style>
     <!-- Montserrat as fallback (removed Google Fonts to prioritize local Gotham) -->
     <!-- All styling and JavaScript is handled by the React build process -->
-    
-    <!-- Bootstrap CSS (currently not used but kept for compatibility) -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- jQuery and Bootstrap JS (currently not used but kept for compatibility) -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-    <!-- Three.js for Vanta.js - using r121 which is compatible with Vanta -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-    
-    <!-- Note: React, ReactDOM, and JSX compilation are handled by Create React App build process -->
-    <!-- Do not include React CDN scripts as they conflict with the bundled React 18 -->
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Preload critical font for LCP (main heading) -->
+    <link rel="preload" href="%PUBLIC_URL%/fonts/gotham_bold.otf" as="font" type="font/otf" crossorigin="">
+    <!-- Preload LCP candidates (landing page logos) -->
+    <link rel="preload" href="%PUBLIC_URL%/goldtech-logo.svg" as="image">
+    <link rel="preload" href="%PUBLIC_URL%/goldtech-marketing-logo.svg" as="image">
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div id="root">
+      <!-- LCP shell: visible before React so LCP is not delayed by JS. Replaced when app mounts. -->
+      <div class="lcp-shell" style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:system-ui,-apple-system,sans-serif;background:#fafafa;">
+        <h1 style="font-size:clamp(2rem,5vw,3rem);font-weight:700;color:#1a1a2e;margin:0 1rem 1rem;">Choose Your Path</h1>
+        <img src="%PUBLIC_URL%/goldtech-logo.svg" alt="GoldTech Consulting" fetchpriority="high" width="240" height="96" style="height:6em;width:auto;">
+      </div>
+    </div>
+    <!-- Google tag (gtag.js) - deferred until after load to avoid competing with LCP -->
+    <script>
+      window.addEventListener('load', function () {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17940832469';
+        document.body.appendChild(s);
+        gtag('js', new Date());
+        gtag('config', 'AW-17940832469');
+      });
+    </script>
+    <!-- Three.js is loaded by useVantaDots when needed (after first paint) to avoid competing with LCP -->
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

@@ -48,7 +48,7 @@ const SectionHeader = ({
     >
       {eyebrow && (
         <motion.div
-          className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 ${
+          className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-normal mb-4 ${
             isMarketing 
               ? 'bg-marketing-primary/10 border border-marketing-primary/20 text-marketing-primary' 
               : 'bg-gold/10 border border-gold/20 text-gold'

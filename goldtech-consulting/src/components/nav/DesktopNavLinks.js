@@ -8,7 +8,7 @@ const DesktopNavLinks = ({ navItems, activeSection, onNavClick, isMarketing }) =
       <motion.button
         key={item.id}
         onClick={() => onNavClick(item)}
-        className={`relative font-bold transition-colors duration-200 focus:outline-none ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'} focus:ring-2 focus:ring-offset-2 rounded px-2 py-1 ${
+        className={`relative font-medium transition-colors duration-200 focus:outline-none ${isMarketing ? 'focus:ring-marketing-primary/40' : 'focus:ring-gold/40'} focus:ring-2 focus:ring-offset-2 rounded px-2 py-1 ${
           activeSection === item.id 
             ? (isMarketing ? 'text-marketing-primary' : 'text-gold')
             : (isMarketing ? 'text-navy hover:text-marketing-primary' : 'text-navy hover:text-gold')

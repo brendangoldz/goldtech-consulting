@@ -86,6 +86,7 @@ const Logo = ({ className = '', size = 'default', variant = 'consulting', onClic
           className={sizeStyles.className}
           style={sizeStyles.style}
           loading="eager"
+          fetchPriority="high"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}

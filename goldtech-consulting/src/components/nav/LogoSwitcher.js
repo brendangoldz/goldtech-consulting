@@ -129,7 +129,7 @@ const LogoSwitcher = ({
                   />
                 </div>
                 <div className="flex-1">
-                  <div className="font-semibold text-navy group-hover:text-gold transition-colors">
+                  <div className="font-normal text-navy group-hover:text-gold transition-colors">
                     Consulting
                   </div>
                   <div className="text-xs text-gray-500">
@@ -171,7 +171,7 @@ const LogoSwitcher = ({
                   />
                 </div>
                 <div className="flex-1">
-                  <div className="font-semibold text-navy group-hover:text-marketing-primary transition-colors">
+                  <div className="font-normal text-navy group-hover:text-marketing-primary transition-colors">
                     Marketing
                   </div>
                   <div className="text-xs text-gray-500">

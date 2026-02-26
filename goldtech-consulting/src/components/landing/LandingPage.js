@@ -37,17 +37,16 @@ const LandingPage = () => {
     spacing: 30.00,
     showLines: false
   }), []);
-  const { vantaRef, vantaEffect, isVantaEnabled } = useVantaDots(vantaOptions, []);
+  const { vantaRef, vantaEffect, isVantaEnabled } = useVantaDots(vantaOptions);
   
   // Get content for each section (reactive: re-renders when content loads)
   const consultingContent = useContent('consulting');
   const marketingContent = useContent('marketing');
 
-  // Update Vanta effect on hover
+  // Update Vanta effect on hover (only when Vanta is enabled and effect is ready)
   useEffect(() => {
-    if (vantaEffect.current) {
+    if (isVantaEnabled && vantaEffect.current && typeof vantaEffect.current.setOptions === 'function') {
       try {
-        // Change dot size and spacing on hover for more dynamic effect
         vantaEffect.current.setOptions({
           size: isBackgroundHovered ? 6.00 : 4.00,
           spacing: isBackgroundHovered ? 20.00 : 30.00,
@@ -56,7 +55,7 @@ const LandingPage = () => {
         console.error('Error updating Vanta on hover:', error);
       }
     }
-  }, [isBackgroundHovered]);
+  }, [isVantaEnabled, isBackgroundHovered, vantaEffect]);
 
   /**
    * Handle navigation to Consulting section
@@ -96,7 +95,13 @@ const LandingPage = () => {
 
       {/* Vanta.js animated background */}
       {isVantaEnabled && (
-        <div ref={vantaRef} className="absolute inset-0 w-full h-full" />
+        <div
+          ref={vantaRef}
+          className="absolute inset-0 w-full h-full"
+          onMouseEnter={() => setIsBackgroundHovered(true)}
+          onMouseLeave={() => setIsBackgroundHovered(false)}
+          aria-hidden="true"
+        />
       )}
       
       {/* Overlay to ensure content is readable */}
@@ -109,7 +114,7 @@ const LandingPage = () => {
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-navy mb-4 animate-fade-in">
             Choose Your Path
           </h2>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in-delay">
+          <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in-delay font-normal">
             Select the service that best fits your business needs
           </p>
         </div>
@@ -151,7 +156,7 @@ const LandingPage = () => {
                 Consulting
               </h3>
               
-              <p className={`text-base sm:text-lg font-medium max-w-sm text-center transition-colors duration-300 ${
+              <p className={`text-base sm:text-lg font-normal max-w-sm text-center transition-colors duration-300 ${
                 isConsultingHovered ? 'text-navy' : 'text-gray-600'
               }`}>
                 {consultingContent.hero.subtitle}
@@ -161,7 +166,7 @@ const LandingPage = () => {
               <div className={`mt-6 flex items-center gap-2 transition-all duration-300 ${
                 isConsultingHovered ? 'translate-x-2 opacity-100' : 'opacity-60'
               }`}>
-                <span className={`font-semibold ${isConsultingHovered ? 'text-navy' : 'text-gray-600'}`}>
+                <span className={`font-normal ${isConsultingHovered ? 'text-navy' : 'text-gray-600'}`}>
                   Explore
                 </span>
                 <svg 
@@ -210,7 +215,7 @@ const LandingPage = () => {
                 Marketing
               </h3>
               
-              <p className={`text-base sm:text-lg font-medium max-w-sm text-center transition-colors duration-300 ${
+              <p className={`text-base sm:text-lg font-normal max-w-sm text-center transition-colors duration-300 ${
                 isMarketingHovered ? 'text-navy' : 'text-gray-600'
               }`}>
                 {marketingContent.hero.subtitle}
@@ -220,7 +225,7 @@ const LandingPage = () => {
               <div className={`mt-6 flex items-center gap-2 transition-all duration-300 ${
                 isMarketingHovered ? 'translate-x-2 opacity-100' : 'opacity-60'
               }`}>
-                <span className={`font-semibold ${isMarketingHovered ? 'text-navy' : 'text-gray-600'}`}>
+                <span className={`font-normal ${isMarketingHovered ? 'text-navy' : 'text-gray-600'}`}>
                   Explore
                 </span>
                 <svg 
