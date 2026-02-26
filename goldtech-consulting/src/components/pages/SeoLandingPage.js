@@ -6,7 +6,11 @@ import LandingPageTemplate from './LandingPageTemplate';
 
 const SeoLandingPage = ({ variant = 'consulting', page }) => {
   return (
-    <PageLayout variant={variant}>
+    <PageLayout
+      variant={variant}
+      showBackButton
+      backFallbackPath={variant === 'marketing' ? '/marketing#services' : '/consulting#services'}
+    >
       <Seo
         title={page.seoTitle}
         description={page.metaDescription}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../shared/Logo';
-import { getContent } from '../../config/content';
+import { useContent } from '../../contexts/ContentContext';
 import useVantaDots from '../../hooks/useVantaDots';
 
 /**
@@ -37,14 +37,11 @@ const LandingPage = () => {
     spacing: 30.00,
     showLines: false
   }), []);
-  const { vantaRef, vantaEffect, isVantaEnabled } = useVantaDots(
-    vantaOptions,
-    []
-  );
+  const { vantaRef, vantaEffect, isVantaEnabled } = useVantaDots(vantaOptions, []);
   
-  // Get content for each section
-  const consultingContent = getContent('consulting');
-  const marketingContent = getContent('marketing');
+  // Get content for each section (reactive: re-renders when content loads)
+  const consultingContent = useContent('consulting');
+  const marketingContent = useContent('marketing');
 
   // Update Vanta effect on hover
   useEffect(() => {

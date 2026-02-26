@@ -679,6 +679,10 @@ video {
   z-index: 50;
 }
 
+.col-span-2 {
+  grid-column: span 2 / span 2;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -722,6 +726,10 @@ video {
 
 .ml-4 {
   margin-left: 1rem;
+}
+
+.ml-6 {
+  margin-left: 1.5rem;
 }
 
 .mr-1 {
@@ -796,16 +804,12 @@ video {
   display: none;
 }
 
-.aspect-\[4\/4\] {
-  aspect-ratio: 4/4;
-}
-
 .aspect-screenshot {
   aspect-ratio: 4 / 3;
 }
 
-.aspect-video {
-  aspect-ratio: 16 / 9;
+.aspect-square {
+  aspect-ratio: 1 / 1;
 }
 
 .h-0\.5 {
@@ -818,6 +822,14 @@ video {
 
 .h-16 {
   height: 4rem;
+}
+
+.h-18 {
+  height: 4.5rem;
+}
+
+.h-20 {
+  height: 5rem;
 }
 
 .h-2 {
@@ -872,8 +884,16 @@ video {
   min-height: 260px;
 }
 
+.min-h-\[3\.5rem\] {
+  min-height: 3.5rem;
+}
+
 .min-h-\[400px\] {
   min-height: 400px;
+}
+
+.min-h-\[calc\(100vh-12rem\)\] {
+  min-height: calc(100vh - 12rem);
 }
 
 .min-h-\[calc\(100vh-14rem\)\] {
@@ -946,6 +966,10 @@ video {
 
 .max-w-7xl {
   max-width: 80rem;
+}
+
+.max-w-\[14rem\] {
+  max-width: 14rem;
 }
 
 .max-w-full {
@@ -1054,6 +1078,14 @@ video {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.list-decimal {
+  list-style-type: decimal;
+}
+
+.list-disc {
+  list-style-type: disc;
 }
 
 .grid-cols-1 {
@@ -1528,6 +1560,10 @@ video {
   object-fit: cover;
 }
 
+.object-center {
+  object-position: center;
+}
+
 .p-2 {
   padding: 0.5rem;
 }
@@ -1627,6 +1663,10 @@ video {
 
 .pb-4 {
   padding-bottom: 1rem;
+}
+
+.pt-24 {
+  padding-top: 6rem;
 }
 
 .pt-32 {
@@ -2244,6 +2284,14 @@ body,
     display: inline;
   }
 
+  .sm\:min-h-\[calc\(100vh-14rem\)\] {
+    min-height: calc(100vh - 14rem);
+  }
+
+  .sm\:max-w-sm {
+    max-width: 24rem;
+  }
+
   .sm\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2268,9 +2316,21 @@ body,
     padding: 1.5rem;
   }
 
+  .sm\:p-8 {
+    padding: 2rem;
+  }
+
   .sm\:px-6 {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+  }
+
+  .sm\:pb-20 {
+    padding-bottom: 5rem;
+  }
+
+  .sm\:pt-28 {
+    padding-top: 7rem;
   }
 
   .sm\:text-2xl {
@@ -2326,6 +2386,10 @@ body,
     display: none;
   }
 
+  .md\:max-w-md {
+    max-width: 28rem;
+  }
+
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2342,8 +2406,8 @@ body,
     justify-content: flex-start;
   }
 
-  .md\:justify-center {
-    justify-content: center;
+  .md\:justify-end {
+    justify-content: flex-end;
   }
 
   .md\:text-left {
@@ -2374,8 +2438,22 @@ body,
     padding-right: 2rem;
   }
 
+  .lg\:pb-24 {
+    padding-bottom: 6rem;
+  }
+
+  .lg\:pt-32 {
+    padding-top: 8rem;
+  }
+
   .lg\:text-7xl {
     font-size: 4.5rem;
     line-height: 1;
+  }
+}
+
+@media (min-width: 1280px) {
+  .xl\:max-w-\[33rem\] {
+    max-width: 33rem;
   }
 }

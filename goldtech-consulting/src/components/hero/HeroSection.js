@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { FaArrowRight } from 'react-icons/fa';
 import PropTypes from 'prop-types';
-import { getContent } from '../../config/content';
+import { useContent } from '../../contexts/ContentContext';
 import { getHeroGradient, getThemeClasses, getVariantClasses } from '../../config/theme';
 import { fadeInUp, staggerContainer } from '../../utils/animations';
 import useVantaDots from '../../hooks/useVantaDots';
@@ -26,7 +26,7 @@ import useVantaDots from '../../hooks/useVantaDots';
  * @returns {JSX.Element} Rendered hero section
  */
 const HeroSection = ({ scrollTo, variant = 'consulting' }) => {
-  const content = getContent(variant).hero;
+  const content = useContent(variant).hero;
   const isMarketing = variant === 'marketing';
   const overlayClasses = getVariantClasses(variant, {
     marketing: 'bg-marketing-bg/60',
@@ -88,7 +88,7 @@ const HeroSection = ({ scrollTo, variant = 'consulting' }) => {
   return (
     <section
       id="home"
-      className={`relative min-h-screen flex items-center justify-center overflow-hidden ${getHeroGradient(variant)}`}
+      className={`pt-32 relative min-h-screen flex items-center justify-center overflow-hidden ${getHeroGradient(variant)}`}
       aria-labelledby="hero-heading"
       role="banner"
     >
@@ -101,7 +101,7 @@ const HeroSection = ({ scrollTo, variant = 'consulting' }) => {
       <div className={`absolute inset-0 ${overlayClasses}`} />
 
       <motion.div
-        className="backdrop-blur-sm relative z-10 text-center max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 rounded-3xl"
+        className="backdrop-blur-sm relative z-10 text-center max-w-5xl mx-auto px-4 mt-20 sm:mt-20 lg:px-8 rounded-3xl"
         style={{ y, opacity }}
       >
         <motion.div variants={staggerContainer} initial="initial" animate="animate">

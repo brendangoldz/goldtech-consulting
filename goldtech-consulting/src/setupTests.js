@@ -1,3 +1,10 @@
+// Mock Sanity client so tests don't load @sanity/client/csm; fetch rejects to trigger static fallback in loaders
+jest.mock('@sanity/client', () => ({
+  createClient: () => ({
+    fetch: jest.fn().mockRejectedValue(new Error('Sanity mocked in tests'))
+  })
+}));
+
 // Mock Framer Motion before any other imports
 jest.mock('framer-motion', () => {
   const React = require('react');

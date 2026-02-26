@@ -34,13 +34,15 @@ const Navigation = ({ activeSection, scrollTo, onBackToLanding, logoVariant = 'c
   const location = useLocation();
   const isMarketing = logoVariant === 'marketing';
   const canSwitch = location.pathname === '/consulting' || location.pathname === '/marketing';
+  const isBlogSection = location.pathname === '/blog' || location.pathname.startsWith('/blog/');
 
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'services', label: 'Services' },
     { id: 'projects', label: 'Projects' },
-    { id: 'contact', label: 'Contact' }
+    { id: 'contact', label: 'Contact' },
+    { id: 'blog', path: '/blog', label: 'Blog' }
   ];
 
   /**
@@ -52,13 +54,17 @@ const Navigation = ({ activeSection, scrollTo, onBackToLanding, logoVariant = 'c
 
   /**
    * Handle navigation item click
-   * 
-   * @param {string} sectionId - The section ID to navigate to
+   *
+   * @param {Object} item - Nav item (id, label, optional path)
    */
-  const handleNavClick = useCallback((sectionId) => {
-    scrollTo(sectionId);
+  const handleNavClick = useCallback((item) => {
+    if (item.path) {
+      navigate(item.path);
+    } else {
+      scrollTo(item.id);
+    }
     setIsMobileMenuOpen(false);
-  }, [scrollTo]);
+  }, [navigate, scrollTo]);
 
   /**
    * Handle keyboard navigation
@@ -130,11 +136,12 @@ const Navigation = ({ activeSection, scrollTo, onBackToLanding, logoVariant = 'c
       role="navigation"
       aria-label="Main navigation"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 p-4">
-        <div className="flex justify-between items-center h-16">
+      <div className="max-w-7xl mx-auto px-4 py-3 sm:px-6 lg:px-8">
+        <div className="flex min-h-[3.5rem] items-center justify-between gap-3">
           {/* Logo with Dropdown */}
           <LogoSwitcher
             canSwitch={canSwitch}
+            isBlogSection={isBlogSection}
             isLogoDropdownOpen={isLogoDropdownOpen}
             isMarketing={isMarketing}
             logoVariant={logoVariant}

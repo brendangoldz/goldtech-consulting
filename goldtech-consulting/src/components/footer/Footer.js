@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FaFacebookF, FaGithub, FaLinkedin } from 'react-icons/fa';
 import Logo from '../shared/Logo';
-import { getContent } from '../../config/content';
-import { getThemeClasses } from '../../config/theme';
+import { useContent } from '../../contexts/ContentContext';
 
 /**
  * Footer - Site footer with company info, links, and social media
@@ -21,8 +20,9 @@ import { getThemeClasses } from '../../config/theme';
  * @returns {JSX.Element} Rendered footer
  */
 const Footer = ({ variant = 'consulting' }) => {
-  const content = getContent(variant).footer;
-  const contact = getContent(variant).contact;
+  const variantContent = useContent(variant);
+  const content = variantContent.footer;
+  const contact = variantContent.contact;
   const isMarketing = variant === 'marketing';
   
   return (
@@ -53,7 +53,7 @@ const Footer = ({ variant = 'consulting' }) => {
         {/* Social Links */}
         <div className="text-center md:text-left">
           <h5 className="text-white font-semibold mb-4">Connect</h5>
-          <div className="flex justify-center md:justify-center space-x-4">
+          <div className="flex justify-center space-x-4 md:justify-start">
             {contact.socialLinks.linkedin && (
               <a href={contact.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className={`p-2 rounded-lg border ${isMarketing ? 'border-white/30 hover:border-white hover:bg-white/10' : 'border-gray-600 hover:border-gold hover:bg-gold/10'} transition-all duration-300`} aria-label="Connect on LinkedIn">
                 <FaLinkedin className={`text-gray-300 ${isMarketing ? 'hover:text-white' : 'hover:text-gold'} transition-colors`} />

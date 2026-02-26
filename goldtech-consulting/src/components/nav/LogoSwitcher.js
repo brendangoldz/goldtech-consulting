@@ -1,17 +1,55 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import Logo from '../shared/Logo';
 
+const LOGO_SWITCH_MS = 2500;
+const LOGOS = [
+  { src: '/goldtech-logo.svg', key: 'consulting' },
+  { src: '/goldtech-marketing-logo.svg', key: 'marketing' }
+];
+
 const LogoSwitcher = ({
   canSwitch,
+  isBlogSection,
   isLogoDropdownOpen,
   isMarketing,
   logoVariant,
   onToggle,
   onSwitchSite
 }) => {
+  const [flipIndex, setFlipIndex] = useState(0);
+
+  useEffect(() => {
+    if (!isBlogSection) return;
+    const id = setInterval(() => setFlipIndex((i) => (i + 1) % 2), LOGO_SWITCH_MS);
+    return () => clearInterval(id);
+  }, [isBlogSection]);
+
+  if (isBlogSection) {
+    const current = LOGOS[flipIndex];
+    return (
+      <div className="relative flex items-center" style={{ minHeight: '6em' }}>
+        <div className="relative w-full overflow-hidden" style={{ minWidth: '8rem' }}>
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.img
+              key={current.key}
+              src={current.src}
+              alt=""
+              className="w-auto block"
+              style={{ height: '6em' }}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 10 }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+            />
+          </AnimatePresence>
+        </div>
+      </div>
+    );
+  }
+
   if (!canSwitch) {
     return <Logo size="large" variant={logoVariant} />;
   }
@@ -164,6 +202,7 @@ const LogoSwitcher = ({
 
 LogoSwitcher.propTypes = {
   canSwitch: PropTypes.bool.isRequired,
+  isBlogSection: PropTypes.bool,
   isLogoDropdownOpen: PropTypes.bool.isRequired,
   isMarketing: PropTypes.bool.isRequired,
   logoVariant: PropTypes.oneOf(['consulting', 'marketing']).isRequired,

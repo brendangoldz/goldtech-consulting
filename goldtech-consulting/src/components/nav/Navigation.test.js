@@ -1,10 +1,18 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { MemoryRouter } from 'react-router-dom';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import Navigation from './Navigation';
 
 expect.extend(toHaveNoViolations);
+
+const renderWithRouter = (ui, { route = '/consulting' } = {}) =>
+  render(
+    <MemoryRouter initialEntries={[route]}>
+      {ui}
+    </MemoryRouter>
+  );
 
 describe('Navigation', () => {
   const mockScrollTo = jest.fn();
@@ -18,29 +26,30 @@ describe('Navigation', () => {
   });
 
   it('renders navigation with all menu items', () => {
-    render(<Navigation {...defaultProps} />);
+    renderWithRouter(<Navigation {...defaultProps} />);
     
     expect(screen.getByRole('navigation')).toBeInTheDocument();
     expect(screen.getByLabelText(/main navigation/i)).toBeInTheDocument();
     
-    // Check desktop navigation items
+    // Check desktop navigation items (sections + Blog link)
     expect(screen.getByRole('menubar')).toBeInTheDocument();
     expect(screen.getByRole('menuitem', { name: /navigate to home section/i })).toBeInTheDocument();
     expect(screen.getByRole('menuitem', { name: /navigate to about section/i })).toBeInTheDocument();
     expect(screen.getByRole('menuitem', { name: /navigate to services section/i })).toBeInTheDocument();
     expect(screen.getByRole('menuitem', { name: /navigate to projects section/i })).toBeInTheDocument();
     expect(screen.getByRole('menuitem', { name: /navigate to contact section/i })).toBeInTheDocument();
+    expect(screen.getByRole('menuitem', { name: /navigate to blog/i })).toBeInTheDocument();
   });
 
   it('shows active section with proper ARIA attributes', () => {
-    render(<Navigation {...defaultProps} activeSection="about" />);
+    renderWithRouter(<Navigation {...defaultProps} activeSection="about" />);
     
     const aboutButton = screen.getByRole('menuitem', { name: /navigate to about section/i });
     expect(aboutButton).toHaveAttribute('aria-current', 'page');
   });
 
-  it('calls scrollTo when navigation item is clicked', async () => {
-    render(<Navigation {...defaultProps} />);
+  it('calls scrollTo when section navigation item is clicked', async () => {
+    renderWithRouter(<Navigation {...defaultProps} />);
     
     const aboutButton = screen.getByRole('menuitem', { name: /navigate to about section/i });
     await userEvent.click(aboutButton);
@@ -48,8 +57,17 @@ describe('Navigation', () => {
     expect(mockScrollTo).toHaveBeenCalledWith('about');
   });
 
+  it('does not call scrollTo when Blog item is clicked (route link)', async () => {
+    renderWithRouter(<Navigation {...defaultProps} />);
+    
+    const blogButton = screen.getByRole('menuitem', { name: /navigate to blog/i });
+    await userEvent.click(blogButton);
+    
+    expect(mockScrollTo).not.toHaveBeenCalled();
+  });
+
   it('toggles mobile menu when button is clicked', async () => {
-    render(<Navigation {...defaultProps} />);
+    renderWithRouter(<Navigation {...defaultProps} />);
     
     const mobileMenuButton = screen.getByLabelText(/toggle mobile menu/i);
     expect(mobileMenuButton).toHaveAttribute('aria-expanded', 'false');
@@ -62,7 +80,7 @@ describe('Navigation', () => {
   });
 
   it('closes mobile menu when navigation item is clicked', async () => {
-    render(<Navigation {...defaultProps} />);
+    renderWithRouter(<Navigation {...defaultProps} />);
     
     const mobileMenuButton = screen.getByLabelText(/toggle mobile menu/i);
     await userEvent.click(mobileMenuButton);
@@ -77,7 +95,7 @@ describe('Navigation', () => {
   });
 
   it('closes mobile menu when Escape key is pressed', async () => {
-    render(<Navigation {...defaultProps} />);
+    renderWithRouter(<Navigation {...defaultProps} />);
     
     const mobileMenuButton = screen.getByLabelText(/toggle mobile menu/i);
     await userEvent.click(mobileMenuButton);
@@ -90,7 +108,7 @@ describe('Navigation', () => {
   });
 
   it('has proper focus management', async () => {
-    render(<Navigation {...defaultProps} />);
+    renderWithRouter(<Navigation {...defaultProps} />);
     
     const mobileMenuButton = screen.getByLabelText(/toggle mobile menu/i);
     await userEvent.click(mobileMenuButton);
@@ -101,7 +119,7 @@ describe('Navigation', () => {
   });
 
   it('handles keyboard navigation in mobile menu', async () => {
-    render(<Navigation {...defaultProps} />);
+    renderWithRouter(<Navigation {...defaultProps} />);
     
     const mobileMenuButton = screen.getByLabelText(/toggle mobile menu/i);
     await userEvent.click(mobileMenuButton);
@@ -119,21 +137,21 @@ describe('Navigation', () => {
   });
 
   it('shows mobile menu button only on mobile', () => {
-    render(<Navigation {...defaultProps} />);
+    renderWithRouter(<Navigation {...defaultProps} />);
     
     const mobileMenuButton = screen.getByLabelText(/toggle mobile menu/i);
     expect(mobileMenuButton).toHaveClass('md:hidden');
   });
 
   it('shows desktop navigation only on desktop', () => {
-    render(<Navigation {...defaultProps} />);
+    renderWithRouter(<Navigation {...defaultProps} />);
     
     const desktopMenu = screen.getByRole('menubar');
     expect(desktopMenu).toHaveClass('hidden', 'md:flex');
   });
 
   it('has proper ARIA attributes for screen readers', () => {
-    render(<Navigation {...defaultProps} />);
+    renderWithRouter(<Navigation {...defaultProps} />);
     
     const navigation = screen.getByRole('navigation');
     expect(navigation).toHaveAttribute('aria-label', 'Main navigation');
@@ -144,13 +162,13 @@ describe('Navigation', () => {
   });
 
   it('should not have accessibility violations', async () => {
-    const { container } = render(<Navigation {...defaultProps} />);
+    const { container } = renderWithRouter(<Navigation {...defaultProps} />);
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
 
   it('should not have accessibility violations with mobile menu open', async () => {
-    const { container } = render(<Navigation {...defaultProps} />);
+    const { container } = renderWithRouter(<Navigation {...defaultProps} />);
     
     const mobileMenuButton = screen.getByLabelText(/toggle mobile menu/i);
     fireEvent.click(mobileMenuButton);
@@ -160,12 +178,12 @@ describe('Navigation', () => {
   });
 
   it('matches snapshot', () => {
-    const { container } = render(<Navigation {...defaultProps} />);
+    const { container } = renderWithRouter(<Navigation {...defaultProps} />);
     expect(container.firstChild).toMatchSnapshot();
   });
 
   it('matches snapshot with mobile menu open', () => {
-    const { container } = render(<Navigation {...defaultProps} />);
+    const { container } = renderWithRouter(<Navigation {...defaultProps} />);
     
     const mobileMenuButton = screen.getByLabelText(/toggle mobile menu/i);
     fireEvent.click(mobileMenuButton);

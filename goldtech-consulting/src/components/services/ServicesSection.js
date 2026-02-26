@@ -1,24 +1,33 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {
-  FaLaptopCode, FaChartLine, FaShieldAlt, FaMobileAlt, FaArrowRight
+  FaLaptopCode, FaChartLine, FaShieldAlt, FaMobileAlt, FaArrowRight,
+  FaGlobeAmericas, FaClipboardCheck, FaPlug, FaCogs, FaPalette, FaPenFancy, FaStamp
 } from 'react-icons/fa';
 import SectionHeader from '../shared/SectionHeader';
-import { getContent } from '../../config/content';
+import { useContent } from '../../contexts/ContentContext';
 import { getSectionBg, getThemeClasses, getVariantClasses } from '../../config/theme';
 import { fadeInUp } from '../../utils/animations';
 
 const iconMap = {
-  FaLaptopCode: FaLaptopCode,
-  FaChartLine: FaChartLine,
-  FaShieldAlt: FaShieldAlt,
-  FaMobileAlt: FaMobileAlt
+  FaLaptopCode,
+  FaChartLine,
+  FaShieldAlt,
+  FaMobileAlt,
+  FaGlobeAmericas,
+  FaClipboardCheck,
+  FaPlug,
+  FaCogs,
+  FaPalette,
+  FaPenFancy,
+  FaStamp
 };
 
 const ServicesSection = ({ variant = 'consulting' }) => {
-  const content = getContent(variant).services;
+  const location = useLocation();
+  const content = useContent(variant).services;
   const cardBaseClasses = `${getThemeClasses(variant, 'card-bg')} ${getThemeClasses(variant, 'card-border')}`;
   const iconClasses = getVariantClasses(variant, {
     marketing: 'text-marketing-primary',
@@ -64,6 +73,7 @@ const ServicesSection = ({ variant = 'consulting' }) => {
               {servicePath && (
                 <Link
                   to={servicePath}
+                  state={{ from: location.pathname }}
                   className={`
                     group mt-auto pt-6 inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium
                     !no-underline transition-colors duration-200
