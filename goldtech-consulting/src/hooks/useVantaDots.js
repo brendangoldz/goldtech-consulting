@@ -55,10 +55,9 @@ const clearStaleVantaDisabledFlag = () => {
  * useVantaDots - Initialize and manage Vanta.js DOTS background effect.
  *
  * @param {Object} options - Vanta configuration options.
- * @param {Array<unknown>} deps - Dependency list for the effect.
  * @returns {{ vantaRef: Object, vantaEffect: Object, isVantaEnabled: boolean }}
  */
-const useVantaDots = (options, deps = []) => {
+const useVantaDots = (options) => {
   const vantaRef = useRef(null);
   const vantaEffect = useRef(null);
   const hasVantaFailedRef = useRef(false);
@@ -172,7 +171,7 @@ const useVantaDots = (options, deps = []) => {
         vantaEffect.current = null;
       }
     };
-  }, deps);
+  }, [options]);
 
   return { vantaRef, vantaEffect, isVantaEnabled };
 };
