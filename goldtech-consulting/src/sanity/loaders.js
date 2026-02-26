@@ -12,6 +12,7 @@ import {
   POSTS_LIST_QUERY,
   POST_BY_SLUG_QUERY
 } from './queries';
+import { EMPTY_CONTENT } from './emptyContent';
 import {
   mapSiteConfigToVariantContent,
   mapServiceToCard,
@@ -64,49 +65,6 @@ export async function loadContent() {
     return contentCache;
   }
 }
-
-/** Full variant shape with safe defaults so components never see undefined .heading, .features, etc. */
-function getEmptyVariantContent() {
-  return {
-    hero: {
-      trustIndicator: '',
-      heading: {
-        line1: '',
-        highlight1: '',
-        line2: '',
-        highlight2: '',
-        line3: '',
-        highlight3: ''
-      },
-      subtitle: '',
-      primaryCTA: '',
-      secondaryCTA: ''
-    },
-    about: {
-      eyebrow: '',
-      title: '',
-      subtitle: '',
-      description: '',
-      features: [],
-      techStack: [],
-      image: '',
-      imageAlt: ''
-    },
-    services: { eyebrow: '', title: '', subtitle: '', items: [] },
-    projects: { eyebrow: '', title: '', subtitle: '', items: [] },
-    footer: { description: '', copyright: '' },
-    contact: {
-      email: '',
-      location: '',
-      socialLinks: { linkedin: '', facebook: '', github: '', upwork: '' }
-    }
-  };
-}
-
-const EMPTY_CONTENT = getEmptyVariantContent();
-
-/** Exported for ContentContext fallback when content is not yet loaded. */
-export { EMPTY_CONTENT };
 
 /**
  * Get content for a variant. Call loadContent() first (e.g. in a provider or root) so cache is populated.

@@ -147,7 +147,8 @@
         gtag('config', 'AW-17940832469');
       });
     </script>
-    <!-- Three.js is loaded by useVantaDots when needed (after first paint) to avoid competing with LCP -->
+    <!-- Three.js for Vanta: async = non-blocking; hook defers init until after first paint -->
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
